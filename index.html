@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Humanity Capital</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%230A1628'/%3E%3Ctext x='200' y='260' font-family='Georgia,serif' font-size='220' font-weight='500' letter-spacing='-7px' fill='%23ffffff' text-anchor='middle'%3EHC%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="https://i.postimg.cc/tC2K4wQr/HC-07.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Jost:wght@300;400&family=Syne:wght@300;400;500&family=Raleway:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap" rel="stylesheet">
 <style>
@@ -22,7 +22,7 @@
     background: var(--navy);
     color: var(--white);
     font-family: 'Raleway', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   body::before {
@@ -51,10 +51,10 @@
   .page {
     position: relative;
     z-index: 1;
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    padding: clamp(2rem, 5vw, 4rem) clamp(2rem, 8vw, 7rem);
+    padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 8vw, 7rem);
   }
 
   header {
@@ -104,18 +104,19 @@
   .eyebrow {
     font-family: 'Syne', sans-serif;
     font-weight: 300;
-    font-size: clamp(0.6rem, 0.9vw, 0.72rem);
+    font-size: clamp(0.55rem, 0.9vw, 0.72rem);
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--blue-bright);
     opacity: 0;
     animation: fadeUp 1s ease forwards 0.7s;
+    margin-top: 1.5rem;
   }
 
   .headline {
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
-    font-size: clamp(3rem, 7.5vw, 8rem);
+    font-size: clamp(2.4rem, 7.5vw, 8rem);
     line-height: 1.0;
     letter-spacing: 0.04em;
     color: var(--white);
@@ -139,7 +140,7 @@
 
   .subtext {
     font-weight: 300;
-    font-size: clamp(0.78rem, 1.1vw, 0.97rem);
+    font-size: clamp(0.75rem, 1.1vw, 0.97rem);
     line-height: 1.85;
     color: rgba(255,255,255,0.55);
     max-width: 48ch;
@@ -254,6 +255,97 @@
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+  }
+
+  /* ── Tablet ── */
+  @media (max-width: 900px) {
+    .page {
+      padding: 2rem 2.5rem;
+    }
+
+    .vert-line { display: none; }
+
+    footer {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .offices {
+      gap: 2rem;
+    }
+
+    .tagline-footer {
+      width: 100%;
+      text-align: center;
+      align-self: center;
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 600px) {
+    html, body { overflow-y: auto; }
+
+    .page {
+      min-height: 100dvh;
+      grid-template-rows: auto 1fr auto;
+      padding: 1.5rem 1.5rem 2rem;
+      gap: 1rem;
+    }
+
+    header {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .logo-svg { height: 34px; }
+
+    .status-dot { font-size: 0.5rem; }
+
+    .center { gap: 1.8rem; }
+
+    .eyebrow {
+      font-size: 0.52rem;
+      letter-spacing: 0.2em;
+      margin-top: 1rem;
+    }
+
+    .headline {
+      font-size: 2.4rem;
+      line-height: 1.05;
+    }
+
+    .subtext {
+      font-size: 0.8rem;
+      max-width: 100%;
+    }
+
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    .offices {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .tagline-footer {
+      text-align: left;
+      margin-top: 0.5rem;
+    }
+
+    .vert-line { display: none; }
+  }
+
+  /* ── Small phones ── */
+  @media (max-width: 380px) {
+    .page { padding: 1.2rem 1.2rem 1.5rem; }
+    .logo-svg { height: 28px; }
+    .headline { font-size: 2rem; }
+    .eyebrow { font-size: 0.48rem; }
   }
 </style>
 </head>
