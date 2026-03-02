@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Humanity Capital</title>
-<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/wMsWb95x/HC-08.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%230A1628'/%3E%3Ctext x='200' y='260' font-family='Georgia,serif' font-size='220' font-weight='500' letter-spacing='-7px' fill='%23ffffff' text-anchor='middle'%3EHC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@300;400;500&family=Raleway:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Jost:wght@300;400&family=Syne:wght@300;400;500&family=Raleway:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -15,8 +15,6 @@
     --blue: #4A7FA5;
     --blue-bright: #6AAFD6;
     --white: #FFFFFF;
-    --white-dim: rgba(255,255,255,0.55);
-    --blue-glow: rgba(74, 127, 165, 0.12);
   }
 
   html, body {
@@ -27,7 +25,6 @@
     overflow: hidden;
   }
 
-  /* Grain overlay */
   body::before {
     content: '';
     position: fixed;
@@ -38,7 +35,6 @@
     opacity: 0.4;
   }
 
-  /* Subtle radial glow */
   body::after {
     content: '';
     position: fixed;
@@ -61,7 +57,6 @@
     padding: clamp(2rem, 5vw, 4rem) clamp(2rem, 8vw, 7rem);
   }
 
-  /* Header */
   header {
     display: flex;
     align-items: center;
@@ -70,18 +65,7 @@
     animation: fadeUp 1.2s ease forwards 0.3s;
   }
 
-  .wordmark {
-    font-family: 'Syne', sans-serif;
-    font-weight: 400;
-    font-size: clamp(0.75rem, 1.1vw, 0.9rem);
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--white);
-  }
-
-  .wordmark span {
-    color: var(--blue-bright);
-  }
+  .logo-svg { height: 45px; width: auto; }
 
   .status-dot {
     display: flex;
@@ -109,7 +93,6 @@
     50% { opacity: 0.3; }
   }
 
-  /* Center content */
   .center {
     display: flex;
     flex-direction: column;
@@ -165,7 +148,6 @@
     animation: fadeUp 1s ease forwards 1.4s;
   }
 
-  /* Footer */
   footer {
     display: flex;
     align-items: flex-end;
@@ -210,7 +192,6 @@
   .contact-link:hover { color: var(--blue-bright); }
   .contact-link:hover::after { width: 100%; }
 
-  /* Office locations */
   .offices {
     display: flex;
     gap: clamp(2rem, 4vw, 5rem);
@@ -254,7 +235,6 @@
     align-self: flex-end;
   }
 
-  /* Decorative vertical line */
   .vert-line {
     position: fixed;
     right: clamp(2rem, 8vw, 7rem);
@@ -282,7 +262,7 @@
 
   <div class="page">
     <header>
-      <div class="wordmark">Humanity <span>Capital</span></div>
+      <img class="logo-svg" src="https://i.postimg.cc/fL1bpy5f/HC-White.png" alt="Humanity Capital">
       <div class="status-dot">Coming Soon</div>
     </header>
 
@@ -293,7 +273,7 @@
       </h1>
       <div class="divider"></div>
       <p class="subtext">
-        A growth equity platform investing in companies disrupting the status quo with human and planetary thriving as a priority.
+        Growth Capital Powering the New Frontier — the Intelligence Economy.
       </p>
     </main>
 
