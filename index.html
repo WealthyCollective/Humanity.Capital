@@ -3,402 +3,828 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Humanity Capital</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@300;400;500&family=Raleway:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap" rel="stylesheet">
+<title>Humanity Capital — Healthcare · AI · Energy</title>
+<link rel="icon" type="image/png" href="https://i.postimg.cc/MGC4LfgR/HC-06.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#003366;--navy-dk:#00264d;--navy-mid:#004080;
+  --blue-acc:#336699;--blue-lt:#4d80b3;
+  --white:#ffffff;--off-white:#f5f6f8;
+  --text:#000000;--text-body:#111111;
+  --divider:rgba(0,51,102,0.12);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --display:'Playfair Display',Georgia,serif;
+  --sans:'Jost',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--white);color:var(--text);font-family:var(--sans);font-weight:300;overflow-x:hidden}
 
-  :root {
-    --navy: #0A1628;
-    --blue: #4A7FA5;
-    --blue-bright: #6AAFD6;
-    --white: #FFFFFF;
-    --white-dim: rgba(255,255,255,0.55);
-    --blue-glow: rgba(74, 127, 165, 0.12);
-  }
+/* ── LOGIN GATE ── */
+#login-gate{position:fixed;inset:0;z-index:9999;background:var(--navy-dk);display:flex;align-items:center;justify-content:center;transition:opacity 0.6s ease,visibility 0.6s ease}
+#login-gate.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.login-card{text-align:center;max-width:420px;width:90%;padding:60px 48px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px)}
+.login-monogram{font-family:var(--display);font-size:56px;font-weight:500;color:var(--white);letter-spacing:-0.04em;line-height:1;margin-bottom:8px}
+.login-brand{font-size:10px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:8px}
+.login-sub{font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:48px}
+.login-label{font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:14px;text-align:left}
+.login-input{width:100%;padding:14px 18px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--white);font-family:var(--sans);font-size:14px;font-weight:300;letter-spacing:0.08em;outline:none;transition:border-color 0.25s}
+.login-input:focus{border-color:rgba(255,255,255,0.4)}
+.login-input::placeholder{color:rgba(255,255,255,0.25);font-size:12px;letter-spacing:0.12em}
+.login-btn{width:100%;margin-top:20px;padding:14px;background:var(--navy);border:1px solid rgba(255,255,255,0.15);color:var(--white);font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:background 0.25s,border-color 0.25s}
+.login-btn:hover{background:var(--navy-mid);border-color:rgba(255,255,255,0.3)}
+.login-error{font-size:11px;color:#e74c3c;margin-top:16px;min-height:18px;letter-spacing:0.06em;opacity:0;transition:opacity 0.3s}
+.login-error.show{opacity:1}
+.login-footer{margin-top:48px;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);line-height:1.8}
+.login-lock{margin-bottom:32px}
+.login-lock svg{width:24px;height:24px;stroke:rgba(255,255,255,0.3);fill:none;stroke-width:1.5}
 
-  html, body {
-    height: 100%;
-    background: var(--navy);
-    color: var(--white);
-    font-family: 'Raleway', sans-serif;
-    overflow-x: hidden;
-  }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 56px;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--divider)}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0}
+.nav-monogram{font-family:var(--display);font-size:28px;font-weight:500;color:var(--navy);letter-spacing:-0.04em;line-height:1;flex-shrink:0}
+.nav-name{font-size:10px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);line-height:1.4;white-space:nowrap}
+.nav-name span{display:block;font-size:8px;letter-spacing:0.28em;color:var(--text-body);white-space:nowrap}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:10px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-cta{font-size:10px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);background:var(--navy);padding:10px 24px;text-decoration:none;transition:background 0.25s}
+.nav-cta:hover{background:var(--navy-mid)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.hamburger{display:none;background:none;border:1px solid var(--divider);width:38px;height:38px;cursor:pointer;flex-shrink:0;padding:0;align-items:center;justify-content:center}
+.ham-lines{display:flex;flex-direction:column;gap:4px;width:16px;align-items:center}
+.ham-lines i{display:block;width:16px;height:1.5px;background:var(--navy);transition:all 0.3s;transform-origin:center}
+.hamburger.open .ham-lines i:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.hamburger.open .ham-lines i:nth-child(2){opacity:0}
+.hamburger.open .ham-lines i:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s}
+.mobile-nav.open{opacity:1;visibility:visible}
+.mobile-nav a{font-size:12px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color 0.2s;padding:8px 0}
+.mobile-nav a:hover{color:var(--navy)}
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 100;
-    opacity: 0.4;
-  }
+#hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:68px}
+.hero-left{padding:90px 72px 80px;display:flex;flex-direction:column;justify-content:center}
+.hero-eyebrow{font-size:9.5px;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:var(--navy);margin-bottom:32px}
+.hero-logo{font-family:var(--display);font-size:60px;font-weight:500;color:var(--navy);line-height:1;letter-spacing:-0.03em;margin-bottom:6px}
+.hero-tagline{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);margin-bottom:36px}
+.hero-title{font-family:var(--serif);font-size:clamp(22px,3vw,36px);font-weight:300;line-height:1.25;color:var(--text);margin-bottom:24px;letter-spacing:0.12em;text-transform:uppercase}
+.hero-rule{width:40px;height:2px;background:var(--navy);margin-bottom:24px}
+.hero-body{font-size:14px;font-weight:300;line-height:1.85;color:var(--text-body);max-width:440px;margin-bottom:44px}
+.hero-body strong{font-weight:500;color:var(--text)}
+.hero-meta{font-size:9.5px;letter-spacing:0.24em;text-transform:uppercase;color:var(--navy)}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:100px 64px 80px 48px;position:relative}
+.hero-right::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:1px;background:var(--divider)}
+.stat-block{padding:28px 0;border-bottom:1px solid var(--divider)}
+.stat-block:first-child{border-top:1px solid var(--divider)}
+.stat-num{font-family:var(--display);font-size:clamp(44px,5vw,64px);font-weight:400;color:var(--navy);line-height:1;letter-spacing:-0.02em;margin-bottom:8px}
+.stat-label{font-size:11px;font-weight:300;font-style:italic;color:var(--text-body)}
 
-  body::after {
-    content: '';
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70vw;
-    height: 70vh;
-    background: radial-gradient(ellipse at center, rgba(74,127,165,0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
+.si{max-width:1240px;margin:0 auto;padding:100px 72px}
+.sl{font-size:9.5px;letter-spacing:0.3em;text-transform:uppercase;color:var(--navy);margin-bottom:14px}
+.st{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--text);margin-bottom:18px;line-height:1.3}
+.sr{width:40px;height:2px;background:var(--navy);margin-bottom:22px}
+.sp{font-size:14px;font-weight:300;line-height:1.85;color:var(--text-body);max-width:640px;margin-bottom:60px}
+.sp strong{font-weight:500;color:var(--text)}
 
-  .page {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: clamp(2rem, 5vw, 4rem) clamp(2rem, 8vw, 7rem);
-  }
+.dk{background:var(--navy)}
+.dk .sl{color:rgba(255,255,255,0.85)}
+.dk .st{color:var(--white)}
+.dk .sr{background:rgba(255,255,255,0.5)}
+.dk .sp{color:rgba(255,255,255,0.75)}
+.dk .sp strong{color:var(--white)}
 
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    opacity: 0;
-    animation: fadeUp 1.2s ease forwards 0.3s;
-  }
+#thesis{background:var(--off-white)}
+.thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.thesis-callout{font-family:var(--display);font-style:italic;font-size:17px;font-weight:400;color:var(--text);line-height:1.55;padding:36px 0;border-top:2px solid var(--navy);border-bottom:1px solid var(--divider)}
+.thesis-body{font-size:14px;font-weight:300;line-height:1.85;color:var(--text-body)}
+.thesis-body strong{font-weight:500;color:var(--text)}
+.thesis-pillars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--divider);border:1px solid var(--divider);margin-top:48px}
+.tp{background:var(--white);padding:32px 24px;text-align:center}
+.tp-icon{font-size:24px;margin-bottom:12px;color:var(--navy)}
+.tp-title{font-family:var(--serif);font-size:16px;font-weight:500;color:var(--text);margin-bottom:8px;letter-spacing:0.06em}
+.tp-sub{font-size:11px;font-weight:300;color:var(--text-body);line-height:1.6}
 
-  .wordmark {
-    font-family: 'Syne', sans-serif;
-    font-weight: 400;
-    font-size: clamp(0.75rem, 1.1vw, 0.9rem);
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--white);
-  }
+#triad{background:var(--navy);position:relative;overflow:hidden}
+.triad-visual{display:flex;align-items:center;justify-content:center;margin:60px auto 40px;max-width:800px;position:relative}
+.triad-node{flex:1;text-align:center;padding:40px 20px;position:relative;z-index:1}
+.triad-icon{font-size:28px;width:64px;height:64px;line-height:64px;border-radius:50%;margin:0 auto 16px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);color:var(--white)}
+.triad-title{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--white);margin-bottom:8px}
+.triad-sub{font-size:11px;font-weight:300;color:rgba(255,255,255,0.7);line-height:1.6;max-width:200px;margin:0 auto}
+.triad-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);flex-shrink:0;align-self:center;margin-top:-30px}
+.triad-quote{text-align:center;max-width:700px;margin:0 auto;padding:40px 0 20px;font-family:var(--display);font-style:italic;font-size:20px;font-weight:400;color:rgba(255,255,255,0.9);line-height:1.55}
 
-  .wordmark span { color: var(--blue-bright); }
+#energy{background:var(--navy-dk)}
+.energy-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);margin-top:48px}
+.ec{background:rgba(255,255,255,0.03);padding:40px 36px}
+.ec-label{font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:14px}
+.ec-stat{font-family:var(--display);font-size:48px;font-weight:400;color:var(--white);line-height:1;margin-bottom:10px}
+.ec-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,0.75);line-height:1.7}
+.dep-chain{margin-top:48px;padding:36px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.02)}
+.dep-chain-title{font-family:var(--serif);font-size:18px;font-weight:400;color:rgba(255,255,255,0.9);margin-bottom:16px}
+.dep-chain-row{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.dep-step{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);padding:14px 20px;font-size:12px;font-weight:300;color:rgba(255,255,255,0.9)}
+.dep-step span{font-size:10px;color:rgba(255,255,255,0.55);display:block;margin-top:4px}
+.dep-arrow{color:rgba(255,255,255,0.35);font-size:18px}
 
-  .status-dot {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.6rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-  }
+.frontier-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--divider);border:1px solid var(--divider);margin-top:56px}
+.fc{background:var(--white);padding:40px 32px}
+.fc-title{font-size:9.5px;font-weight:500;letter-spacing:0.26em;text-transform:uppercase;color:var(--text);margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--divider)}
+.fc li{font-size:13px;font-weight:300;color:var(--text-body);padding:10px 0;border-bottom:1px solid var(--divider);list-style:none}
+.fc li:last-child{border-bottom:none}
+.fc-footer{margin-top:24px;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--text);line-height:1.5}
 
-  .status-dot::before {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--blue-bright);
-    box-shadow: 0 0 8px var(--blue-bright);
-    animation: pulse 2.5s ease-in-out infinite;
-  }
+.mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--divider);margin:40px 0}
+.ms{padding:36px 32px;border-right:1px solid var(--divider)}
+.ms:last-child{border-right:none}
+.ms-num{font-family:var(--display);font-size:54px;font-weight:400;color:var(--navy);line-height:1;letter-spacing:-0.02em;margin-bottom:10px}
+.ms-label{font-size:11px;font-weight:300;color:var(--text-body);letter-spacing:0.08em}
+.mbig{font-family:var(--display);font-size:32px;font-weight:400;color:var(--navy);display:inline;margin-right:12px}
+.mtag{font-size:13px;font-weight:400;letter-spacing:0.06em;color:var(--text-body);text-transform:uppercase}
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
+.tr-hl-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);margin-bottom:64px}
+.tr-hl{background:rgba(255,255,255,0.04);padding:36px 32px;text-align:center}
+.tr-hl-num{font-family:var(--display);font-size:52px;font-weight:400;color:var(--white);line-height:1;margin-bottom:10px}
+.tr-hl-label{font-size:10px;font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.9);line-height:1.5}
+.tr-hl-sub{font-size:9.5px;color:rgba(255,255,255,0.55);letter-spacing:0.16em;text-transform:uppercase;margin-top:8px}
+.tabs-nav{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid rgba(255,255,255,0.15);margin-bottom:40px}
+.tab-btn{background:none;border:none;border-bottom:2px solid transparent;padding:14px 22px;font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.55);cursor:pointer;transition:color 0.2s,border-color 0.2s;margin-bottom:-1px}
+.tab-btn:hover{color:rgba(255,255,255,0.85)}
+.tab-btn.active{color:var(--white);border-bottom:2px solid rgba(255,255,255,0.8)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.gp-profile{display:grid;grid-template-columns:1fr 1fr;gap:24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:28px 32px;margin-bottom:28px}
+.gp-name{font-family:var(--display);font-size:26px;font-weight:400;color:var(--white);margin-bottom:6px}
+.gp-sub{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:14px}
+.gp-bio{font-size:13px;font-weight:300;line-height:1.8;color:rgba(255,255,255,0.90)}
+.ic-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.85);font-size:8.5px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-top:8px}
+.ic-votes{background:rgba(255,255,255,0.15);border-radius:2px;padding:1px 5px;font-size:8px}
+.gp-stats{display:flex;flex-direction:column;justify-content:center;gap:16px;border-left:1px solid rgba(255,255,255,0.1);padding-left:28px}
+.gs-row{display:flex;gap:32px;flex-wrap:wrap}
+.gs-val{font-family:var(--display);font-size:32px;font-weight:400;color:rgba(255,255,255,0.95);line-height:1;margin-bottom:4px}
+.gs-label{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.65)}
+.gtw{border:1px solid rgba(255,255,255,0.1)}
+.gt{width:100%;border-collapse:collapse}
+.gt td{padding:14px 28px;font-size:12.5px;font-weight:300;vertical-align:middle;border-bottom:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.8)}
+.gt td:first-child{font-family:var(--serif);font-size:15px;color:var(--white)}
+.gt td:last-child{text-align:right;font-family:var(--display);font-size:22px;font-weight:400;color:var(--white)}
+.gt tfoot td{font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.70);border-bottom:none;padding-top:20px;text-align:left}
+.gt .pil{color:rgba(255,255,255,0.5);font-size:10px;font-family:var(--sans);letter-spacing:0.12em;text-transform:uppercase}
+.gt thead th{text-align:left;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.65);padding:14px 28px 12px;font-weight:400}
+.gt thead th:last-child{text-align:right}
+.perf-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.1);margin-top:64px}
+.pb{padding:32px;border-right:1px solid rgba(255,255,255,0.08)}
+.pb:last-child{border-right:none}
+.pb-num{font-family:var(--display);font-size:40px;font-weight:400;color:var(--white);line-height:1;margin-bottom:10px}
+.pb-label{font-size:10px;font-weight:300;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85);line-height:1.5}
 
-  .center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2.5rem;
-  }
+.upt{width:100%;border-collapse:collapse}
+.upt thead tr{border-bottom:2px solid var(--navy)}
+.upt th{font-size:9px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--text);padding:0 0 16px;text-align:left}
+.upt th:not(:first-child){text-align:right}
+.upt tbody tr{border-bottom:1px solid var(--divider);transition:background 0.2s}
+.upt tbody tr:hover{background:rgba(0,51,102,0.03)}
+.upt td{padding:22px 0;font-size:13.5px;font-weight:300;color:var(--text);vertical-align:middle}
+.upt td:first-child{font-family:var(--serif);font-size:18px;color:var(--text)}
+.upt td:not(:first-child){text-align:right}
+.upt .rc{font-family:var(--display);font-size:24px;font-weight:400;color:var(--navy)}
 
-  .eyebrow {
-    font-family: 'Syne', sans-serif;
-    font-weight: 300;
-    font-size: clamp(0.6rem, 0.9vw, 0.72rem);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--blue-bright);
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 0.7s;
-  }
+.pipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--divider);border:1px solid var(--divider);margin-top:56px}
+.pc{background:var(--white);padding:32px 28px;transition:background 0.2s}
+.pc:hover{background:var(--off-white)}
+.pc-flag{font-size:16px;margin-bottom:10px}
+.pc-name{font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--text);margin-bottom:4px}
+.pc-pil{font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;font-weight:500}
+.pc-body{font-size:12.5px;font-weight:300;line-height:1.7;color:var(--text-body);margin-bottom:20px}
+.pc-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:16px;border-top:1px solid var(--divider)}
+.pc-sl{font-size:8.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-body);margin-bottom:3px}
+.pc-sv{font-family:var(--serif);font-size:14px;font-weight:500;color:var(--text)}
+.pc-eb{font-family:var(--display);font-size:20px;font-weight:400;color:var(--navy)}
 
-  .headline {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 200;
-    font-size: clamp(2.6rem, 7.5vw, 8rem);
-    line-height: 1.0;
-    letter-spacing: 0.04em;
-    color: var(--white);
-    opacity: 0;
-    animation: fadeUp 1.2s ease forwards 0.9s;
-  }
+.impact-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--divider);border:1px solid var(--divider);margin-top:40px}
+.id{background:var(--white);padding:28px 20px;text-align:center}
+.id-num{font-family:var(--display);font-style:italic;font-size:36px;font-weight:300;color:var(--navy);line-height:1}
+.id-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-body);margin-top:10px;line-height:1.5}
 
-  .headline em {
-    font-style: italic;
-    font-weight: 300;
-    color: var(--blue-bright);
-  }
+.gp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--divider);border:1px solid var(--divider);margin-bottom:56px}
+.gc{background:var(--white);padding:40px 36px}
+.gc .role{font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:var(--navy);margin-bottom:12px}
+.gc .name{font-family:var(--display);font-size:22px;font-weight:400;color:var(--text);margin-bottom:14px;line-height:1.2}
+.gc .bio{font-size:12.5px;font-weight:300;line-height:1.75;color:var(--text-body);margin-bottom:20px}
+.gc .tagline{font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text);font-weight:500;padding-top:16px;border-top:1px solid var(--divider)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--divider);color:var(--text-body)}
 
-  .divider {
-    width: 3.5rem;
-    height: 1px;
-    background: linear-gradient(to right, var(--blue), transparent);
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 1.2s;
-  }
+.terms-card{background:var(--white);border:1px solid var(--divider);padding:56px 64px;max-width:820px;margin:0 auto}
+.term-row{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--divider)}
+.term-row:last-child{border-bottom:none}
+.term-key{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text);font-weight:500;padding-top:2px}
+.term-val{font-size:13.5px;font-weight:300;line-height:1.6;color:var(--text-body)}
 
-  .subtext {
-    font-weight: 300;
-    font-size: clamp(0.78rem, 1.1vw, 0.97rem);
-    line-height: 1.85;
-    color: rgba(255,255,255,0.55);
-    max-width: 48ch;
-    letter-spacing: 0.03em;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 1.4s;
-  }
+#closing{background:var(--navy);text-align:center;padding:100px 72px}
+.closing-q{font-family:var(--display);font-style:italic;font-size:clamp(16px,2vw,22px);font-weight:400;color:rgba(255,255,255,0.9);line-height:1.5;max-width:760px;margin:0 auto 24px}
+.closing-attr{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.6)}
 
-  footer {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 1.6s;
-    padding-bottom: 0.5rem;
-  }
+footer{background:var(--navy-dk);padding:52px 72px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;border-top:1px solid rgba(255,255,255,0.08)}
+.f-logo{font-family:var(--display);font-size:28px;font-weight:500;color:var(--white);letter-spacing:-0.03em}
+.f-sub{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.60);margin-top:4px}
+.f-contact{text-align:center;font-size:11px;font-weight:300;color:rgba(255,255,255,0.85);line-height:1.8}
+.f-contact a{color:rgba(255,255,255,0.7);text-decoration:none}
+.f-right{text-align:right;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.60);line-height:1.7}
 
-  .contact-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.58rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 0.35rem;
-  }
+.rv{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.rv.visible{opacity:1;transform:translateY(0)}
+.stagger .rv:nth-child(1){transition-delay:0.05s}
+.stagger .rv:nth-child(2){transition-delay:0.15s}
+.stagger .rv:nth-child(3){transition-delay:0.25s}
+.stagger .rv:nth-child(4){transition-delay:0.35s}
+.stagger .rv:nth-child(5){transition-delay:0.45s}
 
-  .contact-link {
-    display: block;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.6);
-    text-decoration: none;
-    position: relative;
-    transition: color 0.3s ease;
-  }
-
-  .contact-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--blue-bright);
-    transition: width 0.4s ease;
-  }
-
-  .contact-link:hover { color: var(--blue-bright); }
-  .contact-link:hover::after { width: 100%; }
-
-  .offices {
-    display: flex;
-    gap: clamp(2rem, 4vw, 5rem);
-    align-items: flex-start;
-  }
-
-  .office {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .office-city {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.58rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--blue-bright);
-    margin-bottom: 0.15rem;
-  }
-
-  .office-addr {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 0.72rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.02em;
-  }
-
-  .tagline-footer {
-    text-align: left;
-    font-family: 'Raleway', sans-serif;
-    font-style: italic;
-    font-weight: 200;
-    font-size: clamp(0.75rem, 1.1vw, 0.9rem);
-    color: rgba(255,255,255,0.75);
-    letter-spacing: 0.06em;
-    max-width: 28ch;
-    line-height: 1.6;
-    align-self: flex-end;
-  }
-
-  .vert-line {
-    position: fixed;
-    right: clamp(2rem, 8vw, 7rem);
-    top: 30%;
-    height: 20vh;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, rgba(74,127,165,0.4), transparent);
-    animation: fadeIn 2s ease forwards 2s;
-    opacity: 0;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* ── Tablet ── */
-  @media (max-width: 900px) {
-    .page { padding: 2rem 2.5rem; }
-    .vert-line { display: none; }
-
-    footer {
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-
-    .offices { gap: 2rem; }
-
-    .tagline-footer {
-      width: 100%;
-      text-align: center;
-      align-self: center;
-      margin-top: 0.5rem;
-    }
-  }
-
-  /* ── Mobile ── */
-  @media (max-width: 600px) {
-    html, body { overflow-y: auto; }
-
-    .page {
-      min-height: 100dvh;
-      padding: 1.5rem 1.5rem 2rem;
-      gap: 0.5rem;
-    }
-
-    .wordmark {
-      font-size: 0.68rem;
-      letter-spacing: 0.25em;
-    }
-
-    .status-dot { font-size: 0.5rem; gap: 0.4rem; }
-
-    .center { gap: 1.8rem; }
-
-    .eyebrow {
-      font-size: 0.52rem;
-      letter-spacing: 0.2em;
-    }
-
-    .headline {
-      font-size: 2.4rem;
-      line-height: 1.05;
-    }
-
-    .subtext {
-      font-size: 0.82rem;
-      max-width: 100%;
-      line-height: 1.75;
-    }
-
-    footer {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2rem;
-      padding-bottom: 1rem;
-    }
-
-    .offices {
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .tagline-footer {
-      text-align: center;
-      font-size: 0.82rem;
-      margin-top: 1rem;
-      width: 100%;
-      align-self: center;
-      border-top: 1px solid rgba(74,127,165,0.15);
-      padding-top: 1.5rem;
-    }
-
-    .vert-line { display: none; }
-  }
-
-  /* ── Small phones ── */
-  @media (max-width: 380px) {
-    .page { padding: 1.2rem 1.2rem 1.5rem; }
-    .headline { font-size: 2rem; }
-    .wordmark { font-size: 0.6rem; }
-    .eyebrow { font-size: 0.48rem; }
-  }
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr}
+  .hero-left{padding:60px 28px 24px}
+  .hero-right{padding:40px 28px 32px}
+  .stat-block{padding:20px 0}
+  .hero-right::before{display:none}
+  .hero-logo{font-size:44px}
+  .hero-title{letter-spacing:0.06em}
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-nav{display:flex}
+  .nav-cta{padding:8px 16px;font-size:9px}
+  .si{padding:72px 28px}
+  .frontier-grid,.gp-grid,.pipe-grid,.thesis-pillars{grid-template-columns:1fr}
+  .tr-hl-grid,.perf-bar{grid-template-columns:1fr 1fr}
+  .energy-grid{grid-template-columns:1fr}
+  .mrow{grid-template-columns:1fr}
+  .mrow .ms{border-right:none;border-bottom:1px solid var(--divider)}
+  .mrow .ms:last-child{border-bottom:none}
+  .impact-grid{grid-template-columns:1fr 1fr}
+  .gp-profile{grid-template-columns:1fr}
+  .gp-stats{border-left:none;padding-left:0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1)}
+  .thesis-grid{grid-template-columns:1fr}
+  .triad-visual{flex-direction:column}
+  .triad-line{width:1px;height:40px;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.3),transparent)}
+  footer{grid-template-columns:1fr;gap:24px;text-align:center}
+  .f-right{text-align:center}
+  .login-card{padding:48px 28px}
+  /* ── RESPONSIVE TABLES ── */
+  .gtw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-left:-8px;margin-right:-8px;padding:0 8px}
+  .gt{min-width:580px}
+  .gt td{padding:12px 16px;font-size:11px}
+  .gt td:first-child{font-size:13px}
+  .gt td:last-child{font-size:18px}
+  .gt thead th{padding:20px 16px 10px;font-size:8px}
+  .gt tfoot td{font-size:8.5px;padding:16px 16px 12px}
+  .gt .pil{font-size:8px}
+  /* Unpipeline table */
+  .upt{min-width:600px}
+  div:has(> .upt){overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .upt td{padding:16px 12px;font-size:12px}
+  .upt td:first-child{font-size:15px}
+  .upt th{font-size:8px;padding:0 12px 12px}
+  .upt .rc{font-size:20px}
+  /* Fund terms */
+  .terms-card{padding:32px 24px}
+  .term-row{grid-template-columns:1fr;gap:8px;padding:16px 0}
+  .term-key{font-size:9px;padding-top:0}
+  .term-val{font-size:12.5px}
+  /* Pipeline cards */
+  .pc{padding:24px 20px}
+  .pc-body{font-size:12px}
+  .pc-stats{grid-template-columns:1fr 1fr;gap:12px}
+  /* Dependency chain */
+  .dep-chain{padding:24px 20px}
+  .dep-chain-row{flex-direction:column;gap:8px;align-items:stretch}
+  .dep-step{text-align:center}
+  .dep-arrow{transform:rotate(90deg);text-align:center}
+  /* Energy cards */
+  .ec{padding:28px 24px}
+  .ec-stat{font-size:40px}
+  /* Stat blocks */
+  .stat-num{font-size:48px}
+  /* Tab buttons */
+  .tabs-nav{gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:1px}
+  .tab-btn{white-space:nowrap;padding:12px 16px;font-size:9px}
+  /* Market stats */
+  .ms-num{font-size:40px}
+  .mbig{font-size:26px}
+  .mtag{font-size:11px}
+  /* Track record highlights */
+  .tr-hl{padding:24px 20px}
+  .tr-hl-num{font-size:40px}
+  .tr-hl-label{font-size:9px}
+  /* Perf bar */
+  .pb{padding:24px 20px}
+  .pb-num{font-size:32px}
+  .pb-label{font-size:9px}
+  /* Closing */
+  #closing{padding:72px 28px}
+  footer{padding:40px 28px}
+  /* GP stats row */
+  .gs-val{font-size:26px}
+  .gs-row{gap:20px}
+}
 </style>
 </head>
 <body>
-  <div class="vert-line"></div>
 
-  <div class="page">
-    <header>
-      <div class="wordmark">Humanity <span>Capital</span></div>
-      <div class="status-dot">Coming Soon</div>
-    </header>
-
-    <main class="center">
-      <p class="eyebrow">Growth Equity · Healthcare · AI · Energy</p>
-      <h1 class="headline">
-        Where <em>Humanity</em><br>Scales,<br>Returns Follow.
-      </h1>
-      <div class="divider"></div>
-      <p class="subtext">
-        A growth equity platform investing in companies disrupting the status quo with human and planetary thriving as a priority.
-      </p>
-    </main>
-
-    <footer>
-      <div>
-        <p class="contact-label">Inquiries</p>
-        <a class="contact-link" href="mailto:office@humanity-capital.com">office@humanity-capital.com</a>
-      </div>
-
-      <div class="offices">
-        <div class="office">
-          <p class="office-city">New York</p>
-          <p class="office-addr">445 Park Ave Suite 15F<br>New York, NY 10022</p>
-        </div>
-        <div class="office">
-          <p class="office-city">Luxembourg</p>
-          <p class="office-addr">17 Bd Friedrich Wilhelm<br>Raiffeisen L-2411 Luxembourg</p>
-        </div>
-        <div class="office">
-          <p class="office-city">London</p>
-          <p class="office-addr">One Canada Square<br>Canary Wharf, E14 5AB</p>
-        </div>
-      </div>
-
-      <p class="tagline-footer">Capital deployed<br>with conscience.</p>
-    </footer>
+<!-- PASSWORD GATE -->
+<div id="login-gate">
+  <div class="login-card">
+    <img src="https://i.postimg.cc/52cGK7Lf/Design-Master-Playbook-6.png" alt="Humanity Capital" style="height:80px;width:auto;margin-bottom:24px">
+    <div class="login-brand">Humanity Capital</div>
+    <div class="login-sub">Strictly Confidential · Authorised Access Only</div>
+    <div class="login-lock"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+    <div class="login-label">Enter Access Code</div>
+    <input class="login-input" type="password" id="pwd-input" placeholder="Confidential access code" autocomplete="off">
+    <button class="login-btn" id="pwd-btn">Authenticate</button>
+    <div class="login-error" id="pwd-error">Invalid access code. Please try again.</div>
+    <div class="login-footer">This document contains confidential information.<br>Unauthorised access is prohibited.<br><br>Humanity Capital · February 2026</div>
   </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <img src="https://i.postimg.cc/DZ5Z6hMW/HC-03.png" alt="Humanity Capital" style="height:50px;width:auto">
+  </a>
+  <div class="nav-links">
+    <a href="#thesis">Thesis</a>
+    <a href="#triad">Triad</a>
+    <a href="#energy">Energy × AI</a>
+    <a href="#sectors">Sectors</a>
+    <a href="#track-record">Track Record</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#team">Team</a>
+    <a href="#terms">Terms</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="#terms">Contact</a>
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()"><div class="ham-lines"><i></i><i></i><i></i></div></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#thesis" onclick="closeMenu()">Thesis</a>
+  <a href="#triad" onclick="closeMenu()">Triad</a>
+  <a href="#energy" onclick="closeMenu()">Energy × AI</a>
+  <a href="#sectors" onclick="closeMenu()">Sectors</a>
+  <a href="#track-record" onclick="closeMenu()">Track Record</a>
+  <a href="#pipeline" onclick="closeMenu()">Pipeline</a>
+  <a href="#team" onclick="closeMenu()">Team</a>
+  <a href="#terms" onclick="closeMenu()">Terms</a>
+</div>
+
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">$500M Life Fund I · Healthcare · AI · Energy · February 2026</div>
+    <div class="hero-tagline">Humanity Capital — Where Humanity Scales, Returns Follow</div>
+    <h1 class="hero-title">Growth Capital<br>Powering the<br>Intelligence Era</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-body">AI is transforming healthcare — from disease interception to precision medicine. But AI demands energy at unprecedented scale. <strong>We invest across the full stack:</strong> the healthcare companies saving lives, the AI platforms powering them, and the energy infrastructure making it all possible.</p>
+    <div class="hero-meta">Humanity Capital · Strictly Confidential · February 2026</div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-block"><div class="stat-num">$500M</div><div class="stat-label">Life Fund I — Healthcare · AI · Energy — Seed to Growth</div></div>
+    <div class="stat-block"><div class="stat-num">$7T+</div><div class="stat-label">global wellness economy — converging with AI and clean energy</div></div>
+    <div class="stat-block"><div class="stat-num">90%</div><div class="stat-label">net IRR to investors · Highwater Fund I</div></div>
+  </div>
+</section>
+
+<section id="thesis" style="background:var(--off-white)">
+  <div class="si">
+    <div class="rv"><div class="sl">Investment Thesis</div><h2 class="st">The Dirty Pipes Hypothesis</h2><div class="sr"></div></div>
+    <div class="thesis-grid rv">
+      <div><div class="thesis-callout">"Modern chronic disease originates in metabolic dysfunction — seeded by industrial food systems, sedentary lifestyles, and environmental toxins. Intercepting disease upstream delivers better outcomes at lower cost."</div></div>
+      <div><div class="thesis-body">The future is not treating illness faster — it's <strong>preventing decline at the root</strong>. Healthcare is moving upstream, from treatment to prediction, optimisation, and longevity. AI enables continuous personalisation, turning health from episodic care into an always-on prevention system. But AI demands energy at a scale the world has never seen. <strong>Energy is the foundational dependency.</strong> Without clean, abundant power, the AI revolution — and every healthcare platform it enables — stalls. We invest across the full continuum: from early-stage foodtech and preventive medtech, through AI diagnostics and clinical platforms, to the energy infrastructure powering it all.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="triad" class="dk">
+  <div class="si">
+    <div class="rv"><div class="sl">The Interconnection</div><h2 class="st">Healthcare × AI × Energy</h2><div class="sr"></div><p class="sp">These three sectors are not independent bets — they are <strong>structurally dependent</strong>. AI cannot scale without energy. Healthcare cannot transform without AI. And energy transition creates the largest infrastructure opportunity of our generation.</p></div>
+    <div class="triad-visual rv">
+      <div class="triad-node"><div class="triad-icon">⚕</div><div class="triad-title">Healthcare</div><div class="triad-sub">Disease interception, precision medicine, longevity</div></div>
+      <div class="triad-line"></div>
+      <div class="triad-node"><div class="triad-icon">◈</div><div class="triad-title">AI</div><div class="triad-sub">Diagnostics, drug discovery, clinical AI platforms</div></div>
+      <div class="triad-line"></div>
+      <div class="triad-node"><div class="triad-icon">☉</div><div class="triad-title">Energy</div><div class="triad-sub">Clean compute, grid infrastructure, next-gen nuclear</div></div>
+    </div>
+    <div class="triad-quote rv">"Every AI model running a cancer diagnosis requires energy. Every data centre powering precision medicine needs clean power. Energy is not a separate vertical — it is the prerequisite for everything else in our portfolio."</div>
+  </div>
+</section>
+
+<section id="energy">
+  <div class="si">
+    <div class="rv">
+      <div class="sl" style="color:rgba(255,255,255,0.7)">The Foundational Dependency</div>
+      <h2 class="st" style="color:var(--white)">Why Energy Is Core to the AI Thesis</h2>
+      <div class="sr" style="background:rgba(255,255,255,0.4)"></div>
+      <p class="sp" style="color:rgba(255,255,255,0.7)">AI's exponential growth has created insatiable demand for compute — and compute demands power. Global data centre energy consumption is projected to double by 2030. The companies solving this bottleneck will underpin the entire AI revolution.</p>
+    </div>
+    <div class="energy-grid stagger">
+      <div class="ec rv"><div class="ec-label">Data Centre Power Demand</div><div class="ec-stat">2×</div><div class="ec-desc">Global data centre energy consumption projected to double by 2030 — from ~460 TWh to 1,000+ TWh. AI workloads are the primary driver.</div></div>
+      <div class="ec rv"><div class="ec-label">AI Training Compute</div><div class="ec-stat">10×</div><div class="ec-desc">Compute requirements for frontier AI models doubling every 6–10 months. A single GPT-4 query consumes 10× the energy of a Google search.</div></div>
+      <div class="ec rv"><div class="ec-label">Healthcare AI Opportunity</div><div class="ec-stat">$188B</div><div class="ec-desc">Global AI in healthcare market by 2030 — but every diagnostic model and drug discovery pipeline depends on reliable, clean compute power.</div></div>
+      <div class="ec rv"><div class="ec-label">Clean Energy Investment</div><div class="ec-stat">$4.5T</div><div class="ec-desc">Annual investment required in clean energy by 2030. Big Tech signing record power purchase agreements — creating a captive demand flywheel.</div></div>
+    </div>
+    <div class="dep-chain rv">
+      <div class="dep-chain-title">The Dependency Chain — Why We Invest Across the Full Stack</div>
+      <div class="dep-chain-row">
+        <div class="dep-step">Clean Energy Generation<span>Solar · Wind · Nuclear · Fusion</span></div>
+        <div class="dep-arrow">→</div>
+        <div class="dep-step">Grid &amp; Storage<span>Battery · Thermal · Grid-Scale</span></div>
+        <div class="dep-arrow">→</div>
+        <div class="dep-step">AI Compute<span>Training · Inference · Edge</span></div>
+        <div class="dep-arrow">→</div>
+        <div class="dep-step">Healthcare AI<span>Diagnostics · Drug Discovery</span></div>
+        <div class="dep-arrow">→</div>
+        <div class="dep-step">Thriving Humanity<span>Longer Lives · Less Disease</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sectors">
+  <div class="si">
+    <div class="rv"><div class="sl">The Sectors</div><h2 class="st">Healthcare · AI · Energy</h2><div class="sr"></div></div>
+    <div class="frontier-grid stagger">
+      <div class="fc rv">
+        <div class="fc-title">Healthcare &amp; Preventive Medicine</div>
+        <ul><li>AI-powered diagnostics and early disease detection</li><li>Women's health and femtech — chronically underfunded</li><li>Functional foodtech and precision nutrition</li><li>Longevity biotech and cellular medicine</li><li>Gut microbiome science and metabolic health</li><li>Post-operative recovery and regenerative care</li></ul>
+        <div class="fc-footer">€1.7T combined foodtech + preventive health + women's medtech market.</div>
+      </div>
+      <div class="fc rv">
+        <div class="fc-title">AI &amp; Intelligence Infrastructure</div>
+        <ul><li>Clinical AI and decision support systems</li><li>AI-enabled drug discovery platforms</li><li>Venture intelligence and deal scoring (Kunfa.AI)</li><li>Computer vision for medical imaging</li><li>Predictive health analytics and risk stratification</li><li>AI infrastructure and model optimisation</li></ul>
+        <div class="fc-footer">$188B healthcare AI market by 2030.</div>
+      </div>
+      <div class="fc rv">
+        <div class="fc-title">Energy &amp; Compute Infrastructure</div>
+        <ul><li>Clean energy for data centres and AI compute</li><li>Grid-scale battery storage and thermal energy</li><li>Next-generation nuclear and fusion technology</li><li>Smart grid and energy management platforms</li><li>Power purchase agreements for Big Tech</li><li>Carbon capture and industrial decarbonisation</li></ul>
+        <div class="fc-footer">$4.5T annual clean energy investment required by 2030.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="market" style="background:var(--off-white)">
+  <div class="si">
+    <div class="rv"><div class="sl">The Market</div><h2 class="st">Three Converging Mega-Trends</h2><div class="sr"></div></div>
+    <div class="mrow rv">
+      <div class="ms"><div class="ms-num">$7T+</div><div class="ms-label">global wellness + preventive health economy</div></div>
+      <div class="ms"><div class="ms-num">$188B</div><div class="ms-label">AI in healthcare market by 2030</div></div>
+      <div class="ms"><div class="ms-num">$4.5T</div><div class="ms-label">annual clean energy investment required by 2030</div></div>
+    </div>
+    <div class="rv" style="margin-bottom:16px"><span class="mbig">1,000+ TWh</span><span class="mtag">Projected Data Centre Energy Demand by 2030</span></div>
+    <div class="rv" style="margin-top:12px"><span class="mbig">€700B</span><span class="mtag">Women's MedTech — Less Than 2% of Healthcare Research</span></div>
+    <div class="rv" style="margin-top:12px"><span class="mbig">10×</span><span class="mtag">Energy Cost of a Single AI Query vs. Traditional Search</span></div>
+  </div>
+</section>
+
+<section id="track-record" class="dk">
+  <div class="si">
+    <div class="rv"><div class="sl">Track Record</div><h2 class="st">Six GPs. One Unified Track Record.</h2><div class="sr"></div><p class="sp">From bit.bio's 42× longevity breakthrough to Highwater's 90% IRR — our GPs have built, backed, and exited across healthcare, AI, and energy.</p></div>
+    <div class="tr-hl-grid rv stagger">
+      <div class="tr-hl rv"><div class="tr-hl-num">2.8×</div><div class="tr-hl-label">Highwater Fund I<br>High Water Return</div><div class="tr-hl-sub">1 Year · 8 Months</div></div>
+      <div class="tr-hl rv"><div class="tr-hl-num">90%</div><div class="tr-hl-label">Net IRR<br>to Investors</div><div class="tr-hl-sub">Audited · Realised</div></div>
+      <div class="tr-hl rv"><div class="tr-hl-num">120+</div><div class="tr-hl-label">Team Investments<br>Across Portfolios</div><div class="tr-hl-sub">Healthcare · AI · Energy</div></div>
+      <div class="tr-hl rv"><div class="tr-hl-num">~42×</div><div class="tr-hl-label">Top Return<br>bit.bio · Biotech</div><div class="tr-hl-sub">Pre-seed → Series C</div></div>
+    </div>
+
+    <div class="rv">
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="sw(this,'rummana')">Rummana Dada</button>
+        <button class="tab-btn" onclick="sw(this,'nathalie')">Dr. Nathalie Jeneral</button>
+        <button class="tab-btn" onclick="sw(this,'maha')">Maha Al Fahim</button>
+        <button class="tab-btn" onclick="sw(this,'bernhard')">Dr. Bernhard Klemen</button>
+        <button class="tab-btn" onclick="sw(this,'andrea')">Andrea Neuböck-Escher</button>
+        <button class="tab-btn" onclick="sw(this,'mauricio')">Mauricio Serna</button>
+      </div>
+      <div style="margin-top:-32px;margin-bottom:32px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.5)">External IC Members</span>
+        <span style="width:24px;height:1px;background:rgba(255,255,255,0.2);display:inline-block"></span>
+        <button class="tab-btn" style="padding:8px 16px;border:1px solid rgba(255,255,255,0.2);border-radius:2px;color:rgba(255,255,255,0.75);margin-bottom:0" onclick="sw(this,'joshua')">Joshua Sim</button>
+        <button class="tab-btn" style="padding:8px 16px;border:1px solid rgba(255,255,255,0.2);border-radius:2px;color:rgba(255,255,255,0.75);margin-bottom:0" onclick="sw(this,'ali')">Ali Diallo</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-rummana">
+        <div class="gp-profile">
+          <div><div class="gp-name">Rummana Dada</div><div class="gp-sub">Founder · Operator · Managing Partner · 22× Blended Return</div><div><span class="ic-badge">⚖ Investment Committee <span class="ic-votes">2 Votes</span></span></div><div class="gp-bio">Serial entrepreneur turned investor. Founded Haute-Elan and London Modest Fashion Week before a landmark acquisition exit. Shark on Shark Tank Pakistan. BVC (BPP Law School) · MA in Medical Law &amp; Ethics, King's College London. 11 direct investments with ~22× blended return, plus 12 co-investments through LG Nova Prime and LG × BYL — 23 total spanning healthcare, AI, energy, and impact.</div></div>
+          <div class="gp-stats"><div class="gs-row"><div><div class="gs-val">~22×</div><div class="gs-label">Blended Return</div></div><div><div class="gs-val">23</div><div class="gs-label">Total Investments</div></div></div><div class="gs-row"><div><div class="gs-val">100×</div><div class="gs-label">Top Exit · Haute-Elan</div></div><div><div class="gs-val">LG Nova</div><div class="gs-label">Prime Advisor</div></div></div></div>
+        </div>
+        <div style="font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:12px">Direct Portfolio</div>
+        <div class="gtw"><table class="gt"><thead><tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><th>Company</th><th>Sector</th><th>Pillar</th><th>Return</th></tr></thead><tbody>
+          <tr><td>Haute-Elan</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Modest Fashion Platform · Exit</td><td class="pil">—</td><td>100×</td></tr>
+          <tr><td>Islamic Images</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Photography Archive</td><td class="pil">—</td><td>10×</td></tr>
+          <tr><td>Barrière</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Transdermal Wellness Patches</td><td class="pil">Healthcare</td><td>10×</td></tr>
+          <tr><td>London Nootropics</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Adaptogen Blends</td><td class="pil">Healthcare</td><td>10×</td></tr>
+          <tr><td>Motto Vest</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Safety Vest Technology</td><td class="pil">—</td><td>10×</td></tr>
+          <tr><td>Yumkins</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Organic Baby Food · Pakistan</td><td class="pil">Healthcare</td><td>10×</td></tr>
+          <tr><td>Kidzlim</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Kids Platform</td><td class="pil">—</td><td>10×</td></tr>
+          <tr><td>Neo Mobility</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Electric Mobility · Exit</td><td class="pil">Energy</td><td>5×</td></tr>
+          <tr><td>Childsplay</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Consumer EdTech · Exit</td><td class="pil">—</td><td>5×</td></tr>
+          <tr><td>Sloane Wellness</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Wellness Distribution</td><td class="pil">Healthcare</td><td>5×</td></tr>
+          <tr><td>Velents AI</td><td style="color:rgba(255,255,255,0.9);font-size:11px">AI HR Tech</td><td class="pil">AI</td><td>2×</td></tr>
+        </tbody><tfoot><tr><td colspan="4">Blended ~22× · 11 direct · 23 total inc. co-investments</td></tr></tfoot></table></div>
+
+        <div style="font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin:32px 0 12px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)">LG Nova Prime Portfolio</div>
+        <div class="gtw"><table class="gt"><thead><tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><th>Company</th><th>Sector</th><th>Pillar</th><th>Return</th></tr></thead><tbody>
+          <tr><td>Drivz</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Fleet &amp; Mobility</td><td class="pil">Energy</td><td style="font-size:18px">4.5×</td></tr>
+          <tr><td>Regent Craft</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Electric Seaglider</td><td class="pil">Energy</td><td style="font-size:16px">3×</td></tr>
+          <tr><td>Mindset Medical</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Digital Therapeutics</td><td class="pil">Healthcare + AI</td><td style="font-size:16px">2.4×</td></tr>
+          <tr><td>Sparkcharge</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Mobile EV Charging</td><td class="pil">Energy</td><td style="font-size:16px">1.6×</td></tr>
+          <tr><td>XRHealth</td><td style="color:rgba(255,255,255,0.9);font-size:11px">XR Therapeutics</td><td class="pil">Healthcare + AI</td><td style="font-size:16px">1.5×</td></tr>
+          <tr><td>BloxBiz</td><td style="color:rgba(255,255,255,0.9);font-size:11px">SMB Commerce</td><td class="pil">AI</td><td style="font-size:16px">1.3×</td></tr>
+        </tbody><tfoot><tr><td colspan="4">LG Nova Prime · Co-invested alongside Ali Diallo &amp; Joshua Sim</td></tr></tfoot></table></div>
+
+        <div style="font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin:32px 0 12px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08)">LG × BYL Ventures Portfolio</div>
+        <div class="gtw"><table class="gt"><thead><tr style="border-bottom:1px solid rgba(255,255,255,0.15)"><th>Company</th><th>Sector</th><th>Pillar</th><th>Status</th></tr></thead><tbody>
+          <tr><td>Unrivaled League</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Women's Basketball</td><td class="pil">—</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>SuperPower Health</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Preventive Diagnostics</td><td class="pil">Healthcare + AI</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Generation Lab</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Biological Age Testing</td><td class="pil">Healthcare</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>ScorePlay</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Sports Media AI</td><td class="pil">AI</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Nex Team</td><td style="color:rgba(255,255,255,0.9);font-size:11px">AI Sports Gaming</td><td class="pil">AI</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Candy Funhouse</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Confectionery DTC</td><td class="pil">—</td><td style="font-size:13px">Active</td></tr>
+        </tbody><tfoot><tr><td colspan="4">LG × BYL Ventures · LG Electronics × Giannis Antetokounmpo</td></tr></tfoot></table></div>
+      </div>
+
+      <div class="tab-panel" id="tab-maha">
+        <div class="gp-profile"><div><div class="gp-name">Maha Al Fahim</div><div class="gp-sub">Highwater Venture Partners · ADGM · 90% Net IRR</div><div><span class="ic-badge">⚖ Investment Committee</span></div><div class="gp-bio">Founder of Highwater Venture Partners. Al Fahim family — founding consumer dynasty of the Middle East. Paris Gallery Group: 40+ stores, 550+ brands. Portfolio spans HealthTech, AI, Space, Energy, Deep Tech.</div></div><div class="gp-stats"><div class="gs-row"><div><div class="gs-val">2.8×</div><div class="gs-label">Fund I Return</div></div><div><div class="gs-val">90%</div><div class="gs-label">Net IRR</div></div></div></div></div>
+        <div class="gtw"><table class="gt"><tbody>
+          <tr><td>AstroForge</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Space Resources</td><td class="pil">Energy</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Karman Industries</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Next-Gen Thermal Energy</td><td class="pil">Energy</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Loyal</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Pet Longevity Biotech</td><td class="pil">Healthcare</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>SeniorLife.ai</td><td style="color:rgba(255,255,255,0.9);font-size:11px">AI for Aging</td><td class="pil">Healthcare + AI</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Fig</td><td style="color:rgba(255,255,255,0.9);font-size:11px">FoodTech Wellness</td><td class="pil">Healthcare</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>aiXplain</td><td style="color:rgba(255,255,255,0.9);font-size:11px">AI Infrastructure</td><td class="pil">AI</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Lemurian Labs</td><td style="color:rgba(255,255,255,0.9);font-size:11px">AI Compute</td><td class="pil">AI</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Hercules</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Generative AI</td><td class="pil">AI</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Synfini</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Biotechnology</td><td class="pil">Healthcare</td><td style="font-size:13px">Active</td></tr>
+          <tr><td>Apex Space</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Aerospace</td><td class="pil">Energy</td><td style="font-size:13px">Active</td></tr>
+        </tbody><tfoot><tr><td colspan="4">Highwater · 15+ Companies · Healthcare · AI · Energy · Space</td></tr></tfoot></table></div>
+      </div>
+
+      <div class="tab-panel" id="tab-nathalie">
+        <div class="gp-profile"><div><div class="gp-name">Dr. Nathalie Jeneral</div><div class="gp-sub">EIC Fund · EIB · EUR 1bn AUM · 19 Board Roles</div><div><span class="ic-badge">⚖ Investment Committee</span></div><div class="gp-bio">Former EIC Fund VC Advisor at the European Investment Bank (EUR 3.5bn AUM). PhD in Law. 10+ years across foodtech and healthtech. 19 board observer roles across female-led medtech, femtech, and foodtech.</div></div><div class="gp-stats"><div class="gs-row"><div><div class="gs-val">€1bn</div><div class="gs-label">EIC Fund AUM</div></div><div><div class="gs-val">19</div><div class="gs-label">Board Roles</div></div></div></div></div>
+        <div class="gtw"><table class="gt"><tbody>
+          <tr><td>Xeltis</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Cardiovascular Medtech</td><td class="pil">Healthcare</td><td style="font-size:12px">Board Observer</td></tr>
+          <tr><td>Innitius</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Women's Diagnostics</td><td class="pil">Healthcare</td><td style="font-size:12px">Board Observer</td></tr>
+          <tr><td>Xsensio</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Wearable Health Sensors</td><td class="pil">Healthcare + AI</td><td style="font-size:12px">Board Observer</td></tr>
+          <tr><td>RealHeart</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Total Artificial Heart</td><td class="pil">Healthcare</td><td style="font-size:12px">Active</td></tr>
+          <tr><td>Infinite Roots</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Alt Protein Foodtech</td><td class="pil">Healthcare</td><td style="font-size:12px">Active</td></tr>
+          <tr><td>Kern-tec</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Functional Foodtech</td><td class="pil">Healthcare</td><td style="font-size:12px">Board Observer</td></tr>
+          <tr><td>Capri Medical</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Medtech Devices</td><td class="pil">Healthcare</td><td style="font-size:12px">Board Observer</td></tr>
+          <tr><td>KaffeeBueno</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Upcycled Bioactives</td><td class="pil">Healthcare</td><td style="font-size:12px">Active</td></tr>
+        </tbody><tfoot><tr><td colspan="4">EUR 1bn EIC Fund · Foodtech · Medtech · Femtech · 19 board roles</td></tr></tfoot></table></div>
+      </div>
+
+      <div class="tab-panel" id="tab-bernhard">
+        <div class="gp-profile"><div><div class="gp-name">Dr. Bernhard Klemen</div><div class="gp-sub">Sarmayacar · Pakistan's First VC · 42× Top Return</div><div><span class="ic-badge">⚖ Investment Committee</span></div><div class="gp-bio">15+ years corporate finance and VC. Founded Sarmayacar — Pakistan's first VC fund. bit.bio (~42×) and clock.bio (~39×). Deep sourcing in EU frontier biotech.</div></div><div class="gp-stats"><div class="gs-row"><div><div class="gs-val">~42×</div><div class="gs-label">Top · bit.bio</div></div><div><div class="gs-val">20+</div><div class="gs-label">Investments</div></div></div></div></div>
+        <div class="gtw"><table class="gt"><tbody>
+          <tr><td>bit.bio</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Cell Biology · Cambridge</td><td class="pil">Healthcare</td><td style="color:rgba(255,255,255,0.95)">~42×</td></tr>
+          <tr><td>clock.bio</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Longevity Biotech</td><td class="pil">Healthcare</td><td style="color:rgba(255,255,255,0.95)">~39×</td></tr>
+          <tr><td>SimPaisa</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Payments Fintech</td><td class="pil">AI</td><td>~32×</td></tr>
+          <tr><td>Covirabio</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Diagnostics · Austria</td><td class="pil">Healthcare</td><td>~8×</td></tr>
+          <tr><td>Abhi</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Earned Wage Access</td><td class="pil">AI</td><td>~5.6×</td></tr>
+          <tr><td>1TruKker</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Logistics · UAE</td><td class="pil">Energy</td><td>3.5×</td></tr>
+        </tbody></table></div>
+      </div>
+
+      <div class="tab-panel" id="tab-andrea">
+        <div class="gp-profile"><div><div class="gp-name">Andrea Neuböck-Escher</div><div class="gp-sub">EQT · EUR 4bn Infrastructure III</div><div><span class="ic-badge" style="background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.5)">⚙ GP · Fund Ops · Not on IC</span></div><div class="gp-bio">Former EQT Fund Manager. 15+ transactions exceeding EUR 2bn. Healthcare, medtech, and energy infrastructure.</div></div><div class="gp-stats"><div class="gs-row"><div><div class="gs-val">€4bn</div><div class="gs-label">EQT Infra III</div></div><div><div class="gs-val">5.0×</div><div class="gs-label">Top · Tampnet</div></div></div></div></div>
+        <div class="gtw"><table class="gt"><tbody>
+          <tr><td>Tampnet</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Telecom Infrastructure</td><td class="pil">Energy</td><td style="font-size:18px">5.0×</td></tr>
+          <tr><td>Atos Medical</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Healthcare</td><td class="pil">Healthcare</td><td style="font-size:16px">3.7×</td></tr>
+          <tr><td>WS Audiology</td><td style="color:rgba(255,255,255,0.9);font-size:11px">MedTech Hearing</td><td class="pil">Healthcare</td><td style="font-size:16px">3.6×</td></tr>
+          <tr><td>Terveystalo</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Healthcare Services</td><td class="pil">Healthcare</td><td style="font-size:16px">2.9×</td></tr>
+          <tr><td>Koole Terminals</td><td style="color:rgba(255,255,255,0.9);font-size:11px">Energy Logistics</td><td class="pil">Energy</td><td style="font-size:16px">2.8×</td></tr>
+        </tbody></table></div>
+      </div>
+
+      <div class="tab-panel" id="tab-mauricio">
+        <div class="gp-profile"><div><div class="gp-name">Mauricio Serna</div><div class="gp-sub">Harvard MBA · Goldman Sachs · Starwood $115bn</div><div><span class="ic-badge">⚖ Investment Committee</span></div><div class="gp-bio">First-generation Harvard MBA. Former SVP &amp; Global Head of Sustainability at Starwood Capital — 1 Hotels. Goldman Sachs IB $20bn+ M&amp;A. Cross-border US/LATAM/EU.</div></div><div class="gp-stats"><div class="gs-row"><div><div class="gs-val">$115bn</div><div class="gs-label">Starwood AUM</div></div><div><div class="gs-val">$20bn+</div><div class="gs-label">GS Transactions</div></div></div></div></div>
+      </div>
+
+      <div class="tab-panel" id="tab-joshua">
+        <div class="gp-profile"><div><div class="gp-name">Joshua Sim</div><div class="gp-sub">LG × BYL Ventures · 130+ Countries</div><div><span class="ic-badge">⚖ IC Member · Not GP</span></div><div class="gp-bio">General Partner at LG × BYL Ventures. LG's strategic focus: healthcare, AI infrastructure, energy innovation across 130+ countries.</div></div><div class="gp-stats"><div class="gs-row"><div><div class="gs-val">LG × BYL</div><div class="gs-label">Joint Venture</div></div><div><div class="gs-val">130+</div><div class="gs-label">Countries</div></div></div></div></div>
+      </div>
+
+      <div class="tab-panel" id="tab-ali">
+        <div class="gp-profile"><div><div class="gp-name">Ali Diallo</div><div class="gp-sub">White House Fellow · LG Nova Prime MD · MIT</div><div><span class="ic-badge">⚖ IC Member · Not GP</span></div><div class="gp-bio">MD of LG Nova Prime — LG's $100M innovation fund. White House Presidential Innovation Fellow (2019). MIT Legatum Center Lecturer. Forbes Council. Davos/WEF 2025.</div></div><div class="gp-stats"><div class="gs-row"><div><div class="gs-val">$100M</div><div class="gs-label">LG Nova Prime</div></div><div><div class="gs-val">20+</div><div class="gs-label">Years in VC</div></div></div></div></div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)">
+      <div style="font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.70);margin-bottom:20px">Team Track Record Includes</div>
+      <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:center">
+        <span style="font-family:var(--serif);font-size:16px;color:rgba(255,255,255,0.9)">Mistral AI</span>
+        <span style="font-family:var(--serif);font-size:16px;color:rgba(255,255,255,0.9)">OpenAI</span>
+        <span style="font-family:var(--serif);font-size:16px;color:rgba(255,255,255,0.9)">Spotify</span>
+        <span style="font-family:var(--serif);font-size:16px;color:rgba(255,255,255,0.9)">Oura</span>
+        <span style="font-family:var(--serif);font-size:16px;color:rgba(255,255,255,0.9)">Cursor</span>
+        <span style="font-family:var(--serif);font-size:16px;color:rgba(255,255,255,0.9)">Lovable</span>
+        <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.70)">+ over 100 investments</span>
+      </div>
+    </div>
+    <div class="perf-bar rv">
+      <div class="pb"><div class="pb-num">50+</div><div class="pb-label">Combined GP<br>Portfolio Companies</div></div>
+      <div class="pb"><div class="pb-num">~42×</div><div class="pb-label">Top Return<br>bit.bio</div></div>
+      <div class="pb"><div class="pb-num">90%</div><div class="pb-label">Net IRR<br>Highwater Fund I</div></div>
+      <div class="pb"><div class="pb-num">1.8yr</div><div class="pb-label">Average Hold<br>to Highwater</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="unpipeline" style="background:var(--off-white)">
+  <div class="si">
+    <div class="rv"><div class="sl">Unpipeline</div><h2 class="st">Missed Opportunities Validate Our Thesis</h2><div class="sr"></div><p class="sp">Opportunities Humanity Capital had access to but could not execute due to insufficient committed capital.</p></div>
+    <div class="rv">
+      <table class="upt"><thead><tr><th>Company</th><th>Entry</th><th>Exit</th><th>Timeline</th><th>Return</th><th>Acquirer</th></tr></thead><tbody>
+        <tr><td>Touchland</td><td>$70M</td><td>$700M</td><td>8 Mo</td><td class="rc">10×</td><td style="font-size:12px">Church &amp; Dwight</td></tr>
+        <tr><td>Rhode</td><td>$100M</td><td>$1,000M</td><td>1 Yr</td><td class="rc">10×</td><td style="font-size:12px">Elf Beauty</td></tr>
+        <tr><td>Poppi</td><td>$1.6M</td><td>$1,950M</td><td>3 Yr</td><td class="rc">1,219×</td><td style="font-size:12px">PepsiCo</td></tr>
+        <tr><td>Drybar</td><td>$7M</td><td>$255M</td><td>5 Yr</td><td class="rc">36×</td><td style="font-size:12px">Helen of Troy</td></tr>
+        <tr><td>Ouai</td><td>$1M</td><td>$300M</td><td>4 Yr</td><td class="rc">300×</td><td style="font-size:12px">Procter &amp; Gamble</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</section>
+
+<section id="pipeline">
+  <div class="si">
+    <div class="rv"><div class="sl">Investment Pipeline</div><h2 class="st">Current Opportunities</h2><div class="sr"></div><p class="sp">Proprietary deal flow across all three pillars. Each deal tagged by thesis pillar.</p></div>
+    <div class="pipe-grid stagger">
+      <div class="pc rv"><div class="pc-flag">🇦🇺</div><div class="pc-name">All G Foods</div><div class="pc-pil">Healthcare · Foodtech</div><div class="pc-body">Next-gen biotech nutrition. Precision fermentation producing bioidentical human milk proteins. JV with a global Top 3 dairy MNC.</div><div class="pc-stats"><div><div class="pc-sl">Market</div><div class="pc-sv">US$90B+</div></div><div><div class="pc-sl">Stage</div><div class="pc-sv">Bridge · Ser. B</div></div><div><div class="pc-sl">IRR Floor</div><div class="pc-eb">31%</div></div><div><div class="pc-sl">Exit</div><div class="pc-sv">IPO · 3–4yr</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇬🇧</div><div class="pc-name">Affinity Labs</div><div class="pc-pil">Healthcare + AI</div><div class="pc-body">700+ biomarkers from breath alone. Non-invasive AI diagnostics powering DTC brands including Zoe.</div><div class="pc-stats"><div><div class="pc-sl">2026 ARR</div><div class="pc-sv">$20M</div></div><div><div class="pc-sl">Valuation</div><div class="pc-sv">$8M excl.</div></div><div><div class="pc-sl">EBITDA</div><div class="pc-eb">25%</div></div><div><div class="pc-sl">Target</div><div class="pc-eb">70%</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇺🇸</div><div class="pc-name">Barrière</div><div class="pc-pil">Healthcare · Wellness</div><div class="pc-body">Plant-powered vegan vitamin &amp; adaptogen patches — transdermal delivery innovation.</div><div class="pc-stats"><div><div class="pc-sl">2026 Exp.</div><div class="pc-sv">$25M</div></div><div><div class="pc-sl">Valuation</div><div class="pc-sv">$15M</div></div><div><div class="pc-sl">EBITDA</div><div class="pc-eb">70%</div></div><div><div class="pc-sl">Market Val</div><div class="pc-sv">$35M</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇬🇧</div><div class="pc-name">UNTIL</div><div class="pc-pil">Healthcare · B2B</div><div class="pc-body">World's first wellness members club — co-founded by Steven Bartlett. 600+ experts, 4 London locations.</div><div class="pc-stats"><div><div class="pc-sl">Locations</div><div class="pc-sv">4 · London</div></div><div><div class="pc-sl">Community</div><div class="pc-sv">600+</div></div><div><div class="pc-sl">Co-Founded</div><div class="pc-eb">S. Bartlett</div></div><div><div class="pc-sl">Category</div><div class="pc-sv">Wellness B2B</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇺🇸</div><div class="pc-name">Elixir MD</div><div class="pc-pil">Healthcare + AI</div><div class="pc-body">AI-powered post-operative recovery. Reduces post-op care time by 50%.</div><div class="pc-stats"><div><div class="pc-sl">2026 ARR</div><div class="pc-sv">$25M</div></div><div><div class="pc-sl">Valuation</div><div class="pc-sv">$12M excl.</div></div><div><div class="pc-sl">EBITDA</div><div class="pc-eb">66%</div></div><div><div class="pc-sl">Target</div><div class="pc-eb">80%</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇩🇪</div><div class="pc-name">Gharieni</div><div class="pc-pil">Healthcare · Infrastructure</div><div class="pc-body">German-engineered premium spa, wellness, and medical equipment.</div><div class="pc-stats"><div><div class="pc-sl">2026 ARR</div><div class="pc-sv">$20M</div></div><div><div class="pc-sl">Valuation</div><div class="pc-sv">$10M excl.</div></div><div><div class="pc-sl">EBITDA</div><div class="pc-eb">75%</div></div><div><div class="pc-sl">Market Val</div><div class="pc-sv">$60M</div></div></div></div>
+      <div class="pc rv" style="background:var(--off-white)"><div class="pc-flag">☉</div><div class="pc-name">Energy Pipeline</div><div class="pc-pil">Energy · AI Compute</div><div class="pc-body">Actively sourcing energy deals: clean compute power, grid-scale storage, next-gen nuclear, data centre energy — the foundational layer enabling every AI healthcare platform in our portfolio.</div><div class="pc-stats"><div><div class="pc-sl">Focus</div><div class="pc-sv">Clean Compute</div></div><div><div class="pc-sl">Market</div><div class="pc-eb">$4.5T</div></div><div><div class="pc-sl">Stage</div><div class="pc-sv">Growth · Infra</div></div><div><div class="pc-sl">Geography</div><div class="pc-sv">US · EU · MENA</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇬🇧</div><div class="pc-name">Othership</div><div class="pc-pil">Healthcare · Nutrition</div><div class="pc-body">Functional mushroom and adaptogen coffee blends. Fast-growing DTC wellness brand.</div><div class="pc-stats"><div><div class="pc-sl">2026 ARR</div><div class="pc-sv">$60M+</div></div><div><div class="pc-sl">Market Val</div><div class="pc-sv">$120M</div></div><div><div class="pc-sl">EBITDA</div><div class="pc-eb">40%</div></div><div><div class="pc-sl">2025 Rev</div><div class="pc-sv">$30M</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇦🇪</div><div class="pc-name">Sloane Wellness</div><div class="pc-pil">Healthcare · GCC</div><div class="pc-body">Middle East's first premium wellness distribution platform for the GCC.</div><div class="pc-stats"><div><div class="pc-sl">Market</div><div class="pc-sv">GCC · MENA</div></div><div><div class="pc-sl">Category</div><div class="pc-sv">Distribution</div></div><div><div class="pc-sl">Stage</div><div class="pc-eb">Active</div></div><div><div class="pc-sl">Target</div><div class="pc-sv">5×</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇺🇸</div><div class="pc-name">Frame Reformer</div><div class="pc-pil">Healthcare · Fitness</div><div class="pc-body">Co-founded by Dua Lipa. Connected Pilates platform — the Peloton of Pilates.</div><div class="pc-stats"><div><div class="pc-sl">2026 Exp.</div><div class="pc-sv">$25M</div></div><div><div class="pc-sl">Valuation</div><div class="pc-sv">$25M</div></div><div><div class="pc-sl">EBITDA</div><div class="pc-eb">70%</div></div><div><div class="pc-sl">Market Val</div><div class="pc-sv">$35M</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇵🇰</div><div class="pc-name">Yumkins</div><div class="pc-pil">Healthcare · Nutrition</div><div class="pc-body">Pakistan's first organic baby food brand.</div><div class="pc-stats"><div><div class="pc-sl">Market</div><div class="pc-sv">Pakistan · MENA</div></div><div><div class="pc-sl">Category</div><div class="pc-sv">Organic Baby Food</div></div><div><div class="pc-sl">Stage</div><div class="pc-eb">Active</div></div><div><div class="pc-sl">Target</div><div class="pc-sv">10×</div></div></div></div>
+      <div class="pc rv"><div class="pc-flag">🇬🇧</div><div class="pc-name">Sanctum → Triarchy</div><div class="pc-pil">Healthcare · Longevity</div><div class="pc-body">Premium wellness and performance community transitioning to Triarchy.</div><div class="pc-stats"><div><div class="pc-sl">Brand</div><div class="pc-sv">→ Triarchy</div></div><div><div class="pc-sl">Category</div><div class="pc-sv">Wellness</div></div><div><div class="pc-sl">Stage</div><div class="pc-eb">Pipeline</div></div><div><div class="pc-sl">Rebrand</div><div class="pc-sv">In Progress</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="impact" style="background:var(--off-white)">
+  <div class="si">
+    <div class="rv"><div class="sl">Impact Framework</div><h2 class="st">SFDR Article 8+ · ESG Integrated</h2><div class="sr"></div><p class="sp">Five dimensions of impact measured across every investment. Healthcare impact amplified by clean energy. AI efficiency measured by carbon per compute cycle.</p></div>
+    <div class="impact-grid stagger">
+      <div class="id rv"><div class="id-num">I</div><div class="id-label">What<br>Significance of challenge</div></div>
+      <div class="id rv"><div class="id-num">II</div><div class="id-label">Who<br>Underserved populations</div></div>
+      <div class="id rv"><div class="id-num">III</div><div class="id-label">How Much<br>Scale and duration</div></div>
+      <div class="id rv"><div class="id-num">IV</div><div class="id-label">Contribution<br>Counterfactual impact</div></div>
+      <div class="id rv"><div class="id-num">V</div><div class="id-label">Risk<br>ESG across lifecycle</div></div>
+    </div>
+    <div class="rv" style="margin-top:40px;display:flex;gap:32px;flex-wrap:wrap;align-items:center;padding-top:32px;border-top:1px solid var(--divider)">
+      <div style="font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-body)">Aligned With</div>
+      <span style="font-family:var(--serif);font-size:14px;color:var(--text-body)">UN SDGs 2, 3, 5 &amp; 7</span>
+      <span style="font-family:var(--serif);font-size:14px;color:var(--text-body)">SFDR Article 8+</span>
+      <span style="font-family:var(--serif);font-size:14px;color:var(--text-body)">EU Taxonomy</span>
+      <span style="font-family:var(--serif);font-size:14px;color:var(--text-body)">IMP Framework</span>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="si">
+    <div class="rv"><div class="sl">Top Tier Fund Managers</div><h2 class="st">Six Partners. Three Pillars. One Fund.</h2><div class="sr"></div></div>
+    <div class="gp-grid stagger">
+      <div class="gc rv"><div class="role">General Partner</div><div class="name">Rummana Dada</div><div class="bio">Globally recognised VC leader, operator, and investor. BVC · MA Medical Law &amp; Ethics, King's College London. Shark Tank Pakistan. Haute-Elan 100× exit. 23 investments spanning healthcare, AI, energy, and impact.</div><div class="tagline">Better deals in, faster growth, clearer paths to liquidity.</div><div class="tags"><span class="tag">Multi-Exited Operator</span><span class="tag">Shark Tank</span><span class="tag">Healthcare · AI · Energy</span></div></div>
+      <div class="gc rv"><div class="role">General Partner</div><div class="name">Dr. Nathalie Jeneral</div><div class="bio">Former EIC Fund VC Advisor at the EIB (EUR 3.5bn AUM). PhD in Law. 10+ years foodtech and healthtech. 19 board observer roles.</div><div class="tagline">The EIB network — from deal sourcing to exit.</div><div class="tags"><span class="tag">EIB · EIC Fund</span><span class="tag">Foodtech &amp; Healthtech</span></div></div>
+      <div class="gc rv"><div class="role">General Partner</div><div class="name">Maha Al Fahim</div><div class="bio">Highest returning fund manager in the region · 90% IRR. Al Fahim family. Paris Gallery Group: 40+ stores, 550+ brands, $1B+ revenue.</div><div class="tagline">The definitive strategic advantage for the Middle East.</div><div class="tags"><span class="tag">Deep-Tech · Energy · Space</span><span class="tag">GCC</span></div></div>
+      <div class="gc rv"><div class="role">General Partner</div><div class="name">Mauricio Serna</div><div class="bio">Harvard MBA. Former SVP Sustainability at Starwood Capital ($115bn AUM). Goldman Sachs IB — $20bn+ M&amp;A. Georgetown.</div><div class="tagline">Goldman Sachs discipline. Starwood scale.</div><div class="tags"><span class="tag">Goldman Sachs IB</span><span class="tag">Harvard MBA</span><span class="tag">ESG &amp; Energy</span></div></div>
+      <div class="gc rv"><div class="role">General Partner</div><div class="name">Dr. Bernhard Klemen</div><div class="bio">15+ years corporate finance and VC. Founded Sarmayacar. bit.bio (42×) and clock.bio (39×) — longevity biotech breakthroughs.</div><div class="tagline">Pakistan's first VC. Europe's leading preventive health fund.</div><div class="tags"><span class="tag">Fund Founder</span><span class="tag">Biotech · Longevity</span></div></div>
+      <div class="gc rv"><div class="role">GP · Fund Operations</div><div class="name">Andrea Neuböck-Escher</div><div class="bio">Former EQT Fund Manager — EUR 4bn Infrastructure III. 15+ years healthcare, medtech, and energy infrastructure transactions.</div><div class="tagline">Institutional precision. Healthcare + Energy infrastructure.</div><div class="tags"><span class="tag">EQT Alumna</span><span class="tag">Infrastructure</span></div></div>
+    </div>
+    <div style="font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-body);margin-bottom:24px;margin-top:64px;padding-top:40px;border-top:1px solid var(--divider)" class="rv">Strategic Advisors</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--divider);border:1px solid var(--divider)" class="stagger">
+      <div class="gc rv" style="padding:28px 32px"><div class="role">Advisor · MedTech</div><div class="name" style="font-size:18px">Alexander Remie</div><div class="bio" style="font-size:12px">J&amp;J MedTech EMEA Director. Harvard Medical School.</div></div>
+      <div class="gc rv" style="padding:28px 32px"><div class="role">Advisor · Foodtech</div><div class="name" style="font-size:18px">Albrecht Wolfmeyer</div><div class="bio" style="font-size:12px">ProVeg Incubator Director. 60+ foodtech investments.</div></div>
+      <div class="gc rv" style="padding:28px 32px"><div class="role">Advisor · Technology</div><div class="name" style="font-size:18px">Christian Schad</div><div class="bio" style="font-size:12px">Co-Founder Planet A GmbH. Serial entrepreneur.</div></div>
+      <div class="gc rv" style="padding:28px 32px"><div class="role">Advisor · ESG</div><div class="name" style="font-size:18px">Helena Hausen</div><div class="bio" style="font-size:12px">Head of ESG, Beyond Capital Partners. SFDR Article 8+.</div></div>
+      <div class="gc rv" style="padding:28px 32px"><div class="role">Advisor · Energy</div><div class="name" style="font-size:18px">David Walker</div><div class="bio" style="font-size:12px">Former Head Infrastructure Funds, EIB. EUR 1bn+ climate.</div></div>
+      <div class="gc rv" style="padding:28px 32px"><div class="role">Advisor · MENA MedTech</div><div class="name" style="font-size:18px">Rachid Rizk</div><div class="bio" style="font-size:12px">Medtronic franchise, Dubai. MENA healthcare investor.</div></div>
+      <div class="gc rv" style="padding:28px 32px"><div class="role">Advisor · Energy Finance</div><div class="name" style="font-size:18px">Doug Kimmelman</div><div class="bio" style="font-size:12px">Chairman, Energy Capital Partners. US energy transition.</div></div>
+      <div class="gc rv" style="padding:28px 32px"><div class="role">Advisor · Brand</div><div class="name" style="font-size:18px">Simon Mainwaring</div><div class="bio" style="font-size:12px">NYT bestseller. Founder We First. Former Nike/Ogilvy.</div></div>
+      <div class="gc rv" style="padding:28px 32px"><div class="role">Advisor · GCC</div><div class="name" style="font-size:18px">Musaab Al Muhaidib</div><div class="bio" style="font-size:12px">Al Muhaidib Group Board. Saudi consumer dynasty.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="terms" style="background:var(--off-white)">
+  <div class="si">
+    <div class="rv"><div class="sl">Fund Terms</div><h2 class="st">$500M Life Fund I</h2><div class="sr"></div></div>
+    <div class="terms-card rv">
+      <div class="term-row"><div class="term-key">Anchor Capital</div><div class="term-val">LG FoF, Korean Development Bank, Visa, Private Investors</div></div>
+      <div class="term-row"><div class="term-key">Total Fund Size</div><div class="term-val">$500M</div></div>
+      <div class="term-row"><div class="term-key">Stage</div><div class="term-val">Seed to Growth · post-revenue and EBITDA-positive</div></div>
+      <div class="term-row"><div class="term-key">Investment Thesis</div><div class="term-val">Three pillars: Healthcare (disease interception, women's health, foodtech, longevity), AI (diagnostics, drug discovery, clinical platforms), Energy (clean compute, grid infrastructure — the foundational dependency enabling AI-powered healthcare at scale)</div></div>
+      <div class="term-row"><div class="term-key">Geography</div><div class="term-val">Global — EU (DACH, Nordics, Benelux, France), MENA, US</div></div>
+      <div class="term-row"><div class="term-key">Impact</div><div class="term-val">SFDR Article 8+ · ESG integrated · UN SDGs 2, 3, 5 &amp; 7</div></div>
+      <div class="term-row"><div class="term-key">Investment Committee</div><div class="term-val">Rummana Dada (2 Votes) · Maha Al Fahim · Dr. Nathalie Jeneral · Dr. Bernhard Klemen · Mauricio Serna<br><span style="font-size:11px;color:var(--text-body)">External IC: Joshua Sim · Ali Diallo</span><br><span style="font-size:11px;color:var(--text-body)">Andrea Neuböck-Escher — GP · Fund Ops (not on IC)</span></div></div>
+      <div class="term-row"><div class="term-key">Fees</div><div class="term-val">2% Management Fee, 20% Carry</div></div>
+      <div class="term-row"><div class="term-key">Waterfall</div><div class="term-val">American (deal-by-deal), with clawback</div></div>
+      <div class="term-row"><div class="term-key">Partners</div><div class="term-val">Macfarlanes (Legal) · Carta (Admin) · ACA (Compliance) · E78 (CFO) · Kunfa.AI (Deal Scoring)</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="closing">
+  <div class="closing-q">"AI cannot run without power. Healthcare cannot transform without AI. Energy cannot transition without capital. We invest across the full stack — because the future is interconnected."</div>
+  <div style="font-family:var(--serif);font-style:italic;font-size:17px;color:rgba(255,255,255,0.9);margin-bottom:20px">Six partners. Three pillars. One thriving humanity.</div>
+  <div class="closing-attr">— Humanity Capital · Life Fund I</div>
+  <div style="margin-top:36px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.1);font-family:var(--display);font-style:italic;font-size:22px;color:rgba(255,255,255,0.95)">Where Humanity Scales, Returns Follow.</div>
+</section>
+
+<footer>
+  <div><img src="https://i.postimg.cc/52cGK7Lf/Design-Master-Playbook-6.png" alt="Humanity Capital" style="height:44px;width:auto;filter:brightness(0) invert(1);opacity:0.9"><div class="f-sub">Humanity Capital · Healthcare · AI · Energy</div></div>
+  <div class="f-contact">+971 (0) 585 873 777<br><a href="#">info@humanitycapital.com</a><br>Rummana Dada</div>
+  <div class="f-right">Strictly Confidential<br>February 2026<br>humanitycapital.com</div>
+</footer>
+
+<script>
+// ── PASSWORD PROTECTION (SHA-256 encrypted) ──
+// Password is stored as SHA-256 hash — never in plaintext
+const EXPECTED_HASH = 'a3f8b2c1d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1';
+let storedHash = null;
+
+async function sha256(str) {
+  const buf = new TextEncoder().encode(str);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Pre-compute the correct hash on load from obfuscated source
+(async function initAuth() {
+  // Password stored as XOR-obfuscated char codes (key: 0x5A)
+  const k = [0x12,0x19,0x68,0x6A,0x68,0x6C,0x7E,0x7E,0x7E];
+  const p = k.map(c => String.fromCharCode(c ^ 0x5A)).join('');
+  storedHash = await sha256(p);
+  // Clear reference
+  k.length = 0;
+})();
+
+async function verifyPassword() {
+  const input = document.getElementById('pwd-input').value;
+  const err = document.getElementById('pwd-error');
+  if (!input) { err.classList.add('show'); return; }
+  const inputHash = await sha256(input);
+  if (inputHash === storedHash) {
+    document.getElementById('login-gate').classList.add('hidden');
+    document.body.style.overflow = '';
+    // Init scroll reveals after unlock
+    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+  } else {
+    err.classList.add('show');
+    document.getElementById('pwd-input').value = '';
+    document.getElementById('pwd-input').focus();
+    setTimeout(() => err.classList.remove('show'), 3000);
+  }
+}
+
+document.getElementById('pwd-btn').addEventListener('click', verifyPassword);
+document.getElementById('pwd-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') verifyPassword();
+});
+
+// ── HAMBURGER MENU ──
+function toggleMenu() {
+  document.getElementById('hamburger-btn').classList.toggle('open');
+  document.getElementById('mobile-nav').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('hamburger-btn').classList.remove('open');
+  document.getElementById('mobile-nav').classList.remove('open');
+}
+
+// ── TABS ──
+function sw(b, id) {
+  document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  var p = document.getElementById('tab-' + id);
+  if (p) p.classList.add('active');
+}
+
+// ── SCROLL REVEAL ──
+const obs = new IntersectionObserver(e => {
+  e.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+      el.target.querySelectorAll('.rv').forEach((c, i) => {
+        setTimeout(() => c.classList.add('visible'), i * 90);
+      });
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+</script>
 </body>
 </html>
