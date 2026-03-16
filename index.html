@@ -257,6 +257,8 @@
     opacity: 0;
   }
 
+  .mobile-break { display: none; }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
@@ -271,6 +273,8 @@
   @media (max-width: 900px) {
     .page { padding: 2rem 2.5rem; }
     .vert-line { display: none; }
+
+    .mobile-break { display: block; }
 
     footer {
       flex-wrap: wrap;
@@ -366,13 +370,13 @@
     </header>
 
     <main class="center">
-      <p class="eyebrow">Growth Venture Capital  - Healthcare - Wellness - AI</p>
+      <p class="eyebrow">Growth Venture Capital · Healthcare · Wellness · AI</p>
       <h1 class="headline">
         Where <em>Humanity</em><br>Scales,<br>Returns Follow.
       </h1>
       <div class="divider"></div>
       <p class="subtext">
-       Growth equity for companies reshaping health and human potential.
+        Growth equity for companies reshaping <br class="mobile-break">health and human potential.
       </p>
     </main>
 
