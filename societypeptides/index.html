@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Society Peptides — Reference Guide & Product Catalog</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bd:#1A3A6B;--bm:#2D62C4;--bb:#4A90E8;--bs:#6BAED6;
+  --bp:#C8E0F8;--bi:#EAF3FC;--bf:#F4F9FF;
+  --wh:#FFFFFF;--ink:#111827;--im:#374151;--il:#6B7280;--if:#9CA3AF;
+  --rule:#D1E5F7;--gs:#D1FAE5;--as:#FEF3C7;
+  --nav-h:60px;--tab-h:52px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--wh);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--bd);text-decoration:none}
+.nav-logo em{font-style:italic;color:var(--bb)}
+.nav-toggle{display:flex;background:var(--bi);border-radius:20px;padding:3px;gap:2px}
+.ntb{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 1rem;border-radius:16px;border:none;background:transparent;color:var(--il);cursor:pointer;transition:all 0.2s}
+.ntb.on{background:var(--bm);color:#fff}
+.nav-ruo{font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--bi);color:var(--bm);border:1px solid var(--bp);padding:0.28rem 0.75rem;border-radius:20px}
+
+/* ── PRODUCT TAB BAR ── */
+#tab-bar{position:fixed;top:var(--nav-h);left:0;right:0;z-index:190;height:var(--tab-h);background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);display:none;overflow-x:auto;scrollbar-width:none}
+#tab-bar::-webkit-scrollbar{display:none}
+#tab-bar.on{display:flex}
+.tab-inner{display:flex;min-width:max-content;padding:0 1.5rem}
+.ct{display:flex;align-items:center;gap:0.4rem;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--il);padding:0 1rem;border:none;background:transparent;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;height:var(--tab-h)}
+.ct svg{width:13px;height:13px;flex-shrink:0}
+.ct:hover{color:var(--bm)}
+.ct.on{color:var(--bm);border-bottom-color:var(--bm)}
+
+/* ── VIEW SYSTEM ── */
+.view{display:none}
+.view.on{display:block}
+
+/* ── GUIDE PADDING ── */
+#guide-view{padding-top:var(--nav-h)}
+#products-view{padding-top:calc(var(--nav-h) + var(--tab-h))}
+
+/* ── HERO ── */
+.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 4rem;background:var(--bf);position:relative;overflow:hidden}
+.h-blob1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(74,144,232,.12),transparent 70%);top:-180px;right:-180px;pointer-events:none}
+.h-blob2{position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(15,163,177,.09),transparent 70%);bottom:-80px;left:-80px;pointer-events:none}
+.h-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(45,98,196,.1) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 80%)}
+.h-eye{display:inline-flex;align-items:center;gap:0.55rem;font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--bm);background:var(--wh);border:1.5px solid var(--bp);padding:0.38rem 1rem;border-radius:20px;margin-bottom:1.75rem;position:relative;box-shadow:0 2px 12px rgba(45,98,196,.08)}
+.h-dot{width:6px;height:6px;border-radius:50%;background:var(--bb);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+.h-title{font-family:'DM Serif Display',serif;font-size:clamp(3rem,8vw,6.2rem);font-weight:400;line-height:1.05;color:var(--bd);margin-bottom:.6rem;position:relative}
+.h-title em{font-style:italic;color:var(--bb)}
+.h-sub{font-size:.95rem;font-weight:300;color:var(--il);margin-bottom:2.25rem}
+.h-chips{display:flex;gap:.45rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem;position:relative}
+.chip{font-size:.63rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.35rem .85rem;border-radius:20px;background:var(--wh);color:var(--bm);border:1.5px solid var(--bp);box-shadow:0 2px 8px rgba(45,98,196,.07)}
+.h-stats{display:flex;gap:3rem;justify-content:center;position:relative;flex-wrap:wrap}
+.hs{text-align:center}
+.hs-num{font-family:'DM Serif Display',serif;font-size:2.1rem;color:var(--bd);line-height:1}
+.hs-num em{color:var(--bb);font-style:normal}
+.hs-lbl{font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--if);margin-top:.2rem;max-width:12ch}
+/* stat icons */
+.hs-ico{display:flex;justify-content:center;margin-bottom:.4rem;color:var(--bm)}
+.hs-ico svg{width:26px;height:26px}
+.h-scroll{position:absolute;bottom:1.75rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.45rem;color:var(--if);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase}
+.h-sline{width:1px;height:30px;background:linear-gradient(to bottom,var(--bb),transparent);animation:grow 1.8s ease-in-out infinite}
+@keyframes grow{0%,100%{opacity:.4;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1.1)}}
+
+/* ── LAYOUT ── */
+section{padding:5.5rem 0}
+.con{max-width:1100px;margin:0 auto;padding:0 3rem}
+.conw{max-width:1260px;margin:0 auto;padding:0 3rem}
+.lbl{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--bm);display:flex;align-items:center;gap:.55rem;margin-bottom:.9rem}
+.lbl::before{content:'';width:20px;height:2px;background:var(--bb);border-radius:2px}
+h2.st{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:400;line-height:1.15;color:var(--bd);margin-bottom:1.1rem}
+h2.st em{font-style:italic;color:var(--bb)}
+.bt{font-size:.92rem;color:var(--im);line-height:1.85;max-width:64ch}
+
+/* ── ABOUT GRID ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-visual{background:var(--bf);border:1px solid var(--rule);border-radius:16px;padding:1.75rem}
+.kpi{display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--rule)}
+.kpi:last-child{border-bottom:none;padding-bottom:0}
+.kpi-icon{width:38px;height:38px;border-radius:10px;background:var(--wh);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--bm)}
+.kpi-icon svg{width:20px;height:20px}
+.kpi-num{font-family:'DM Serif Display',serif;font-size:1.55rem;color:var(--bd);line-height:1}
+.kpi-lbl{font-size:.7rem;color:var(--il);margin-top:.12rem;line-height:1.5}
+
+/* ── TIMELINE ── */
+.tl-wrap{background:var(--bf)}
+.timeline{position:relative}
+.tl-track{position:absolute;left:76px;top:.6rem;bottom:0;width:1px;background:linear-gradient(to bottom,var(--bp),transparent)}
+.tl-item{display:grid;grid-template-columns:76px 1fr;gap:1.75rem;margin-bottom:2rem;position:relative}
+.tl-item::before{content:'';position:absolute;left:69px;top:.55rem;width:13px;height:13px;border-radius:50%;background:var(--wh);border:2.5px solid var(--bb);box-shadow:0 0 0 4px var(--bi)}
+.tl-year{font-family:'DM Serif Display',serif;font-size:.8rem;color:var(--bm);text-align:right;padding-top:.3rem;padding-right:1.25rem}
+.tl-body h4{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:.2rem}
+.tl-body p{font-size:.86rem;color:var(--im);line-height:1.7}
+
+/* ── BENEFITS ── */
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.75rem}
+.ben-card{background:var(--bf);border:1px solid var(--rule);border-radius:14px;padding:1.85rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.ben-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--bm),var(--bb));border-radius:14px 14px 0 0}
+.ben-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(45,98,196,.1)}
+.ben-card.hi{background:linear-gradient(135deg,var(--bm),var(--bd));border-color:transparent}
+.ben-card.hi::before{background:rgba(255,255,255,.18)}
+.ben-num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--bp);line-height:1;margin-bottom:.8rem}
+.ben-card.hi .ben-num{color:rgba(255,255,255,.18)}
+.ben-title{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--bd);margin-bottom:.5rem}
+.ben-card.hi .ben-title{color:rgba(255,255,255,.6)}
+.ben-card p{font-size:.83rem;color:var(--im);line-height:1.7}
+.ben-card.hi p{color:rgba(255,255,255,.82)}
+
+/* ── REGULATORY ── */
+.reg-wrap{background:var(--bi)}
+.reg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.75rem}
+.rc{background:var(--wh);border:1px solid var(--rule);border-radius:14px;padding:1.65rem;transition:transform .2s,box-shadow .2s}
+.rc:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(45,98,196,.08)}
+.rc-icon{width:36px;height:36px;border-radius:10px;background:var(--bi);display:flex;align-items:center;justify-content:center;margin-bottom:.85rem;color:var(--bm)}
+.rc-icon svg{width:18px;height:18px}
+.rc-title{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--bd);margin-bottom:.5rem}
+.rc p{font-size:.81rem;color:var(--im);line-height:1.7}
+.pill-row{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.65rem}
+.pl{font-size:.57rem;font-weight:600;letter-spacing:.06em;padding:.18rem .5rem;border-radius:20px;background:var(--bi);color:var(--bm);border:1px solid var(--bp)}
+.pl.gr{background:var(--gs);color:#065F46;border-color:#A7F3D0}
+.pl.am{background:var(--as);color:#92400E;border-color:#FDE68A}
+.rc.spot{background:linear-gradient(135deg,var(--bd),var(--bm));border-color:transparent}
+.rc.spot .rc-title{color:rgba(255,255,255,.55)}
+.rc.spot p{color:rgba(255,255,255,.82)}
+.rc.spot .rc-icon{background:rgba(255,255,255,.12)}
+
+/* ── PRODUCT PANELS ── */
+.cat-panel{display:none}
+.cat-panel.on{display:block}
+.panel-hdr{background:linear-gradient(135deg,var(--bd),var(--bm));padding:3rem 0;position:relative;overflow:hidden}
+.ph-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:22px 22px}
+.ph-inner{position:relative;max-width:1260px;margin:0 auto;padding:0 3rem;display:flex;align-items:center;justify-content:space-between}
+.ph-label{font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.4rem}
+.ph-title{font-family:'DM Serif Display',serif;font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:400;color:var(--wh);line-height:1.2;margin-bottom:.4rem}
+.ph-title em{font-style:italic;color:var(--bp)}
+.ph-sub{font-size:.83rem;color:rgba(255,255,255,.6);max-width:48ch}
+.ph-num{font-family:'DM Serif Display',serif;font-size:clamp(5rem,10vw,8rem);font-weight:400;color:rgba(255,255,255,.07);line-height:1;user-select:none;flex-shrink:0}
+.ph-count{display:inline-flex;align-items:center;gap:.4rem;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);background:rgba(255,255,255,.08);padding:.25rem .7rem;border-radius:20px;margin-top:.6rem}
+
+/* sub-section labels in panels */
+.sub-lbl{font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--bm);padding:.4rem 0 1.2rem;border-bottom:1px solid var(--rule);margin-bottom:1.5rem}
+
+/* ── PRODUCT GRID ── */
+.prod-wrap{background:var(--bf);padding:2.5rem 0 4.5rem}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.1rem}
+.pc{background:var(--wh);border:1px solid var(--rule);border-radius:14px;padding:1.6rem;display:flex;flex-direction:column;gap:.55rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.pc::after{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--bb),var(--bs));border-radius:14px 0 0 14px}
+.pc:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(45,98,196,.1)}
+.pc-name{font-family:'DM Serif Display',serif;font-size:1.2rem;font-weight:400;color:var(--bd);line-height:1.2}
+.pc-size{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--if)}
+.pc-desc{font-size:.8rem;color:var(--im);line-height:1.75;flex:1}
+.pc-foot{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem;margin-top:.25rem;padding-top:.65rem;border-top:1px solid var(--rule)}
+.tg{font-size:.56rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.18rem .5rem;border-radius:20px;background:var(--bi);color:var(--bm);border:1px solid var(--bp)}
+.b-ruo{font-size:.56rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:20px;background:#F3F4F6;color:var(--if);border:1px solid #E5E7EB;margin-left:auto}
+.b-fda{font-size:.56rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:20px;background:var(--gs);color:#065F46;border:1px solid #A7F3D0;margin-left:auto}
+.b-trial{font-size:.56rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:20px;background:var(--as);color:#92400E;border:1px solid #FDE68A;margin-left:auto}
+
+/* ── FOOTER ── */
+footer{background:var(--bd);padding:4.5rem 3rem 3rem}
+.ft{max-width:1100px;margin:0 auto}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:2rem;flex-wrap:wrap;gap:2rem}
+.ft-logo{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--wh)}
+.ft-logo em{font-style:italic;color:var(--bp)}
+.ft-tag{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:.25rem}
+.ft-contacts{display:flex;gap:3rem;flex-wrap:wrap}
+.ft-lbl{font-size:.57rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.4rem}
+.ft-col a{display:block;font-size:.82rem;color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s;margin-bottom:.18rem}
+.ft-col a:hover{color:var(--wh)}
+.ft-disc{font-size:.68rem;color:rgba(255,255,255,.25);line-height:1.7}
+
+/* ── ANIM ── */
+.fu{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:900px){
+  nav{padding:0 1.25rem}
+  .con,.conw{padding:0 1.25rem}
+  .about-grid,.ben-grid,.reg-grid{grid-template-columns:1fr}
+  .prod-grid{grid-template-columns:1fr}
+  .ph-num{display:none}
+  .ft-top{flex-direction:column}
+  .h-stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">Society <em>Peptides</em></a>
+  <div class="nav-toggle">
+    <button class="ntb on" id="nb-products">Products</button>
+    <button class="ntb" id="nb-guide">Guide</button>
+  </div>
+  <span class="nav-ruo">RUO · Research Use Only</span>
+</nav>
+
+<!-- ── PRODUCT TAB BAR ── -->
+<div id="tab-bar" class="on">
+  <div class="tab-inner">
+
+    <button class="ct on" data-cat="healing">
+      <!-- cross -->
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+      Healing
+    </button>
+
+    <button class="ct" data-cat="metabolic">
+      <!-- bolt -->
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="10,1 5,8 11,8 6,15"/></svg>
+      Metabolic
+    </button>
+
+    <button class="ct" data-cat="gh">
+      <!-- trending up -->
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,12 5,8 9,10 15,3"/><polyline points="11,3 15,3 15,7"/></svg>
+      GH Axis
+    </button>
+
+    <button class="ct" data-cat="longevity">
+      <!-- infinity -->
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8,8 C9,5.5 13.5,5.5 13.5,8 C13.5,10.5 9,10.5 8,8 C7,5.5 2.5,5.5 2.5,8 C2.5,10.5 7,10.5 8,8"/></svg>
+      Longevity
+    </button>
+
+    <button class="ct" data-cat="immune">
+      <!-- shield -->
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8,1.5 L14,4.5 L14,9.5 C14,12.5 8,14.5 8,14.5 C8,14.5 2,12.5 2,9.5 L2,4.5 Z"/></svg>
+      Immune
+    </button>
+
+    <button class="ct" data-cat="haircare">
+      <!-- droplet -->
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8,2 C8,2 2,7 2,11 A6,6 0 0 0 14,11 C14,7 8,2 8,2 Z"/></svg>
+      Haircare
+    </button>
+
+    <button class="ct" data-cat="skincare">
+      <!-- 4-point star -->
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="8,1 10,6 15,8 10,10 8,15 6,10 1,8 6,6"/></svg>
+      Skincare
+    </button>
+
+    <button class="ct" data-cat="orals">
+      <!-- capsule -->
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="12" height="4" rx="2"/><line x1="8" y1="6" x2="8" y2="10" stroke-linecap="round"/></svg>
+      Orals
+    </button>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     GUIDE VIEW
+════════════════════════════════════════ -->
+<div id="guide-view" class="view">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="h-blob1"></div><div class="h-blob2"></div><div class="h-dots"></div>
+    <div class="h-eye"><span class="h-dot"></span>Society Peptides · 2026</div>
+    <h1 class="h-title">A New Era of<br><em>Precision Biology</em></h1>
+    <p class="h-sub">The Comprehensive Reference Guide to Modern Peptide Science</p>
+    <div class="h-chips">
+      <span class="chip">Origins</span>
+      <span class="chip">Key Benefits</span>
+      <span class="chip">Legal Landscape</span>
+      <span class="chip">Product Compendium</span>
+    </div>
+
+    <!-- Stats with custom SVG illustrations -->
+    <div class="h-stats">
+      <div class="hs">
+        <div class="hs-ico">
+          <!-- atom -->
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="16" cy="16" r="2.5" fill="currentColor" stroke="none" opacity=".6"/>
+            <ellipse cx="16" cy="16" rx="13" ry="5"/>
+            <ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(60 16 16)"/>
+            <ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(120 16 16)"/>
+          </svg>
+        </div>
+        <div class="hs-num"><em>1953</em></div>
+        <div class="hs-lbl">First Synthetic Peptide</div>
+      </div>
+      <div class="hs">
+        <div class="hs-ico">
+          <!-- nodes -->
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="16" cy="16" r="2.5"/>
+            <circle cx="6" cy="9" r="2"/><circle cx="26" cy="9" r="2"/>
+            <circle cx="6" cy="23" r="2"/><circle cx="26" cy="23" r="2"/>
+            <line x1="8" y1="10.5" x2="14" y2="14.5"/><line x1="24" y1="10.5" x2="18" y2="14.5"/>
+            <line x1="8" y1="21.5" x2="14" y2="17.5"/><line x1="24" y1="21.5" x2="18" y2="17.5"/>
+          </svg>
+        </div>
+        <div class="hs-num"><em>100+</em></div>
+        <div class="hs-lbl">Approved or In Trials</div>
+      </div>
+      <div class="hs">
+        <div class="hs-ico">
+          <!-- hexcluster -->
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="16,5 22,8.5 22,15.5 16,19 10,15.5 10,8.5"/>
+            <circle cx="16" cy="25" r="2" fill="currentColor" stroke="none" opacity=".4"/>
+            <circle cx="5" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".3"/>
+            <circle cx="27" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".3"/>
+          </svg>
+        </div>
+        <div class="hs-num"><em>9</em></div>
+        <div class="hs-lbl">Product Categories</div>
+      </div>
+      <div class="hs">
+        <div class="hs-ico">
+          <!-- trend up -->
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3,25 9,17 15,20 27,7"/>
+            <polyline points="23,7 27,7 27,11"/>
+            <line x1="3" y1="29" x2="29" y2="29" stroke-width="1" opacity=".25"/>
+          </svg>
+        </div>
+        <div class="hs-num"><em>24%</em></div>
+        <div class="hs-lbl">Peak Weight Reduction (Retatrutide)</div>
+      </div>
+    </div>
+
+    <div class="h-scroll"><div class="h-sline"></div>Explore</div>
+  </header>
+
+  <!-- SCIENCE -->
+  <section id="science" style="background:var(--wh)">
+    <div class="con">
+      <div class="about-grid">
+        <div>
+          <p class="lbl fu">The Science</p>
+          <h2 class="st fu d1">What Are <em>Peptides?</em></h2>
+          <p class="bt fu d2" style="margin-bottom:1.3rem">Peptides are short chains of amino acids — the fundamental building blocks of proteins. They occur naturally in every living organism and act as biological messengers, signaling cells to perform specific functions with remarkable precision.</p>
+          <p class="bt fu d2">Unlike larger protein molecules, peptides are small enough to interact directly with receptors and enzymes throughout the body, making them among the most targeted therapeutic agents available to modern science. The study of peptides dates to the early 1900s when Emil Fischer first described the peptide bond. Therapeutic peptide research accelerated dramatically through the 1980s and 2000s as biotechnology matured, recombinant DNA techniques improved, and solid-phase peptide synthesis (SPPS) made large-scale production feasible.</p>
+        </div>
+        <div class="about-visual fu d2">
+          <div class="kpi">
+            <div class="kpi-icon">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="16" cy="16" r="2.5" fill="currentColor" stroke="none" opacity=".6"/>
+                <ellipse cx="16" cy="16" rx="13" ry="5"/>
+                <ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(60 16 16)"/>
+                <ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(120 16 16)"/>
+              </svg>
+            </div>
+            <div><div class="kpi-num">1953</div><div class="kpi-lbl">Vincent du Vigneaud synthesizes oxytocin — Nobel Prize in Chemistry, 1955</div></div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-icon">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="16" cy="16" r="2.5"/><circle cx="6" cy="9" r="2"/><circle cx="26" cy="9" r="2"/>
+                <circle cx="6" cy="23" r="2"/><circle cx="26" cy="23" r="2"/>
+                <line x1="8" y1="10.5" x2="14" y2="14.5"/><line x1="24" y1="10.5" x2="18" y2="14.5"/>
+                <line x1="8" y1="21.5" x2="14" y2="17.5"/><line x1="24" y1="21.5" x2="18" y2="17.5"/>
+              </svg>
+            </div>
+            <div><div class="kpi-num">100+</div><div class="kpi-lbl">Peptide therapeutics approved or in late-stage clinical trials globally</div></div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-icon">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="16,5 22,8.5 22,15.5 16,19 10,15.5 10,8.5"/>
+                <circle cx="16" cy="25" r="2" fill="currentColor" stroke="none" opacity=".4"/>
+                <circle cx="5" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".3"/>
+                <circle cx="27" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".3"/>
+              </svg>
+            </div>
+            <div><div class="kpi-num">9</div><div class="kpi-lbl">Therapeutic categories — healing to longevity to metabolic health</div></div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-icon">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3,25 9,17 15,20 27,7"/>
+                <polyline points="23,7 27,7 27,11"/>
+                <line x1="3" y1="29" x2="29" y2="29" stroke-width="1" opacity=".25"/>
+              </svg>
+            </div>
+            <div><div class="kpi-num">24%</div><div class="kpi-lbl">Peak body weight reduction in Retatrutide Phase II — unprecedented clinical result</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="tl-wrap">
+    <div class="con">
+      <p class="lbl fu">A Brief History</p>
+      <h2 class="st fu d1" style="margin-bottom:2.75rem">Seven Decades of <em>Discovery</em></h2>
+      <div class="timeline fu d2">
+        <div class="tl-track"></div>
+        <div class="tl-item"><div class="tl-year">1953</div><div class="tl-body"><h4>The Nobel Breakthrough</h4><p>Vincent du Vigneaud synthesizes oxytocin — the first chemically synthesized peptide — earning the Nobel Prize in Chemistry in 1955, proving that biologically active peptides could be manufactured outside the body.</p></div></div>
+        <div class="tl-item"><div class="tl-year">1960s–70s</div><div class="tl-body"><h4>Endogenous Discovery</h4><p>Identification of endogenous opioid peptides (endorphins, enkephalins) and gut hormones including glucagon and secretin, establishing peptides as core physiological messengers.</p></div></div>
+        <div class="tl-item"><div class="tl-year">1980s</div><div class="tl-body"><h4>The Recombinant Revolution</h4><p>First recombinant peptide therapeutics approved, including human insulin and growth hormone — transforming endocrinology and chronic disease management globally.</p></div></div>
+        <div class="tl-item"><div class="tl-year">1990s</div><div class="tl-body"><h4>GLP-1 &amp; GnRH Era</h4><p>Explosion of GnRH analogues, natriuretic peptides, and early GLP-1 research that would ultimately yield Semaglutide and reshape the treatment of metabolic disease.</p></div></div>
+        <div class="tl-item"><div class="tl-year">2000s–10s</div><div class="tl-body"><h4>Synthesis &amp; Secretagogue Class</h4><p>Advances in synthesis purity, bioavailability, and delivery systems. Thymosin peptides, BPC-157 research, and the emergence of the secretagogue class gain significant scientific traction.</p></div></div>
+        <div class="tl-item"><div class="tl-year">2020s</div><div class="tl-body"><h4>The Metabolic &amp; Longevity Frontier</h4><p>GLP-1/GIP dual and triple agonists (Tirzepatide, Retatrutide) demonstrate unprecedented metabolic efficacy. Longevity peptides including Epithalon and MOTS-c attract serious attention at the highest levels of aging science.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section style="background:var(--wh)">
+    <div class="con">
+      <p class="lbl fu">Why Peptides</p>
+      <h2 class="st fu d1">The Core <em>Advantages</em></h2>
+      <div class="ben-grid fu d2">
+        <div class="ben-card"><div class="ben-num">01</div><div class="ben-title">High Specificity</div><p>Peptides mimic or amplify the body's own signaling molecules, acting on precise receptor targets. This reduces off-target effects compared to many traditional small-molecule drugs.</p></div>
+        <div class="ben-card"><div class="ben-num">02</div><div class="ben-title">Natural Biodegradability</div><p>The body enzymatically breaks peptides down into their constituent amino acids — the same building blocks present in food and tissue — contributing to their generally favorable safety profiles.</p></div>
+        <div class="ben-card hi"><div class="ben-num">03</div><div class="ben-title">Broad Therapeutic Scope</div><p>The peptide pharmacopoeia spans healing, metabolic regulation, hormonal optimization, cognitive enhancement, immune modulation, longevity, and aesthetics — arguably the most versatile class of bioactive compounds in existence.</p></div>
+        <div class="ben-card"><div class="ben-num">04</div><div class="ben-title">Synergistic Potential</div><p>Many peptides complement each other mechanistically, enabling combination protocols — BPC-157 + TB-500 for tissue repair, or CJC-1295 + Ipamorelin for GH optimization — that exceed either compound alone.</p></div>
+        <div class="ben-card"><div class="ben-num">05</div><div class="ben-title">Scalable Manufacturing</div><p>Advances in solid-phase synthesis and recombinant production have reduced costs dramatically, enabling commercial-scale production at high purity — accelerating both research and clinical adoption.</p></div>
+        <div class="ben-card"><div class="ben-num">06</div><div class="ben-title">Regulatory Momentum</div><p>Multiple blockbuster approvals — Ozempic, Wegovy, Mounjaro — have fundamentally elevated the entire peptide class in mainstream medicine, driving unprecedented investment and clinical pipeline activity.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGULATORY -->
+  <section id="regulatory" class="reg-wrap">
+    <div class="con">
+      <p class="lbl fu">Legal Landscape</p>
+      <h2 class="st fu d1">Regulatory <em>Trajectory</em></h2>
+      <p class="bt fu d2">Peptides occupy a rapidly evolving regulatory space that varies significantly by jurisdiction. Understanding the current framework is essential for researchers, practitioners, and procurement professionals.</p>
+      <div class="reg-grid fu d3">
+
+        <div class="rc">
+          <div class="rc-icon">
+            <!-- tag -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4 L4 15 L13 22 L22 13 L15 4 Z"/><circle cx="9" cy="9" r="1.5" fill="currentColor" stroke="none" opacity=".6"/></svg>
+          </div>
+          <div class="rc-title">Research Use Only (RUO)</div>
+          <p>A legally recognized designation permitting manufacture, sale, and purchase of compounds for laboratory and non-clinical research purposes. RUO reflects the stage of regulatory review, not the state of the science.</p>
+        </div>
+
+        <div class="rc">
+          <div class="rc-icon">
+            <!-- shield check -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L21 7 L21 14 C21 19 12 22 12 22 C12 22 3 19 3 14 L3 7 Z"/><polyline points="8,12 11,15 16,10"/></svg>
+          </div>
+          <div class="rc-title">FDA-Approved Peptides</div>
+          <p>A growing number of peptides have received full FDA approval:</p>
+          <div class="pill-row"><span class="pl gr">Semaglutide</span><span class="pl gr">Tirzepatide</span><span class="pl gr">Tesamorelin</span><span class="pl gr">PT-141</span><span class="pl gr">Thymosin Alpha-1</span><span class="pl gr">Sermorelin</span></div>
+        </div>
+
+        <div class="rc">
+          <div class="rc-icon">
+            <!-- flask -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 L8 12 L3 20 L21 20 L16 12 L16 3"/><line x1="6" y1="3" x2="18" y2="3"/><circle cx="7" cy="16" r="1" fill="currentColor" stroke="none" opacity=".5"/><circle cx="13" cy="18" r=".8" fill="currentColor" stroke="none" opacity=".4"/></svg>
+          </div>
+          <div class="rc-title">Active Clinical Pipeline</div>
+          <p>Currently in Phase II or Phase III trials:</p>
+          <div class="pill-row"><span class="pl am">Retatrutide</span><span class="pl am">Cagrilintide</span><span class="pl am">Mazdutide</span><span class="pl am">Survodutide</span><span class="pl am">SS-31</span></div>
+        </div>
+
+        <div class="rc">
+          <div class="rc-icon">
+            <!-- capsule/compounding -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="9" width="18" height="6" rx="3"/><line x1="12" y1="9" x2="12" y2="15"/></svg>
+          </div>
+          <div class="rc-title">Compounding Pharmacy Access</div>
+          <p>US compounding pharmacies under 503A and 503B frameworks have historically prepared peptide formulations for patient-specific prescriptions — BPC-157, Sermorelin, Ipamorelin, and others under physician oversight. Regulatory guidance continues to evolve.</p>
+        </div>
+
+        <div class="rc">
+          <div class="rc-icon">
+            <!-- globe -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M4.5 7.5 Q12 6 19.5 7.5" stroke-width="1"/><path d="M4.5 16.5 Q12 18 19.5 16.5" stroke-width="1"/></svg>
+          </div>
+          <div class="rc-title">Global Regulatory Variation</div>
+          <p>Several peptides are approved or clinically used outside the US — including Russia (Semax, Selank), Europe, and parts of Asia — while still under research classification elsewhere. The global trend is toward broader legitimization.</p>
+        </div>
+
+        <div class="rc spot">
+          <div class="rc-icon">
+            <!-- star -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+          </div>
+          <div class="rc-title">Phase III Spotlight</div>
+          <p>Retatrutide (Eli Lilly) — GLP-1/GIP/Glucagon triple agonist — showed mean body weight reduction of up to 24% over 48 weeks in Phase II. Potentially the most potent metabolic compound in the history of clinical development.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- end guide-view -->
+
+
+<!-- ════════════════════════════════════════
+     PRODUCTS VIEW
+════════════════════════════════════════ -->
+<div id="products-view" class="view on">
+
+  <!-- ── HEALING ── -->
+  <div class="cat-panel on" id="cat-healing">
+    <div class="panel-hdr"><div class="ph-dots"></div>
+      <div class="ph-inner"><div>
+        <p class="ph-label">Category 01</p>
+        <h2 class="ph-title">Healing &amp; <em>Regenerative</em> Peptides</h2>
+        <p class="ph-sub">From gut healing to tendon repair, cardiac recovery, and neuroprotection — the front line of tissue regeneration.</p>
+        <span class="ph-count">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+          10 Products
+        </span>
+      </div><div class="ph-num">01</div></div>
+    </div>
+    <div class="prod-wrap"><div class="conw"><div class="prod-grid">
+
+      <div class="pc"><div class="pc-name">BPC-157</div><div class="pc-size">2mg · 5mg · 10mg</div><p class="pc-desc">Body Protection Compound-157, derived from a gastroprotective protein in gastric juice. Among the most extensively studied healing peptides. Research covers tendon and ligament repair, gut healing (IBD, leaky gut, ulcers), muscle recovery, neurological protection, anti-inflammatory effects, and angiogenesis.</p><div class="pc-foot"><span class="tg">Tendon Repair</span><span class="tg">Gut Healing</span><span class="tg">Angiogenesis</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">BPC + TB-500 Blend</div><div class="pc-size">10mg (5+5) · 20mg (10+10)</div><p class="pc-desc">Pre-combined BPC-157 and Thymosin Beta-4 (TB-500) for synergistic tissue repair. Addresses the local healing cascade (BPC-157) and systemic tissue remodeling and anti-inflammatory pathways (TB-500).</p><div class="pc-foot"><span class="tg">Synergistic Protocol</span><span class="tg">Systemic Repair</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Triple Regenerative Blend</div><div class="pc-size">BPC 10mg + GHK-Cu 50mg + TB-500 10mg — 70mg</div><p class="pc-desc">Comprehensive triple-compound regenerative protocol combining BPC-157's gut and tendon healing, TB-500's systemic repair, and GHK-Cu's collagen synthesis and wound healing.</p><div class="pc-foot"><span class="tg">Triple Protocol</span><span class="tg">Collagen Synthesis</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">TB-500</div><div class="pc-size">Thymosin Beta-4 Acetate · 2mg · 5mg · 10mg</div><p class="pc-desc">Naturally occurring peptide found in virtually every human and animal cell. Studied for muscle, tendon, and ligament repair; cardiac tissue recovery; neuroregeneration; hair growth stimulation; and systemic anti-inflammatory effects.</p><div class="pc-foot"><span class="tg">Cardiac Recovery</span><span class="tg">Neuroregeneration</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">GHK-Cu</div><div class="pc-size">50mg · 100mg</div><p class="pc-desc">Glycine-Histidine-Lysine copper complex. Naturally found in human plasma, saliva, and urine — declines significantly with age. Extensively studied for wound healing, collagen and elastin synthesis, hair follicle stimulation, antioxidant effects, and neuroprotection.</p><div class="pc-foot"><span class="tg">Wound Healing</span><span class="tg">Collagen</span><span class="tg">Anti-Aging</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">AHK-Cu</div><div class="pc-size">100mg</div><p class="pc-desc">A copper-binding tripeptide closely related to GHK-Cu. Studied for hair follicle stimulation, scalp circulation, skin regeneration, and anti-inflammatory effects. Popular in cosmetic dermatology research.</p><div class="pc-foot"><span class="tg">Hair Follicle</span><span class="tg">Skin Regeneration</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">LL-37</div><div class="pc-size">5mg</div><p class="pc-desc">The human cathelicidin — the body's own endogenous antimicrobial peptide. Studied for broad-spectrum antimicrobial, antiviral, antifungal, and immunomodulatory properties. Also researched for wound healing and activity against bacterial biofilms.</p><div class="pc-foot"><span class="tg">Antimicrobial</span><span class="tg">Antiviral</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Ara-290</div><div class="pc-size">10mg</div><p class="pc-desc">A non-hematopoietic EPO analogue designed to activate innate repair receptors without stimulating red blood cell production. Studied for neuropathic pain, diabetic peripheral neuropathy, and tissue cytoprotection.</p><div class="pc-foot"><span class="tg">Neuropathic Pain</span><span class="tg">Cytoprotection</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">SS-31 (Elamipretide)</div><div class="pc-size">10mg · 50mg</div><p class="pc-desc">A mitochondria-targeting tetrapeptide that stabilizes cardiolipin on the inner mitochondrial membrane. Studied for heart failure, kidney disease, aging, oxidative stress, and mitochondrial myopathy. Currently in clinical trials for Barth syndrome and heart failure.</p><div class="pc-foot"><span class="tg">Mitochondrial Health</span><span class="tg">Heart Failure</span><span class="b-trial">Phase II/III</span></div></div>
+
+      <div class="pc"><div class="pc-name">Snap-8</div><div class="pc-size">10mg</div><p class="pc-desc">An octapeptide that inhibits SNARE complex formation at neuromuscular junctions, reducing micro-contractions that contribute to expression lines. Studied as a topical cosmetic anti-aging ingredient — sometimes called a 'botox alternative.'</p><div class="pc-foot"><span class="tg">Topical</span><span class="tg">Anti-Aging</span><span class="tg">Cosmetic</span><span class="b-ruo">RUO</span></div></div>
+
+    </div></div></div>
+  </div>
+
+  <!-- ── METABOLIC ── -->
+  <div class="cat-panel" id="cat-metabolic">
+    <div class="panel-hdr"><div class="ph-dots"></div>
+      <div class="ph-inner"><div>
+        <p class="ph-label">Category 02</p>
+        <h2 class="ph-title">Metabolic, GLP-1 &amp; <em>Weight Management</em></h2>
+        <p class="ph-sub">The fastest-moving category in medicine. From the GLP-1 revolution to triple agonists showing 24% body weight reduction.</p>
+        <span class="ph-count">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="10,1 5,8 11,8 6,15"/></svg>
+          11 Products
+        </span>
+      </div><div class="ph-num">02</div></div>
+    </div>
+    <div class="prod-wrap"><div class="conw"><div class="prod-grid">
+
+      <div class="pc"><div class="pc-name">Semaglutide</div><div class="pc-size">2mg · 5mg · 10mg · 15mg · 20mg</div><p class="pc-desc">A GLP-1 receptor agonist. FDA-approved as Ozempic (Type 2 diabetes) and Wegovy (obesity). The cornerstone of the modern metabolic peptide revolution. Also studied for cardiovascular protection, kidney disease, neurodegeneration, and addiction suppression.</p><div class="pc-foot"><span class="tg">GLP-1 Agonist</span><span class="tg">T2D · Obesity</span><span class="b-fda">FDA Approved</span></div></div>
+
+      <div class="pc"><div class="pc-name">Tirzepatide</div><div class="pc-size">5mg · 10mg · 15mg · 20mg · 30mg · 40mg · 45mg · 60mg</div><p class="pc-desc">A GLP-1/GIP dual agonist. FDA-approved as Mounjaro (Type 2 diabetes) and Zepbound (obesity). Produces greater average weight loss than Semaglutide — up to 22% of body weight. Eli Lilly's flagship metabolic compound.</p><div class="pc-foot"><span class="tg">GLP-1/GIP Dual</span><span class="tg">Up to 22% Weight Loss</span><span class="b-fda">FDA Approved</span></div></div>
+
+      <div class="pc"><div class="pc-name">Retatrutide</div><div class="pc-size">5mg · 10mg · 15mg · 20mg</div><p class="pc-desc">'Triple G' — a GLP-1/GIP/Glucagon triple receptor agonist developed by Eli Lilly. Currently in Phase III trials. Early Phase II data showed mean weight reduction of up to 24% over 48 weeks — potentially the most potent metabolic peptide in development.</p><div class="pc-foot"><span class="tg">Triple Agonist</span><span class="tg">Up to 24% Weight Loss</span><span class="b-trial">Phase III</span></div></div>
+
+      <div class="pc"><div class="pc-name">Cagrilintide</div><div class="pc-size">5mg · 10mg</div><p class="pc-desc">A long-acting synthetic amylin analogue by Novo Nordisk. Studied for appetite suppression, slowed gastric emptying, and weight management. In late-stage trials in combination with Semaglutide (CagriSema) as a next-generation obesity treatment.</p><div class="pc-foot"><span class="tg">Amylin Analogue</span><span class="tg">Appetite Suppression</span><span class="b-trial">Phase III</span></div></div>
+
+      <div class="pc"><div class="pc-name">Cagrilintide + Semaglutide</div><div class="pc-size">5mg + 5mg — 10mg total</div><p class="pc-desc">Pre-combined formulation mirroring the CagriSema combination under Phase III development by Novo Nordisk. Combines amylin-pathway appetite regulation with GLP-1 receptor agonism for complementary metabolic effects.</p><div class="pc-foot"><span class="tg">Combination Protocol</span><span class="tg">Dual Pathway</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Mazdutide</div><div class="pc-size">5mg · 10mg</div><p class="pc-desc">A GLP-1/glucagon dual receptor agonist by Innovent Biologics. Currently in Phase III trials for obesity and Type 2 diabetes. Increases energy expenditure and fat mobilization alongside glucose regulation.</p><div class="pc-foot"><span class="tg">GLP-1/Glucagon</span><span class="tg">Fat Mobilization</span><span class="b-trial">Phase III</span></div></div>
+
+      <div class="pc"><div class="pc-name">Survodutide</div><div class="pc-size">10mg</div><p class="pc-desc">A GLP-1/glucagon dual receptor agonist by Boehringer Ingelheim. In Phase II/III trials for obesity and NASH (non-alcoholic steatohepatitis / metabolic liver disease). Particularly promising for hepatic effects.</p><div class="pc-foot"><span class="tg">Hepatic Effects</span><span class="tg">NASH · Obesity</span><span class="b-trial">Phase II/III</span></div></div>
+
+      <div class="pc"><div class="pc-name">AOD-9604</div><div class="pc-size">2mg · 5mg</div><p class="pc-desc">A synthetic fragment of human growth hormone — specifically the C-terminal lipolytic domain. Studied for fat metabolism and weight loss without the growth-promoting or insulin-disrupting effects of full hGH. Has completed Phase II/III trials in Australia.</p><div class="pc-foot"><span class="tg">Lipolysis</span><span class="tg">hGH Fragment</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">AICAR</div><div class="pc-size">50mg</div><p class="pc-desc">A cell-permeable activator of AMPK — the body's master energy-sensing enzyme. Studied for endurance enhancement, fat oxidation, improved insulin sensitivity, and mitochondrial biogenesis. Sometimes described as an 'exercise mimetic.'</p><div class="pc-foot"><span class="tg">AMPK Activator</span><span class="tg">Exercise Mimetic</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Adipotide</div><div class="pc-size">2mg · 5mg</div><p class="pc-desc">A peptidomimetic that selectively targets and disrupts blood vessels supplying white adipose tissue, inducing apoptosis of fat cells. Studied in non-human primates as an obesity intervention. Considered a targeted experimental fat-loss compound.</p><div class="pc-foot"><span class="tg">Targeted Fat Loss</span><span class="tg">Experimental</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">5-Amino-1MQ</div><div class="pc-size">5mg</div><p class="pc-desc">A small-molecule inhibitor of NNMT — an enzyme that regulates cellular metabolism and fat storage in adipose tissue. Studied for fat cell reduction, metabolic enhancement, and NAD+ pathway activation.</p><div class="pc-foot"><span class="tg">NNMT Inhibitor</span><span class="tg">NAD+ Pathway</span><span class="b-ruo">RUO</span></div></div>
+
+    </div></div></div>
+  </div>
+
+  <!-- ── GH AXIS ── -->
+  <div class="cat-panel" id="cat-gh">
+    <div class="panel-hdr"><div class="ph-dots"></div>
+      <div class="ph-inner"><div>
+        <p class="ph-label">Category 03</p>
+        <h2 class="ph-title">Growth Hormone <em>Axis</em> Peptides</h2>
+        <p class="ph-sub">Secretagogues that work with the body's own pulsatile GH rhythms — from the gold-standard CJC/Ipamorelin stack to FDA-approved Tesamorelin.</p>
+        <span class="ph-count">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,12 5,8 9,10 15,3"/><polyline points="11,3 15,3 15,7"/></svg>
+          9 Products
+        </span>
+      </div><div class="ph-num">03</div></div>
+    </div>
+    <div class="prod-wrap"><div class="conw"><div class="prod-grid">
+
+      <div class="pc"><div class="pc-name">CJC-1295 Without DAC</div><div class="pc-size">2mg · 5mg · 10mg</div><p class="pc-desc">A synthetic GHRH analogue. Stimulates pituitary GH release with a physiological half-life of approximately 30 minutes, producing pulsatile GH secretion. Commonly stacked with Ipamorelin to amplify GH pulse magnitude while preserving natural rhythm.</p><div class="pc-foot"><span class="tg">GHRH Analogue</span><span class="tg">Pulsatile GH</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">CJC-1295 With DAC</div><div class="pc-size">2mg · 5mg</div><p class="pc-desc">The same GHRH analogue modified with a Drug Affinity Complex (DAC) enabling albumin binding. Extends the half-life to approximately 8 days, providing sustained GH elevation rather than pulsatile release.</p><div class="pc-foot"><span class="tg">Extended Half-Life</span><span class="tg">Sustained GH</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">CJC-1295 + Ipamorelin</div><div class="pc-size">10mg (5mg + 5mg)</div><p class="pc-desc">The classic GH secretagogue combination. CJC-1295 provides the GHRH signal while Ipamorelin supplies the GHRP signal, producing a synergistic and clean GH pulse with minimal cortisol or prolactin stimulation.</p><div class="pc-foot"><span class="tg">Gold Standard Stack</span><span class="tg">Synergistic</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Ipamorelin</div><div class="pc-size">2mg · 5mg · 10mg</div><p class="pc-desc">A highly selective fifth-generation GHRP. Stimulates GH release through ghrelin receptor agonism with minimal effect on cortisol, prolactin, or ACTH — making it the cleanest GH secretagogue in current research use. Studied for anti-aging, body composition, and sleep quality.</p><div class="pc-foot"><span class="tg">Selective GHRP</span><span class="tg">Sleep Quality</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">GHRP-2 Acetate</div><div class="pc-size">5mg · 10mg</div><p class="pc-desc">A potent synthetic ghrelin mimetic that stimulates robust GH release from the pituitary. Produces stronger GH pulses than GHRP-6 with less appetite stimulation. Studied for GH deficiency, muscle wasting, anti-aging, and body composition.</p><div class="pc-foot"><span class="tg">Ghrelin Mimetic</span><span class="tg">Muscle Wasting</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">GHRP-6 Acetate</div><div class="pc-size">5mg · 10mg</div><p class="pc-desc">A first-generation GHRP with strong GH-releasing effects via ghrelin receptor agonism. Produces significant appetite stimulation — useful in muscle wasting or cachexia research. Also studied for gastroprotective effects.</p><div class="pc-foot"><span class="tg">First-Gen GHRP</span><span class="tg">Gastroprotective</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Hexarelin Acetate</div><div class="pc-size">2mg</div><p class="pc-desc">A potent synthetic GHRP with strong GH-releasing properties and notable cardioprotective effects independent of GH secretion. Studied for GH stimulation, fat loss, muscle preservation, and cardiac tissue protection.</p><div class="pc-foot"><span class="tg">Cardioprotective</span><span class="tg">Fat Loss</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Sermorelin Acetate</div><div class="pc-size">2mg · 5mg · 10mg</div><p class="pc-desc">A GHRH analogue comprising the first 29 amino acids of endogenous GHRH. Previously FDA-approved for pediatric GH deficiency. Studied as an anti-aging tool for restoring youthful GH pulsatility. Considered one of the safest GH secretagogues.</p><div class="pc-foot"><span class="tg">Anti-Aging</span><span class="tg">Safest Profile</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Tesamorelin</div><div class="pc-size">2mg · 5mg · 10mg</div><p class="pc-desc">A stabilized GHRH analogue — FDA-approved as Egrifta for HIV-associated lipodystrophy. Also studied for visceral fat reduction in non-HIV populations and cognitive function improvement in aging individuals with mild cognitive impairment.</p><div class="pc-foot"><span class="tg">Visceral Fat</span><span class="tg">Cognitive Function</span><span class="b-fda">FDA Approved</span></div></div>
+
+    </div></div></div>
+  </div>
+
+  <!-- ── LONGEVITY ── -->
+  <div class="cat-panel" id="cat-longevity">
+    <div class="panel-hdr"><div class="ph-dots"></div>
+      <div class="ph-inner"><div>
+        <p class="ph-label">Category 04</p>
+        <h2 class="ph-title">Longevity, Anti-Aging &amp; <em>Cognitive</em></h2>
+        <p class="ph-sub">From telomere elongation to BDNF upregulation — compounds at the leading edge of healthspan and lifespan science.</p>
+        <span class="ph-count">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8,8 C9,5.5 13.5,5.5 13.5,8 C13.5,10.5 9,10.5 8,8 C7,5.5 2.5,5.5 2.5,8 C2.5,10.5 7,10.5 8,8"/></svg>
+          9 Products
+        </span>
+      </div><div class="ph-num">04</div></div>
+    </div>
+    <div class="prod-wrap"><div class="conw"><div class="prod-grid">
+
+      <div class="pc"><div class="pc-name">Epithalon</div><div class="pc-size">10mg · 50mg</div><p class="pc-desc">A synthetic tetrapeptide (Ala-Glu-Asp-Gly) derived from the pineal gland. One of the most studied longevity peptides. Research covers telomere elongation through telomerase activation, circadian rhythm regulation, melatonin normalization, and lifespan extension in multiple species.</p><div class="pc-foot"><span class="tg">Telomere Elongation</span><span class="tg">Lifespan</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Thymalin</div><div class="pc-size">10mg</div><p class="pc-desc">A thymus gland-derived peptide complex. Studied for immune system restoration in aging, endocrine regulation, and longevity. Human studies in elderly populations showed significant reductions in mortality over 6-year follow-up periods.</p><div class="pc-foot"><span class="tg">Thymus-Derived</span><span class="tg">Mortality Reduction</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">MOTS-c</div><div class="pc-size">10mg · 40mg</div><p class="pc-desc">A peptide encoded within mitochondrial DNA — an extremely rare class of biologically active compound. Studied for metabolic regulation, insulin sensitivity, exercise performance, stress resistance, and longevity. Levels decline significantly with age.</p><div class="pc-foot"><span class="tg">Mitochondrial DNA</span><span class="tg">Exercise Performance</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">NAD+</div><div class="pc-size">100mg · 500mg</div><p class="pc-desc">Nicotinamide Adenine Dinucleotide. A coenzyme central to cellular energy metabolism, DNA repair, and sirtuin (longevity gene) activation. NAD+ levels decline approximately 50% between ages 40 and 60. Studied for anti-aging, neuroprotection, metabolic health, and addiction recovery support.</p><div class="pc-foot"><span class="tg">Sirtuin Activation</span><span class="tg">DNA Repair</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">L-Glutathione</div><div class="pc-size">1500mg</div><p class="pc-desc">The body's master endogenous antioxidant tripeptide. Critical for cellular detoxification, immune function, mitochondrial health, and protection against oxidative stress. Declines with age and chronic illness. Studied for liver protection and neurodegeneration prevention.</p><div class="pc-foot"><span class="tg">Master Antioxidant</span><span class="tg">Liver Protection</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">GHK-Cu</div><div class="pc-size">50mg · 100mg</div><p class="pc-desc">Also a significant anti-aging compound. Plasma GHK-Cu declines from approximately 200ng/mL at age 20 to near zero by age 60, correlating with reduced tissue repair capacity and accelerated aging. See Healing category for full profile.</p><div class="pc-foot"><span class="tg">Anti-Aging</span><span class="tg">Tissue Repair</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Semax</div><div class="pc-size">5mg · 11mg</div><p class="pc-desc">A synthetic heptapeptide analogue of ACTH developed in Russia. Studied for cognitive enhancement, BDNF upregulation, neuroprotection, stroke recovery, anxiety reduction, and attention improvement. Used clinically as an intranasal formulation for ischemic stroke and cognitive decline.</p><div class="pc-foot"><span class="tg">BDNF Upregulation</span><span class="tg">Stroke Recovery</span><span class="tg">Nootropic</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Selank</div><div class="pc-size">5mg · 11mg</div><p class="pc-desc">A synthetic analogue of tuftsin developed by the Institute of Molecular Genetics in Russia. Studied for anxiolytic (anti-anxiety) effects, cognitive enhancement, BDNF stimulation, immune modulation, and depression. Described as a 'nootropic peptide.'</p><div class="pc-foot"><span class="tg">Anxiolytic</span><span class="tg">Cognitive Enhancement</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">DSIP</div><div class="pc-size">Delta Sleep-Inducing Peptide · 2mg · 5mg · 15mg</div><p class="pc-desc">A naturally occurring neuropeptide. Studied for sleep quality improvement, cortisol modulation, stress resilience, pain reduction, and LH stimulation. Research suggests roles in circadian rhythm regulation beyond sleep induction alone.</p><div class="pc-foot"><span class="tg">Sleep Quality</span><span class="tg">Cortisol Modulation</span><span class="b-ruo">RUO</span></div></div>
+
+    </div></div></div>
+  </div>
+
+  <!-- ── IMMUNE & HORMONAL ── -->
+  <div class="cat-panel" id="cat-immune">
+    <div class="panel-hdr"><div class="ph-dots"></div>
+      <div class="ph-inner"><div>
+        <p class="ph-label">Categories 05 – 06</p>
+        <h2 class="ph-title">Immune Modulation &amp; <em>Hormonal</em></h2>
+        <p class="ph-sub">From FDA-approved immune therapeutics to the only FDA-approved peptide for sexual dysfunction — and the full hormonal cascade.</p>
+        <span class="ph-count">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8,1.5 L14,4.5 L14,9.5 C14,12.5 8,14.5 8,14.5 C8,14.5 2,12.5 2,9.5 L2,4.5 Z"/></svg>
+          6 Products
+        </span>
+      </div><div class="ph-num">05</div></div>
+    </div>
+    <div class="prod-wrap"><div class="conw"><div class="prod-grid">
+
+      <div class="pc"><div class="pc-name">Thymosin Alpha-1</div><div class="pc-size">2mg · 5mg · 10mg</div><p class="pc-desc">A 28-amino acid peptide derived from thymosin fraction 5. Commercially available as Zadaxin. Approved in over 35 countries for hepatitis B, hepatitis C, and as a vaccine adjuvant. Studied for immune restoration, cancer immunotherapy support, chronic infection management, and post-viral immune dysfunction.</p><div class="pc-foot"><span class="tg">Immune Restoration</span><span class="tg">Anti-Viral</span><span class="b-fda">Approved 35+ Countries</span></div></div>
+
+      <div class="pc"><div class="pc-name">PT-141 (Bremelanotide)</div><div class="pc-size">10mg</div><p class="pc-desc">A cyclic heptapeptide derived from Melanotan 2. FDA-approved as Vyleesi for hypoactive sexual desire disorder (HSDD) in premenopausal women — the only FDA-approved peptide for sexual dysfunction. Studied for libido enhancement in both sexes and erectile dysfunction via central melanocortin receptor activation.</p><div class="pc-foot"><span class="tg">Libido</span><span class="tg">HSDD</span><span class="b-fda">FDA Approved</span></div></div>
+
+      <div class="pc"><div class="pc-name">MT-1 (Melanotan 1)</div><div class="pc-size">10mg</div><p class="pc-desc">A synthetic analogue of alpha-melanocyte-stimulating hormone. Studied primarily for skin tanning via melanin production stimulation and photoprotection. Research also includes potential in skin cancer prevention through increased melanin density.</p><div class="pc-foot"><span class="tg">Photoprotection</span><span class="tg">Melanin Synthesis</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">MT-2 (Melanotan 2)</div><div class="pc-size">10mg</div><p class="pc-desc">A shorter, more potent cyclic analogue of alpha-MSH. Studied for skin tanning, libido enhancement, and erectile function. PT-141 (Bremelanotide) is directly derived from MT-2, accounting for its sexual effects via melanocortin system activity.</p><div class="pc-foot"><span class="tg">Melanocortin</span><span class="tg">Libido</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">KissPeptin-10</div><div class="pc-size">5mg · 10mg</div><p class="pc-desc">A neuropeptide that acts as the primary upstream regulator of GnRH secretion. Studied for reproductive hormone cascade initiation, testosterone and LH stimulation, fertility support, and libido. Significant research interest for hypogonadism treatment.</p><div class="pc-foot"><span class="tg">GnRH Upstream</span><span class="tg">Testosterone</span><span class="tg">Fertility</span><span class="b-ruo">RUO</span></div></div>
+
+      <div class="pc"><div class="pc-name">Oxytocin Acetate</div><div class="pc-size">2mg · 5mg</div><p class="pc-desc">The endogenous 'bonding hormone' produced in the hypothalamus. Used clinically in obstetrics for decades. Also studied for social bonding, anxiety reduction, autism spectrum disorder support, appetite suppression, and wound healing.</p><div class="pc-foot"><span class="tg">Social Bonding</span><span class="tg">Anxiety Reduction</span><span class="b-ruo">RUO</span></div></div>
+
+    </div></div></div>
+  </div>
+
+  <!-- ── HAIRCARE ── -->
+  <div class="cat-panel" id="cat-haircare">
+    <div class="panel-hdr"><div class="ph-dots"></div>
+      <div class="ph-inner"><div>
+        <p class="ph-label">Category 07 · 2026 Catalog</p>
+        <h2 class="ph-title">Haircare &amp; <em>Scalp</em> Collection</h2>
+        <p class="ph-sub">Peptide-powered formulations for growth, density, follicle support, and scalp renewal — shampoos, conditioners, serums, and ampoules.</p>
+        <span class="ph-count">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8,2 C8,2 2,7 2,11 A6,6 0 0 0 14,11 C14,7 8,2 8,2 Z"/></svg>
+          16 Products
+        </span>
+      </div><div class="ph-num">07</div></div>
+    </div>
+    <div class="prod-wrap"><div class="conw">
+
+      <p class="sub-lbl">Shampoos &amp; Conditioners</p>
+      <div class="prod-grid" style="margin-bottom:2rem">
+
+        <div class="pc"><div class="pc-name">Dual-Peptide Thickening Shampoo</div><div class="pc-size">250ml / 8.5oz · SKU 251022SK270</div><p class="pc-desc">Copper Tripeptide-1 and Copper Tripeptide-3 alongside Biotin and Niacinamide in a sulfate-free, silicon-free base. Targets hair growth, follicle strengthening, scalp health, and breakage minimization. Lather and leave on 2 minutes.</p><div class="pc-foot"><span class="tg">Hair Growth</span><span class="tg">Follicle Strength</span><span class="b-ruo">Sulfate · Silicon · Alcohol · Paraben-free · Vegan</span></div></div>
+
+        <div class="pc"><div class="pc-name">Dual-Peptide Thickening Conditioner</div><div class="pc-size">250ml / 8.5oz · SKU 251022SK271</div><p class="pc-desc">Copper Tripeptide-1 and -3 with Biotin, Behentrimonium Methosulfate, and Niacinamide. Strengthens follicles, supports scalp health, and minimizes breakage. Leave on 5 minutes.</p><div class="pc-foot"><span class="tg">Hair Growth</span><span class="tg">Minimize Breakage</span><span class="b-ruo">Sulfate · Silicon · Paraben-free · Vegan</span></div></div>
+
+        <div class="pc"><div class="pc-name">Peptide Scalp Renewal Shampoo</div><div class="pc-size">250ml / 8.5oz · SKU 251022SK272</div><p class="pc-desc">Copper Tripeptide-1 with Adenosine, Caffeine, Saw Palmetto, and Cyclodextrin. Targets thickness, density, and fullness. Sulfate-free and silicon-free base. Lather and leave on 2 minutes.</p><div class="pc-foot"><span class="tg">Thickness</span><span class="tg">Density</span><span class="tg">Fullness</span><span class="b-ruo">Sulfate · Silicon · Paraben-free · Vegan</span></div></div>
+
+        <div class="pc"><div class="pc-name">Peptide Scalp Renewal Conditioner</div><div class="pc-size">250ml / 8.5oz · SKU 251022SK273</div><p class="pc-desc">Copper Tripeptide-1, Saw Palmetto, Adenosine, Caffeine, and Cyclodextrin conditioner for density and fullness. Leave on 5 minutes.</p><div class="pc-foot"><span class="tg">Thickness</span><span class="tg">Density</span><span class="tg">Fullness</span><span class="b-ruo">Sulfate · Silicon · Paraben-free · Vegan</span></div></div>
+
+        <div class="pc"><div class="pc-name">Advanced Hair Density Shampoo <em style="color:var(--if);font-style:italic;font-size:.75em">Sulfate-Free</em></div><div class="pc-size">250ml / 8.5oz · SKU 250929SK254</div><p class="pc-desc">Sodium C14-16 Olefin Sulfonate base with Biotin, Panthenol, Caffeine, Adenosine, Niacinamide, Copper Tripeptide-1, Lactobacillus Date Fruit Ferment, and Polyquarternium complex. Reduces split ends and increases volume.</p><div class="pc-foot"><span class="tg">Hair Growth</span><span class="tg">Volume</span><span class="b-ruo">Sulfate · Silicon · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Advanced Hair Density Shampoo <em style="color:var(--if);font-style:italic;font-size:.75em">Sulfate-Base</em></div><div class="pc-size">250ml / 8.5oz · SKU 250929SK255</div><p class="pc-desc">Sodium Laureth Sulfate base with Biotin, Adenosine, Niacinamide, Caffeine, Rice Amino Acids, Lactobacillus Date Fruit Ferment, and Polyquarternium complex. Reduces split ends and increases volume.</p><div class="pc-foot"><span class="tg">Hair Growth</span><span class="tg">Volume</span><span class="b-ruo">Silicon · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Advanced Hair Density Conditioner</div><div class="pc-size">250ml / 8.5oz · SKU 250929SK256</div><p class="pc-desc">Dimethicone-based with Adenosine, Caffeine, Niacinamide, Biotin, Panthenol, and Hexyl Nicotinate. Strengthens follicles, supports scalp vitality, minimizes breakage. MOQ pricing: $18.10 / $16.29 / $14.66.</p><div class="pc-foot"><span class="tg">Follicle Strength</span><span class="tg">Scalp Vitality</span><span class="b-ruo">Sulfate · Alcohol · Paraben-free · Vegan</span></div></div>
+
+        <div class="pc"><div class="pc-name">Fullness Repair Hair Mask</div><div class="pc-size">200ml / 6.7oz · SKU 251114SK287</div><p class="pc-desc">Deep conditioning with Coconut Fruit Oil, Adenosine, Caffeine, Niacinamide, Biotin, and Panthenol. Apply to shaft and scalp, leave 2–5 minutes. Pricing: $15.93 / $14.34 / $12.90.</p><div class="pc-foot"><span class="tg">Deep Conditioning</span><span class="tg">Follicle Strength</span><span class="b-ruo">Sulfate · Alcohol · Paraben-free · Vegan</span></div></div>
+
+        <div class="pc"><div class="pc-name">Peptide Restorative Hair Mask</div><div class="pc-size">200ml / 6.7oz · SKU 251114SK289</div><p class="pc-desc">Copper Tripeptide-1, Sodium Hyaluronate, Polyquarternium-10 and -67, Diheptyl Succinate, and Capryloyl Glycerin. Targets scalp and strand hydration, softening, and repair. Leave on 2–5 minutes.</p><div class="pc-foot"><span class="tg">Hydration</span><span class="tg">Softening</span><span class="tg">Repair</span><span class="b-ruo">Sulfate · Alcohol · Paraben-free</span></div></div>
+
+      </div>
+
+      <p class="sub-lbl">Serums, Tonics &amp; Ampoules</p>
+      <div class="prod-grid">
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Follicle Support Serum</div><div class="pc-size">30ml / 1oz · SKU 250929SK258</div><p class="pc-desc">sh-Decapeptide-63, sh-Polypeptide-148, Hexapeptide-40, Biotinyl Tripeptide-1, Acetyl Tetrapeptide-3, and Palmitoyl Tetrapeptide-20. Targets hair growth, premature grey reduction, and scalp longevity. Leave on 5–10 minutes before styling.</p><div class="pc-foot"><span class="tg">Hair Growth</span><span class="tg">Anti-Grey</span><span class="tg">Scalp Longevity</span><span class="b-ruo">Sulfate · Silicon · Alcohol · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Root Support Serum</div><div class="pc-size">30ml / 1oz · SKU 251009SK267</div><p class="pc-desc">Copper Tripeptide-1 and -3 combined with Biotinyl Tripeptide-1 and Palmitoyl Tetrapeptide-20. Root-level follicle support, hair growth, and scalp longevity. Leave on 5–10 minutes before styling.</p><div class="pc-foot"><span class="tg">Root Support</span><span class="tg">Hair Growth</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Scalp Regenerative Tonic</div><div class="pc-size">30ml / 1oz · SKU 250929SK257</div><p class="pc-desc">Copper Tripeptide-1 with sh-Decapeptide-63, sh-Polypeptide-148, Hexapeptide-40, Biotinyl Tripeptide-1, and Palmitoyl Tetrapeptide-20. Targets growth, anti-grey, and scalp longevity.</p><div class="pc-foot"><span class="tg">Scalp Regeneration</span><span class="tg">Hair Growth</span><span class="b-ruo">Sulfate · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Density Activation Tonic</div><div class="pc-size">30ml / 1oz · SKU 250929SK259</div><p class="pc-desc">Diaminopyrimidine Oxide Oxothiazolidinecarboxylate, Acetyl Tetrapeptide-3, Myristoyl Pentapeptide-4, and Biotinyl Tripeptide-1. Focused on hair growth activation. Leave on 5–10 minutes.</p><div class="pc-foot"><span class="tg">Density Activation</span><span class="tg">Hair Growth</span><span class="b-ruo">Sulfate · Vegan · Silicon · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Clarifying Scalp Serum</div><div class="pc-size">30ml / 1oz · SKU 251114SK288</div><p class="pc-desc">Niacinamide, Hydroxyacetophenone, Saw Palmetto Fruit Extract. Targets hair growth, scalp health, split end reduction, and oil control. MOQ pricing: $13.02 / $11.72 / $10.55.</p><div class="pc-foot"><span class="tg">Clarifying</span><span class="tg">Scalp Health</span><span class="tg">Oil Control</span><span class="b-ruo">Sulfate · Vegan · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Hair Regrowth Peptide Complex</div><div class="pc-size">30ml / 1oz · SKU 251114SK292</div><p class="pc-desc">Copper Tripeptide-1, Acetyl Tetrapeptide-3, Biotinyl Tripeptide-1, Palmitoyl Tetrapeptide-20, Palmitoyl Tripeptide-8, and Decapeptide-18. For formulating and manufacturing of commercial products.</p><div class="pc-foot"><span class="tg">Hair Regrowth</span><span class="tg">Formulating Grade</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Hair Regrowth Peptide Complex Ampoule (10%)</div><div class="pc-size">5ml / 0.169oz · SKU 260219SK303</div><p class="pc-desc">High-concentration ampoule: Palmitoyl Tripeptide-8, Copper Tripeptide-1, Acetyl Tetrapeptide-3, Biotinyl Tripeptide-1, Palmitoyl Tetrapeptide-20, Decapeptide-18. Apply small amount directly to targeted scalp areas. Leave on.</p><div class="pc-foot"><span class="tg">10% Active Concentration</span><span class="tg">Hair Regrowth</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ── SKINCARE ── -->
+  <div class="cat-panel" id="cat-skincare">
+    <div class="panel-hdr"><div class="ph-dots"></div>
+      <div class="ph-inner"><div>
+        <p class="ph-label">Category 08 · 2026 Catalog</p>
+        <h2 class="ph-title">Cosmetics, Skincare &amp; <em>Topicals</em></h2>
+        <p class="ph-sub">Multi-peptide moisturizers, serums, eye treatments, sunscreens, and formulation bases — each built on active peptide science.</p>
+        <span class="ph-count">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="8,1 10,6 15,8 10,10 8,15 6,10 1,8 6,6"/></svg>
+          30 Products
+        </span>
+      </div><div class="ph-num">08</div></div>
+    </div>
+    <div class="prod-wrap"><div class="conw">
+
+      <p class="sub-lbl">Moisturizers &amp; Creams</p>
+      <div class="prod-grid" style="margin-bottom:2rem">
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Dermal Renewal Lotion</div><div class="pc-size">50ml / 1.7oz · SKU 250929SK265</div><p class="pc-desc">Low-irritation retinoid technology with Squalane, Ketoglutaric Acid, Ferulic Acid, Hydroxypinacolone Retinoate, Palmitoyl Tripeptide-5, and Acetyl Hexapeptide-8. Reduces wrinkles, smooths, antioxidant. Night use.</p><div class="pc-foot"><span class="tg">Anti-Wrinkle</span><span class="tg">Retinoid Tech</span><span class="tg">Antioxidant</span><span class="b-ruo">Sulfate · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Intensive Repair Cream Gel</div><div class="pc-size">50ml / 1.7oz · SKU 250929SK266</div><p class="pc-desc">Rich peptide panel: sh-Polypeptide-69, Palmitoyl Pentapeptide-4, Tripeptide-32, Hexapeptide-9, Acetyl Hexapeptide-8, Copper Tripeptide-1, Palmitoyl Tripeptide-5, Nonapeptide-1. Reduces fine lines, repairs barrier, tightens.</p><div class="pc-foot"><span class="tg">Fine Lines</span><span class="tg">Barrier Repair</span><span class="tg">Tightening</span><span class="b-ruo">Sulfate · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Cellular Defense Cream Gel</div><div class="pc-size">50ml / 1.7oz · SKU 250929SK264</div><p class="pc-desc">Squalane base with D-Ribose, Idebenone, Ectoin, Copper Tripeptide-1, Hexapeptide-9, and Palmitoyl Tripeptide-5. Cellular-level defense against fine lines with barrier repair and tightening.</p><div class="pc-foot"><span class="tg">Cellular Defense</span><span class="tg">Fine Lines</span><span class="tg">Skin Elasticity</span><span class="b-ruo">Sulfate · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Sculpting Cream</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK284</div><p class="pc-desc">Isododecane base with Soluble Collagen, Acetyl Hexapeptide-8, Acetyl Octapeptide-3, Palmitoyl Tripeptide-1 and -7. Enhances repair, skin elasticity, reduces inflammation, and tightens. Day and night use.</p><div class="pc-foot"><span class="tg">Skin Elasticity</span><span class="tg">Anti-Inflammation</span><span class="tg">Tightening</span><span class="b-ruo">Sulfate · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Peptide Alpha Lipoic Revitalizing Cream</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK283</div><p class="pc-desc">Alpha Lipoic Acid with Acetyl Octapeptide-3 in a Coco-Caprylate/Caprate and Dimethyl Isosorbide base. Antioxidant, restorative photo-aging, and brightening. Day and night.</p><div class="pc-foot"><span class="tg">Antioxidant</span><span class="tg">Photo-Aging</span><span class="tg">Brightening</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Retinol Peptide Refining Cream</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK279</div><p class="pc-desc">Retinol with Palmitoyl Tripeptide-1 and -7 in a Dimethicone and Polysilicone-11 base. Anti-aging, minimizes acne, boosts collagen. Night use.</p><div class="pc-foot"><span class="tg">Anti-Aging</span><span class="tg">Collagen Boost</span><span class="tg">Acne</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Peptide Brightening &amp; Firming Cream</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK281</div><p class="pc-desc">Niacinamide-forward with Palmitoyl Tripeptide-1 and -7. Brightens, reduces inflammation, and balances oil. Day and night use.</p><div class="pc-foot"><span class="tg">Brightening</span><span class="tg">Anti-Inflammatory</span><span class="tg">Oil Balancing</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Peptide Night Treatment Cream</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK280</div><p class="pc-desc">Retinal with Acetyl Octapeptide-3 in a Coco-Caprylate/Caprate and Hydroxyethyl Acrylate base. Anti-aging, minimizes acne, boosts collagen. Night use only.</p><div class="pc-foot"><span class="tg">Anti-Aging</span><span class="tg">Collagen Boost</span><span class="tg">Night Only</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Peptide Dark Spot Correcting Cream</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK282</div><p class="pc-desc">Tranexamic Acid with Acetyl Hexapeptide-8. Brightens and fades melasma and hyperpigmentation. Use day and night with SPF during the day.</p><div class="pc-foot"><span class="tg">Dark Spots</span><span class="tg">Melasma</span><span class="tg">Brightening</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Copper Peptide Resilience Cream</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK295</div><p class="pc-desc">Sodium Hyaluronate and Copper Tripeptide-1 in Squalane and Coco-Caprylate/Caprate base. Deep hydration and plumping. Day and night use.</p><div class="pc-foot"><span class="tg">Deep Hydration</span><span class="tg">Plumping</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Structural Repair Moisturizer</div><div class="pc-size">50ml / 1.7oz · SKU 251009SK269</div><p class="pc-desc">Extensive peptide complex including Copper Tripeptide-1, Dipeptide Diaminobutyroyl Benzylamide Diacetate, Hexapeptide-2, Palmitoyl Tripeptide-1, Palmitoyl Pentapeptide-4, Palmitoyl Tripeptide-5 and -38, Palmitoyl Tetrapeptide-7, Trifluoroacetyl Tripeptide-2. Nourishing, rejuvenating, reduces fine lines.</p><div class="pc-foot"><span class="tg">Structural Repair</span><span class="tg">Nourishing</span><span class="tg">Fine Lines</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Peptide Radiance Hydrogel</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK297</div><p class="pc-desc">Ascorbic Acid (Vitamin C) with Acetyl Hexapeptide-8 in a light hydrogel base. Antioxidant, collagen-boosting, and dark spot-fading. Use day and night with SPF during the day.</p><div class="pc-foot"><span class="tg">Vitamin C</span><span class="tg">Antioxidant</span><span class="tg">Dark Spots</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Neuro-Smoothing Peptide Complex Cream (10%)</div><div class="pc-size">50ml / 1.7oz · SKU 260219SK296</div><p class="pc-desc">Ceramide-rich (NP, AP, EOP, AS, NS) base with Pentapeptide-18, Copper Tripeptide-1, Dipeptide Diaminobutyroyl Benzylamide Diacetate, Acetyl Hexapeptide-8 and -30. Reduces muscle contraction, wrinkles, and smooths expression lines.</p><div class="pc-foot"><span class="tg">Neuro-Smoothing</span><span class="tg">Muscle Relaxing</span><span class="tg">Anti-Wrinkle</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+      </div>
+
+      <p class="sub-lbl">Serums</p>
+      <div class="prod-grid" style="margin-bottom:2rem">
+
+        <div class="pc"><div class="pc-name">Full-Spectrum Peptide Regeneration Serum</div><div class="pc-size">30ml / 1oz · SKU 250929SK260</div><p class="pc-desc">Comprehensive peptide panel: sh-Polypeptide-69, Acetyl Tetrapeptide-2 and -5, Palmitoyl Pentapeptide-4, Tripeptide-32, Hexapeptide-9, Acetyl Hexapeptide-8, Palmitoyl Tetrapeptide-7, Copper Tripeptide-1, Palmitoyl Tripeptide-5, Nonapeptide-1. Firms, boosts elasticity, reduces fine lines, brightens.</p><div class="pc-foot"><span class="tg">Firming</span><span class="tg">Full Spectrum</span><span class="tg">Brightening</span><span class="b-ruo">Sulfate · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Cellular Renewal Serum</div><div class="pc-size">30ml / 1oz · SKU 250929SK261</div><p class="pc-desc">Copper Tripeptide-1, Nicotinamide Mononucleotides, Acetyl Hexapeptide-8, Dipeptide Diaminobutyroyl Benzylamide Diacetate, Collagen, sh-Oligopeptide-1 and -2, sh-Polypeptide-9 and -11. Restorative photo-aging and barrier repair.</p><div class="pc-foot"><span class="tg">Cellular Renewal</span><span class="tg">Photo-Aging</span><span class="tg">Barrier Repair</span><span class="b-ruo">Sulfate · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Line-Smoothing Serum</div><div class="pc-size">30ml / 1oz · SKU 251114SK285</div><p class="pc-desc">DNA, Acetyl Hexapeptide-8, Acetyl Octapeptide-3, Palmitoyl Tripeptide-1 and -7 in an Acrylates Crosspolymer base. Tightens, reduces fine lines and wrinkles, and smooths.</p><div class="pc-foot"><span class="tg">Line-Smoothing</span><span class="tg">Tightening</span><span class="tg">Fine Lines</span><span class="b-ruo">Sulfate · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Smoothing &amp; Repair Serum</div><div class="pc-size">30ml / 1oz · SKU 251114SK296</div><p class="pc-desc">Centella Asiatica Leaf Vesicle with Palmitoyl Tripeptide-1 and -7, Acetyl Hexapeptide-8, and Acetyl Octapeptide-3. Vegan, alcohol-free, oil-free. Tightening, fine line reduction, and smoothing.</p><div class="pc-foot"><span class="tg">Smoothing</span><span class="tg">Repair</span><span class="tg">Fine Lines</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Multi-Peptide Micro-Line Renewal Serum</div><div class="pc-size">30ml / 1oz · SKU 251009SK268</div><p class="pc-desc">Copper Tripeptide-1, Sodium Hyaluronate, Acetyl Hexapeptide-8 and -30, Dipeptide Diaminobutyroyl Benzylamide Diacetate, Pentapeptide-18, and Nonapeptide-1. Anti-aging and tightening focus.</p><div class="pc-foot"><span class="tg">Anti-Aging</span><span class="tg">Tightening</span><span class="tg">Micro-Lines</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Peptide Pore Refining Hydrolic Solvent</div><div class="pc-size">30ml / 1oz · SKU 251114SK294</div><p class="pc-desc">Salicylic Acid with Acetyl Octapeptide-3 and Saw Palmetto Fruit Extract. Exfoliates, unclogs pores, minimizes acne. Apply to cleansed face before moisturizer, day and night.</p><div class="pc-foot"><span class="tg">Exfoliant</span><span class="tg">Pore Refining</span><span class="tg">Acne</span><span class="b-ruo">Sulfate · Vegan · Paraben-free</span></div></div>
+
+      </div>
+
+      <p class="sub-lbl">Eye Treatments, Sunscreens &amp; Specialty</p>
+      <div class="prod-grid" style="margin-bottom:2rem">
+
+        <div class="pc"><div class="pc-name">Dual-Peptide Vascular Defense Eye Cream</div><div class="pc-size">15ml / 0.5oz · SKU 250929SK262</div><p class="pc-desc">Squalane, Hesperidin Methyl Chalcone, Acetyl Tetrapeptide-5, and Dipeptide-2 in Cetearyl Olivate base. Reduces dark circles, eye bags, and puffiness. Warming sensation is normal due to microcirculation stimulation.</p><div class="pc-foot"><span class="tg">Dark Circles</span><span class="tg">Eye Bags</span><span class="tg">Puffiness</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Dual-Peptide Eye Contour Energizing Gel</div><div class="pc-size">15ml / 0.5oz · SKU 250929SK263</div><p class="pc-desc">Caffeine, Maltodextrin, Acetyl Tetrapeptide-5, Epigallocatechin Gallatyl Glucoside, Acetyl Tripeptide-1, Niacinamide, and Adenosine. Reduces dark circles, eye bags, and puffiness. Lightweight gel.</p><div class="pc-foot"><span class="tg">Dark Circles</span><span class="tg">Energizing</span><span class="tg">Eye Contour</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Eyelash and Brow Serum</div><div class="pc-size">4ml / 0.13oz · SKU 251103SK276</div><p class="pc-desc">Copper Tripeptide-1, Acetyl Tetrapeptide-3, Myristoyl Pentapeptide-17, Myristoyl Hexapeptide-16, and Biotinyl Tripeptide-1. Apply with brush to lash base and brow. Results visible within 2–4 weeks.</p><div class="pc-foot"><span class="tg">Lash Growth</span><span class="tg">Brow Growth</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Organic Peptide Sunscreen</div><div class="pc-size">50ml / 1.7oz · SKU 251023SK274</div><p class="pc-desc">Target SPF 30. C12-13 Alkyl Benzoate organic UV filters with Copper Tripeptide-1 and Gardenia Jasminoides Fruit Extract. UV protection that improves skin health. Easy wash-off. Apply after moisturizer.</p><div class="pc-foot"><span class="tg">SPF 30</span><span class="tg">Organic Filters</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Mineral Peptide Sunscreen</div><div class="pc-size">50ml / 1.7oz · SKU 251023SK275</div><p class="pc-desc">Target SPF 40. Isododecane mineral base with Lauryl PEG-10, Copper Tripeptide-1, and Gardenia Jasminoides Fruit Extract. Water resistant. Apply after moisturizer.</p><div class="pc-foot"><span class="tg">SPF 40</span><span class="tg">Mineral Filters</span><span class="tg">Water Resistant</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Neuro-Smoothing Peptide Complex</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK291</div><p class="pc-desc">Pentapeptide-18, Sodium Hyaluronate, Copper Tripeptide-1, Dipeptide Diaminobutyroyl Benzylamide Diacetate, Acetyl Hexapeptide-8 and -30. Reduces muscle contraction, wrinkles, and smooths. For commercial formulating — not consumer direct use.</p><div class="pc-foot"><span class="tg">Neuro-Smoothing</span><span class="tg">Formulating Grade</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+      </div>
+
+      <p class="sub-lbl">Formulation Bases</p>
+      <div class="prod-grid">
+
+        <div class="pc"><div class="pc-name">Cream Base</div><div class="pc-size">50ml / 1.7oz · SKU 251104SK277</div><p class="pc-desc">Capric/Caprylic Triglycerides, Glycerin, Isopropyl Palmitate, Cetearyl Alcohol, Ceteareth-20 and -25, Dimethicone. Clean, versatile base designed to accommodate the addition of active ingredients. Instructions determined by formulator.</p><div class="pc-foot"><span class="tg">Formulation Base</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Cream Base with Ceramides</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK293-1</div><p class="pc-desc">Capric/Caprylic Triglyceride with Cetearyl Olivate, Sorbitan Olivate, Squalane, Bisabolol, Ceramides NP, AP, EOP, AS, NS, Phytosphingosine, and Cholesterol. Rich ceramide base for barrier-supporting formulations.</p><div class="pc-foot"><span class="tg">Ceramide Base</span><span class="tg">Barrier Support</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Nano-Emulsion Essence Base</div><div class="pc-size">50ml / 1.7oz · SKU 251114SK293-2C</div><p class="pc-desc">Glycerin, Squalane, and Polyglyceryl-10 Stearate in a lightweight nano-emulsion. For the addition of active ingredients. Sulfate-free, alcohol-free, vegan, paraben-free.</p><div class="pc-foot"><span class="tg">Nano-Emulsion</span><span class="tg">Essence Format</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Serum Essence Base</div><div class="pc-size">30ml / 1oz · SKU 251114SK293-2B</div><p class="pc-desc">Glycerin, Polyacrylates Crosspolymer-6, and Gardenia Jasminoides Fruit Extract. Lightweight serum base for active ingredient delivery. Oil-free, alcohol-free, vegan, paraben-free.</p><div class="pc-foot"><span class="tg">Serum Base</span><span class="tg">Active Delivery</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+        <div class="pc"><div class="pc-name">Ampoule Base</div><div class="pc-size">5ml / 0.169oz · SKU 251114SK293-3</div><p class="pc-desc">Propanediol, Glycerin, 1,2-Hexanediol, Phenoxyethanol, and Palmitoyl Tripeptide-8. Ultra-concentrated ampoule format for high-potency active ingredient delivery. Oil-free, alcohol-free, vegan, paraben-free.</p><div class="pc-foot"><span class="tg">Ampoule Base</span><span class="tg">High Concentration</span><span class="b-ruo">Sulfate · Vegan · Alcohol · Paraben · Oil-free</span></div></div>
+
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ── ORALS ── -->
+  <div class="cat-panel" id="cat-orals">
+    <div class="panel-hdr"><div class="ph-dots"></div>
+      <div class="ph-inner"><div>
+        <p class="ph-label">Category 09 · 2026 Catalog</p>
+        <h2 class="ph-title">Orals — Tablets &amp; <em>Capsules</em></h2>
+        <p class="ph-sub">Metabolic, cognitive, longevity, and healing compounds in oral tablet and capsule form. MOQ tiers from 100 to 2,500+ bottles.</p>
+        <span class="ph-count">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="12" height="4" rx="2"/><line x1="8" y1="6" x2="8" y2="10" stroke-linecap="round"/></svg>
+          32 SKUs
+        </span>
+      </div><div class="ph-num">09</div></div>
+    </div>
+    <div class="prod-wrap"><div class="conw">
+
+      <p class="sub-lbl">Metabolic &amp; Weight Management</p>
+      <div class="prod-grid" style="margin-bottom:2rem">
+
+        <div class="pc"><div class="pc-name">5-Amino-1MQ</div><div class="pc-size">100mg · 30ct · SKU 240301SK306</div><p class="pc-desc">NNMT inhibitor for fat cell reduction, metabolic enhancement, and NAD+ pathway activation. High-strength 100mg tablet. 5-tier MOQ: 100 / 250 / 500 / 1000 / 2500+.</p><div class="pc-foot"><span class="tg">NNMT Inhibitor</span><span class="tg">Metabolic</span><span class="tg">NAD+</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">5-Amino-1MQ</div><div class="pc-size">30mg · 60ct · SKU 240301SK307 &nbsp;|&nbsp; 50mg · 60ct · SKU 240301SK308</div><p class="pc-desc">Lower-dose oral NNMT inhibitor options. 30mg and 50mg tablets in 60-count bottles for metabolic enhancement and NAD+ pathway activation. Full 5-tier MOQ structure.</p><div class="pc-foot"><span class="tg">NNMT Inhibitor</span><span class="tg">NAD+</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">5-Amino-1MQ (50mg) + SLU-PP-332 (1mg)</div><div class="pc-size">50mg/1mg · 30ct · SKU 240301SK309</div><p class="pc-desc">Dual metabolic stack combining NNMT inhibition (5-Amino-1MQ) with SLU-PP-332 ERRα/γ agonism for synergistic fat oxidation and exercise-mimetic effects.</p><div class="pc-foot"><span class="tg">NNMT + ERR Agonist</span><span class="tg">Metabolic Stack</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">AOD-9604</div><div class="pc-size">500mcg · 60ct · SKU 240301SK310</div><p class="pc-desc">Oral hGH C-terminal fragment. Targets fat metabolism without growth-promoting or insulin-disrupting effects. 500mcg tablets, 60 count. 5-tier MOQ.</p><div class="pc-foot"><span class="tg">hGH Fragment</span><span class="tg">Fat Metabolism</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">GLP-1S</div><div class="pc-size">3mg · 30ct · SKU 240302SK321 &nbsp;|&nbsp; 5mg · 30ct · SKU 240303SK322</div><p class="pc-desc">Oral GLP-1 receptor agonist semaglutide at 3mg and 5mg strengths. 30 tablets per bottle. Progressive dosing for metabolic management. Full 5-tier MOQ.</p><div class="pc-foot"><span class="tg">GLP-1 Agonist</span><span class="tg">Metabolic</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">GLP-1</div><div class="pc-size">7mg · 30ct · SKU 240303SK323</div><p class="pc-desc">Oral GLP-1 receptor agonist at 7mg, 30 tablets per bottle. Full 5-tier MOQ tier structure (100 / 250 / 500 / 1000 / 2500+).</p><div class="pc-foot"><span class="tg">GLP-1 Agonist</span><span class="tg">Metabolic</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">GLP-1S (5mg) + SLU-PP-332 (1mg)</div><div class="pc-size">5mg/1mg · 30ct · SKU 240303SK324</div><p class="pc-desc">Dual stack combining oral GLP-1 receptor agonism with SLU-PP-332 ERR agonism for enhanced metabolic and fat-oxidation outcomes.</p><div class="pc-foot"><span class="tg">GLP-1 + ERR Dual</span><span class="tg">Enhanced Metabolic</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">GLP-1 (5mg) + Tesofensine (500mcg)</div><div class="pc-size">5mg/500mcg · 30ct · SKU 240303SK325</div><p class="pc-desc">Combines oral GLP-1 receptor agonism with Tesofensine (triple monoamine reuptake inhibitor) for complementary appetite suppression and metabolic effects.</p><div class="pc-foot"><span class="tg">GLP-1 + Tesofensine</span><span class="tg">Appetite Suppression</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">Orforglipron</div><div class="pc-size">6mg · 90ct · SKU 240303SK328</div><p class="pc-desc">Oral non-peptide GLP-1 receptor agonist. 6mg tablets, 90 count per bottle — the largest count offering in the orals range. 5-tier MOQ structure.</p><div class="pc-foot"><span class="tg">Oral GLP-1</span><span class="tg">Non-Peptide</span><span class="tg">90ct</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">SLU-PP-332</div><div class="pc-size">1mg · 30ct · SKU 240303SK329 &nbsp;|&nbsp; 1mg · 60ct · SKU 240304SK330 &nbsp;|&nbsp; 250mcg · 60ct · SKU 240304SK331 &nbsp;|&nbsp; 500mcg · 100ct · SKU 240304SK332</div><p class="pc-desc">ERRα/γ agonist — exercise-mimetic compound for fat oxidation, endurance enhancement, and metabolic improvement. Full strength and count range available. 5-tier MOQ.</p><div class="pc-foot"><span class="tg">ERR Agonist</span><span class="tg">Exercise Mimetic</span><span class="tg">Fat Oxidation</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">SLU-PP-332 (250mcg) + 5-Amino-1MQ (25mg) + BPC-157 (125mcg)</div><div class="pc-size">250mcg/25mg/125mcg · 90ct · SKU 240304SK333</div><p class="pc-desc">Triple-compound metabolic and healing stack combining ERR agonism, NNMT inhibition, and BPC-157 gastroprotection. 90 count, 5-tier MOQ.</p><div class="pc-foot"><span class="tg">Triple Stack</span><span class="tg">Metabolic + Healing</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">Tesofensine</div><div class="pc-size">500mcg · 30ct · SKU 240304SK334 &nbsp;|&nbsp; 500mcg · 60ct · SKU 240304SK335</div><p class="pc-desc">Triple monoamine reuptake inhibitor (serotonin, dopamine, noradrenaline) studied for appetite suppression and weight management. Available in 30ct and 60ct. Full 5-tier MOQ.</p><div class="pc-foot"><span class="tg">Appetite Suppression</span><span class="tg">Monoamine Reuptake</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">Tesofensine (250mcg) + Dihexa (5mg)</div><div class="pc-size">250mcg/5mg · 60ct · SKU 240304SK336</div><p class="pc-desc">Metabolic and cognitive stack combining Tesofensine appetite suppression with Dihexa HGF receptor agonism for dual-pathway support. 60 count.</p><div class="pc-foot"><span class="tg">Metabolic + Cognitive</span><span class="tg">Dual Stack</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">Methylene Blue</div><div class="pc-size">25mg · 50ct · SKU 240303SK326 &nbsp;|&nbsp; 10mg · 60ct · SKU 240303SK327</div><p class="pc-desc">Mitochondrial electron carrier studied for cognitive enhancement, neuroprotection, mitochondrial function, and anti-aging. Available at 25mg/50ct and 10mg/60ct. Full 5-tier MOQ.</p><div class="pc-foot"><span class="tg">Mitochondrial Support</span><span class="tg">Cognitive</span><span class="tg">Anti-Aging</span><span class="b-ruo">Oral</span></div></div>
+
+      </div>
+
+      <p class="sub-lbl">Healing &amp; Gut Health</p>
+      <div class="prod-grid" style="margin-bottom:2rem">
+
+        <div class="pc"><div class="pc-name">BPC-157</div><div class="pc-size">500mcg · 30ct · SKU 240301SK311 &nbsp;|&nbsp; 500mcg · 60ct · SKU 240301SK312</div><p class="pc-desc">Oral BPC-157 at 500mcg per tablet. Studied for gut healing, tendon and ligament repair, anti-inflammatory effects, and neurological protection. Available in 30ct and 60ct. Full 5-tier MOQ.</p><div class="pc-foot"><span class="tg">Gut Healing</span><span class="tg">Tendon Repair</span><span class="tg">Anti-Inflammatory</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">BPC-157 (500mcg) + KPV (500mcg)</div><div class="pc-size">500mcg/500mcg · 60ct · SKU 240301SK313</div><p class="pc-desc">Combines BPC-157 healing with KPV (α-MSH tripeptide) anti-inflammatory and gut-protecting effects. 60 count. Synergistic gut and inflammatory support.</p><div class="pc-foot"><span class="tg">BPC-157 + KPV</span><span class="tg">Gut Health</span><span class="tg">Anti-Inflammatory</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">BPC-157 (500mcg) + TB-500 (2.5mg)</div><div class="pc-size">500mcg/2.5mg · 60ct · SKU 240302SK314</div><p class="pc-desc">Classic BPC-157 + TB-500 synergistic repair stack in oral form. Local healing cascade (BPC-157) and systemic tissue remodeling (TB-500). 60 count, full 5-tier MOQ.</p><div class="pc-foot"><span class="tg">BPC-157 + TB-500</span><span class="tg">Synergistic Repair</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">VIP (2mg) + BPC-157 (500mcg)</div><div class="pc-size">2mg/500mcg · 30ct · SKU 240304SK337</div><p class="pc-desc">Vasoactive Intestinal Peptide combined with BPC-157. VIP is studied for gut motility, immune regulation, and anti-inflammatory effects — complementary to BPC-157's healing profile.</p><div class="pc-foot"><span class="tg">VIP + BPC-157</span><span class="tg">Gut Motility</span><span class="tg">Immune Regulation</span><span class="b-ruo">Oral</span></div></div>
+
+      </div>
+
+      <p class="sub-lbl">Longevity, Cognitive &amp; Anti-Aging</p>
+      <div class="prod-grid">
+
+        <div class="pc"><div class="pc-name">Epithalon</div><div class="pc-size">3mg · 60ct · SKU 240302SK319</div><p class="pc-desc">Oral telomerase-activating tetrapeptide (Ala-Glu-Asp-Gly). 3mg per tablet, 60 count. Studied for telomere elongation, circadian regulation, and lifespan extension. Full 5-tier MOQ.</p><div class="pc-foot"><span class="tg">Telomere Elongation</span><span class="tg">Longevity</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">GHK-Cu</div><div class="pc-size">2mg · 60ct · SKU 240302SK320</div><p class="pc-desc">Oral copper tripeptide for wound healing, collagen synthesis, antioxidant effects, and neuroprotection. 2mg per tablet, 60 count. Full 5-tier MOQ.</p><div class="pc-foot"><span class="tg">Collagen Synthesis</span><span class="tg">Neuroprotection</span><span class="tg">Anti-Aging</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">Dihexa</div><div class="pc-size">8mg · 30ct · SKU 240302SK316 &nbsp;|&nbsp; 10mg · 30ct · SKU 240302SK317 &nbsp;|&nbsp; 30mg · 30ct · SKU 240302SK318</div><p class="pc-desc">HGF/Met receptor agonist studied for cognitive enhancement, neurogenesis, and synaptic density improvement. Three strength options: 8mg, 10mg, 30mg — 30 count each. Full 5-tier MOQ.</p><div class="pc-foot"><span class="tg">Cognitive Enhancement</span><span class="tg">Neurogenesis</span><span class="tg">HGF Agonist</span><span class="b-ruo">Oral</span></div></div>
+
+        <div class="pc"><div class="pc-name">Dihexa (10mg) + Tesofensine (250mcg) + BPC-157 (125mcg)</div><div class="pc-size">10mg/250mcg/125mcg · 60ct · SKU 240302SK315</div><p class="pc-desc">Triple cognitive and healing stack: Dihexa neurogenesis, Tesofensine monoamine reuptake inhibition, and BPC-157 gut and tissue healing. 60 count, full 5-tier MOQ.</p><div class="pc-foot"><span class="tg">Cognitive + Healing</span><span class="tg">Triple Compound</span><span class="b-ruo">Oral</span></div></div>
+
+      </div>
+    </div></div>
+  </div>
+
+</div><!-- end products-view -->
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="ft-top">
+      <div><div class="ft-logo">Society <em>Peptides</em></div><div class="ft-tag">Advancing Research. Elevating Standards.</div></div>
+      <div class="ft-contacts">
+        <div class="ft-col"><div class="ft-lbl">Contact</div><a href="mailto:rd@humanity-capital.com">rd@humanity-capital.com</a></div>
+      </div>
+    </div>
+    <p class="ft-disc">All products are sold for Research Use Only (RUO) purposes and are not approved for human consumption or clinical use unless expressly noted. Regulatory status varies by jurisdiction. Researchers and procurement professionals should verify applicable regulations in their relevant markets prior to any commercial transaction. Descriptions summarize publicly available research literature and do not constitute medical advice, clinical recommendations, or regulatory guidance. Prices and availability subject to change without notice.</p>
+  </div>
+</footer>
+
+<script>
+// ── View toggle (Guide / Products) ──
+const nbG = document.getElementById('nb-guide');
+const nbP = document.getElementById('nb-products');
+const gv  = document.getElementById('guide-view');
+const pv  = document.getElementById('products-view');
+const tb  = document.getElementById('tab-bar');
+
+nbG.addEventListener('click', () => {
+  nbG.classList.add('on'); nbP.classList.remove('on');
+  gv.classList.add('on');  pv.classList.remove('on');
+  tb.classList.remove('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+nbP.addEventListener('click', () => {
+  nbP.classList.add('on'); nbG.classList.remove('on');
+  pv.classList.add('on');  gv.classList.remove('on');
+  tb.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+});
+
+// ── Category tabs ──
+document.querySelectorAll('.ct').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.ct').forEach(b => b.classList.remove('on'));
+    document.querySelectorAll('.cat-panel').forEach(p => p.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById('cat-' + btn.dataset.cat).classList.add('on');
+    window.scrollTo({top:0,behavior:'instant'});
+  });
+});
+
+// ── Scroll-triggered fade-in (guide view only) ──
+const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('vis'); }), {threshold:.08});
+document.querySelectorAll('.fu').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
