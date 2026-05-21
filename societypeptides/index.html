@@ -27,9 +27,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:
 .nav-ruo{font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--bi);color:var(--bm);border:1px solid var(--bp);padding:0.28rem 0.75rem;border-radius:20px}
 
 /* ── PRODUCT TAB BAR ── */
-#tab-bar{position:fixed;top:var(--nav-h);left:0;right:0;z-index:190;height:var(--tab-h);background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);display:none;overflow-x:auto;scrollbar-width:none}
+#tab-bar{position:sticky;top:var(--nav-h);z-index:190;height:var(--tab-h);background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none;display:flex}
 #tab-bar::-webkit-scrollbar{display:none}
-#tab-bar.on{display:flex}
 .tab-inner{display:flex;min-width:max-content;padding:0 1.5rem}
 .ct{display:flex;align-items:center;gap:0.4rem;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--il);padding:0 1rem;border:none;background:transparent;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;height:var(--tab-h)}
 .ct svg{width:13px;height:13px;flex-shrink:0}
@@ -42,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:
 
 /* ── GUIDE PADDING ── */
 #guide-view{padding-top:var(--nav-h)}
-#products-view{padding-top:calc(var(--nav-h) + var(--tab-h))}
+#products-view{padding-top:var(--nav-h)}
 
 /* ── HERO ── */
 .hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 4rem;background:var(--bf);position:relative;overflow:hidden}
@@ -203,140 +202,14 @@ footer{background:var(--bd);padding:4.5rem 3rem 3rem}
   <span class="nav-ruo">RUO · Research Use Only</span>
 </nav>
 
-<!-- ── PRODUCT TAB BAR ── -->
-<div id="tab-bar" class="on">
-  <div class="tab-inner">
-
-    <button class="ct on" data-cat="healing">
-      <!-- cross -->
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
-      Healing
-    </button>
-
-    <button class="ct" data-cat="metabolic">
-      <!-- bolt -->
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="10,1 5,8 11,8 6,15"/></svg>
-      Metabolic
-    </button>
-
-    <button class="ct" data-cat="gh">
-      <!-- trending up -->
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,12 5,8 9,10 15,3"/><polyline points="11,3 15,3 15,7"/></svg>
-      GH Axis
-    </button>
-
-    <button class="ct" data-cat="longevity">
-      <!-- infinity -->
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8,8 C9,5.5 13.5,5.5 13.5,8 C13.5,10.5 9,10.5 8,8 C7,5.5 2.5,5.5 2.5,8 C2.5,10.5 7,10.5 8,8"/></svg>
-      Longevity
-    </button>
-
-    <button class="ct" data-cat="immune">
-      <!-- shield -->
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8,1.5 L14,4.5 L14,9.5 C14,12.5 8,14.5 8,14.5 C8,14.5 2,12.5 2,9.5 L2,4.5 Z"/></svg>
-      Immune
-    </button>
-
-    <button class="ct" data-cat="haircare">
-      <!-- droplet -->
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8,2 C8,2 2,7 2,11 A6,6 0 0 0 14,11 C14,7 8,2 8,2 Z"/></svg>
-      Haircare
-    </button>
-
-    <button class="ct" data-cat="skincare">
-      <!-- 4-point star -->
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="8,1 10,6 15,8 10,10 8,15 6,10 1,8 6,6"/></svg>
-      Skincare
-    </button>
-
-    <button class="ct" data-cat="orals">
-      <!-- capsule -->
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="12" height="4" rx="2"/><line x1="8" y1="6" x2="8" y2="10" stroke-linecap="round"/></svg>
-      Orals
-    </button>
-
-  </div>
-</div>
 
 <!-- ════════════════════════════════════════
      GUIDE VIEW
 ════════════════════════════════════════ -->
 <div id="guide-view" class="view">
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="h-blob1"></div><div class="h-blob2"></div><div class="h-dots"></div>
-    <div class="h-eye"><span class="h-dot"></span>Society Peptides · 2026</div>
-    <h1 class="h-title">A New Era of<br><em>Precision Biology</em></h1>
-    <p class="h-sub">The Comprehensive Reference Guide to Modern Peptide Science</p>
-    <div class="h-chips">
-      <span class="chip">Origins</span>
-      <span class="chip">Key Benefits</span>
-      <span class="chip">Legal Landscape</span>
-      <span class="chip">Product Compendium</span>
-    </div>
-
-    <!-- Stats with custom SVG illustrations -->
-    <div class="h-stats">
-      <div class="hs">
-        <div class="hs-ico">
-          <!-- atom -->
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="16" cy="16" r="2.5" fill="currentColor" stroke="none" opacity=".6"/>
-            <ellipse cx="16" cy="16" rx="13" ry="5"/>
-            <ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(60 16 16)"/>
-            <ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(120 16 16)"/>
-          </svg>
-        </div>
-        <div class="hs-num"><em>1953</em></div>
-        <div class="hs-lbl">First Synthetic Peptide</div>
-      </div>
-      <div class="hs">
-        <div class="hs-ico">
-          <!-- nodes -->
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <circle cx="16" cy="16" r="2.5"/>
-            <circle cx="6" cy="9" r="2"/><circle cx="26" cy="9" r="2"/>
-            <circle cx="6" cy="23" r="2"/><circle cx="26" cy="23" r="2"/>
-            <line x1="8" y1="10.5" x2="14" y2="14.5"/><line x1="24" y1="10.5" x2="18" y2="14.5"/>
-            <line x1="8" y1="21.5" x2="14" y2="17.5"/><line x1="24" y1="21.5" x2="18" y2="17.5"/>
-          </svg>
-        </div>
-        <div class="hs-num"><em>100+</em></div>
-        <div class="hs-lbl">Approved or In Trials</div>
-      </div>
-      <div class="hs">
-        <div class="hs-ico">
-          <!-- hexcluster -->
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="16,5 22,8.5 22,15.5 16,19 10,15.5 10,8.5"/>
-            <circle cx="16" cy="25" r="2" fill="currentColor" stroke="none" opacity=".4"/>
-            <circle cx="5" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".3"/>
-            <circle cx="27" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".3"/>
-          </svg>
-        </div>
-        <div class="hs-num"><em>9</em></div>
-        <div class="hs-lbl">Product Categories</div>
-      </div>
-      <div class="hs">
-        <div class="hs-ico">
-          <!-- trend up -->
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="3,25 9,17 15,20 27,7"/>
-            <polyline points="23,7 27,7 27,11"/>
-            <line x1="3" y1="29" x2="29" y2="29" stroke-width="1" opacity=".25"/>
-          </svg>
-        </div>
-        <div class="hs-num"><em>24%</em></div>
-        <div class="hs-lbl">Peak Weight Reduction (Retatrutide)</div>
-      </div>
-    </div>
-
-    <div class="h-scroll"><div class="h-sline"></div>Explore</div>
-  </header>
-
   <!-- SCIENCE -->
-  <section id="science" style="background:var(--wh)">
+  <section id="science" style="background:var(--wh);padding-top:calc(var(--nav-h) + 5.5rem)">
     <div class="con">
       <div class="about-grid">
         <div>
@@ -502,6 +375,53 @@ footer{background:var(--bd);padding:4.5rem 3rem 3rem}
      PRODUCTS VIEW
 ════════════════════════════════════════ -->
 <div id="products-view" class="view on">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="h-blob1"></div><div class="h-blob2"></div><div class="h-dots"></div>
+    <div class="h-eye"><span class="h-dot"></span>Society Peptides · 2026</div>
+    <h1 class="h-title">A New Era of<br><em>Precision Biology</em></h1>
+    <p class="h-sub">The Comprehensive Reference Guide to Modern Peptide Science</p>
+    <div class="h-chips">
+      <span class="chip">Origins</span>
+      <span class="chip">Key Benefits</span>
+      <span class="chip">Legal Landscape</span>
+      <span class="chip">Product Compendium</span>
+    </div>
+    <div class="h-stats">
+      <div class="hs">
+        <div class="hs-ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="16" r="2.5" fill="currentColor" stroke="none" opacity=".6"/><ellipse cx="16" cy="16" rx="13" ry="5"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5" transform="rotate(120 16 16)"/></svg></div>
+        <div class="hs-num"><em>1953</em></div><div class="hs-lbl">First Synthetic Peptide</div>
+      </div>
+      <div class="hs">
+        <div class="hs-ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="16" r="2.5"/><circle cx="6" cy="9" r="2"/><circle cx="26" cy="9" r="2"/><circle cx="6" cy="23" r="2"/><circle cx="26" cy="23" r="2"/><line x1="8" y1="10.5" x2="14" y2="14.5"/><line x1="24" y1="10.5" x2="18" y2="14.5"/><line x1="8" y1="21.5" x2="14" y2="17.5"/><line x1="24" y1="21.5" x2="18" y2="17.5"/></svg></div>
+        <div class="hs-num"><em>100+</em></div><div class="hs-lbl">Approved or In Trials</div>
+      </div>
+      <div class="hs">
+        <div class="hs-ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="16,5 22,8.5 22,15.5 16,19 10,15.5 10,8.5"/><circle cx="16" cy="25" r="2" fill="currentColor" stroke="none" opacity=".4"/><circle cx="5" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".3"/><circle cx="27" cy="22" r="1.5" fill="currentColor" stroke="none" opacity=".3"/></svg></div>
+        <div class="hs-num"><em>9</em></div><div class="hs-lbl">Product Categories</div>
+      </div>
+      <div class="hs">
+        <div class="hs-ico"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,25 9,17 15,20 27,7"/><polyline points="23,7 27,7 27,11"/><line x1="3" y1="29" x2="29" y2="29" stroke-width="1" opacity=".25"/></svg></div>
+        <div class="hs-num"><em>24%</em></div><div class="hs-lbl">Peak Weight Reduction (Retatrutide)</div>
+      </div>
+    </div>
+    <div class="h-scroll"><div class="h-sline"></div>Products</div>
+  </header>
+
+  <!-- STICKY PRODUCT TAB BAR -->
+  <div id="tab-bar">
+    <div class="tab-inner">
+      <button class="ct on" data-cat="healing"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>Healing</button>
+      <button class="ct" data-cat="metabolic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="10,1 5,8 11,8 6,15"/></svg>Metabolic</button>
+      <button class="ct" data-cat="gh"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,12 5,8 9,10 15,3"/><polyline points="11,3 15,3 15,7"/></svg>GH Axis</button>
+      <button class="ct" data-cat="longevity"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8,8 C9,5.5 13.5,5.5 13.5,8 C13.5,10.5 9,10.5 8,8 C7,5.5 2.5,5.5 2.5,8 C2.5,10.5 7,10.5 8,8"/></svg>Longevity</button>
+      <button class="ct" data-cat="immune"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8,1.5 L14,4.5 L14,9.5 C14,12.5 8,14.5 8,14.5 C8,14.5 2,12.5 2,9.5 L2,4.5 Z"/></svg>Immune</button>
+      <button class="ct" data-cat="haircare"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8,2 C8,2 2,7 2,11 A6,6 0 0 0 14,11 C14,7 8,2 8,2 Z"/></svg>Haircare</button>
+      <button class="ct" data-cat="skincare"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="8,1 10,6 15,8 10,10 8,15 6,10 1,8 6,6"/></svg>Skincare</button>
+      <button class="ct" data-cat="orals"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="12" height="4" rx="2"/><line x1="8" y1="6" x2="8" y2="10" stroke-linecap="round"/></svg>Orals</button>
+    </div>
+  </div>
 
   <!-- ── HEALING ── -->
   <div class="cat-panel on" id="cat-healing">
@@ -937,19 +857,16 @@ const nbG = document.getElementById('nb-guide');
 const nbP = document.getElementById('nb-products');
 const gv  = document.getElementById('guide-view');
 const pv  = document.getElementById('products-view');
-const tb  = document.getElementById('tab-bar');
 
 nbG.addEventListener('click', () => {
   nbG.classList.add('on'); nbP.classList.remove('on');
   gv.classList.add('on');  pv.classList.remove('on');
-  tb.classList.remove('on');
   window.scrollTo({top:0,behavior:'smooth'});
 });
 
 nbP.addEventListener('click', () => {
   nbP.classList.add('on'); nbG.classList.remove('on');
   pv.classList.add('on');  gv.classList.remove('on');
-  tb.classList.add('on');
   window.scrollTo({top:0,behavior:'instant'});
 });
 
