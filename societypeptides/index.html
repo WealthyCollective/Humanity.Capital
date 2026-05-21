@@ -27,9 +27,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:
 .nav-ruo{font-size:0.55rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;background:var(--bi);color:var(--bm);border:1px solid var(--bp);padding:0.25rem 0.65rem;border-radius:20px}
 
 /* ── PRODUCT TAB BAR ── */
-#tab-bar{position:sticky;top:var(--nav-h);z-index:190;height:var(--tab-h);background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none;display:flex}
+#tab-bar{position:sticky;top:var(--nav-h);z-index:190;height:var(--tab-h);background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none;display:flex;justify-content:center}
 #tab-bar::-webkit-scrollbar{display:none}
-.tab-inner{display:flex;min-width:max-content;padding:0 1.5rem}
+.tab-inner{display:flex;padding:0 1.5rem}
 .ct{display:flex;align-items:center;gap:0.35rem;font-size:0.6rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--il);padding:0 1rem;border:none;background:transparent;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;height:var(--tab-h)}
 .ct svg{width:13px;height:13px;flex-shrink:0}
 .ct:hover{color:var(--bm)}
@@ -44,21 +44,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:
 #products-view{padding-top:var(--nav-h)}
 
 /* ── HERO ── */
-.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 4rem;background:var(--bf);position:relative;overflow:hidden}
+.hero{min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3.5rem 2rem 3rem;background:var(--bf);position:relative;overflow:hidden}
 .h-blob1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(74,144,232,.12),transparent 70%);top:-180px;right:-180px;pointer-events:none}
 .h-blob2{position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(15,163,177,.09),transparent 70%);bottom:-80px;left:-80px;pointer-events:none}
 .h-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(45,98,196,.1) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 80%)}
-.h-eye{display:inline-flex;align-items:center;gap:0.55rem;font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--bm);background:var(--wh);border:1.5px solid var(--bp);padding:0.35rem 0.9rem;border-radius:20px;margin-bottom:1.5rem;position:relative;box-shadow:0 2px 12px rgba(45,98,196,.08)}
+.h-eye{display:inline-flex;align-items:center;gap:0.55rem;font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--bm);background:var(--wh);border:1.5px solid var(--bp);padding:0.28rem 0.8rem;border-radius:20px;margin-bottom:1.25rem;position:relative;box-shadow:0 2px 12px rgba(45,98,196,.08)}
 .h-dot{width:6px;height:6px;border-radius:50%;background:var(--bb);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
-.h-title{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:400;line-height:1.05;color:var(--bd);margin-bottom:.5rem;position:relative}
+.h-title{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,4.5vw,3.8rem);font-weight:400;line-height:1.05;color:var(--bd);margin-bottom:.5rem;position:relative}
 .h-title em{font-style:italic;color:var(--bb)}
-.h-sub{font-size:.82rem;font-weight:300;color:var(--ink);margin-bottom:2rem}
-.h-chips{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;position:relative}
+.h-sub{font-size:.78rem;font-weight:300;color:var(--ink);margin-bottom:1.5rem}
+.h-chips{display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem;position:relative}
 .chip{font-size:.6rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .75rem;border-radius:20px;background:var(--wh);color:var(--ink);border:1px solid var(--rule)}
-.h-stats{display:flex;gap:2.5rem;justify-content:center;position:relative;flex-wrap:wrap}
+.h-stats{display:flex;gap:2rem;justify-content:center;position:relative;flex-wrap:wrap}
 .hs{text-align:center}
-.hs-num{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--bd);line-height:1}
+.hs-num{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--bd);line-height:1}
 .hs-num em{color:var(--bb);font-style:normal}
 .hs-lbl{font-size:.57rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-top:.2rem;max-width:12ch}
 /* stat icons */
@@ -246,7 +246,8 @@ footer{background:var(--bd);padding:4.5rem 3rem 3rem}
   .h-scroll{display:none}
 
   /* TAB BAR */
-  #tab-bar{height:var(--tab-h)}
+  #tab-bar{height:var(--tab-h);justify-content:flex-start;-webkit-overflow-scrolling:touch}
+  .tab-inner{min-width:max-content;padding:0 1rem}
   .tab-inner{padding:0 .75rem}
   .ct{font-size:.57rem;padding:0 .65rem;gap:.25rem;letter-spacing:.06em}
   .ct svg{width:11px;height:11px}
@@ -980,7 +981,7 @@ footer{background:var(--bd);padding:4.5rem 3rem 3rem}
     <div class="ft-top">
       <div><div class="ft-logo">Society <em>Peptides</em></div><div class="ft-tag">Advancing Research. Elevating Standards.</div></div>
       <div class="ft-contacts">
-        <div class="ft-col"><div class="ft-lbl">Contact</div><a href="mailto:info@societypeptides.com">info@societypeptides.com</a></div>
+        <div class="ft-col"><div class="ft-lbl">Contact</div><a href="mailto:Info@societypeptides.com">Info@societypeptides.com</a></div>
       </div>
     </div>
     <p class="ft-disc">All products are sold for Research Use Only (RUO) purposes and are not approved for human consumption or clinical use unless expressly noted. Regulatory status varies by jurisdiction. Researchers and procurement professionals should verify applicable regulations in their relevant markets prior to any commercial transaction. Descriptions summarize publicly available research literature and do not constitute medical advice, clinical recommendations, or regulatory guidance. Prices and availability subject to change without notice.</p>
