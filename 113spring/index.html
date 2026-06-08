@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>113 Spring × 113S.vc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +42,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,243,237,
 .hero-glow{position:absolute;bottom:0;right:0;width:600px;height:600px;background:radial-gradient(ellipse at bottom right,rgba(184,76,39,0.09) 0%,transparent 65%);pointer-events:none}
 .hero-top{padding:20px 80px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
 .hero-eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);font-weight:400}
-.hero-mid{display:flex;align-items:center;padding:0 80px;position:relative;z-index:1}
+.hero-mid{display:flex;align-items:flex-end;padding:0 80px 0;position:relative;z-index:1}
 .hero-hl{font-family:'Playfair Display',serif;font-size:clamp(100px,16vw,220px);font-weight:400;color:var(--text);line-height:0.86;letter-spacing:-0.02em}
 .hero-hl em{font-style:italic;color:var(--rust)}
 .hero-bottom{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:end;padding:32px 80px 56px;position:relative;z-index:1;border-top:0.5px solid var(--border)}
@@ -241,22 +241,132 @@ footer{background:var(--text);color:rgba(255,255,255,0.35);padding:32px 80px;dis
 .fa{opacity:0;transition:opacity 0.6s ease,transform 0.6s ease;transform:translateY(16px)}
 .fa.vis{opacity:1;transform:translateY(0)}
 
-/* RESPONSIVE */
-@media(max-width:860px){
-  section,#activations,#proof,#ecosystem,#nextsteps{padding:60px 24px}
-  nav{padding:0 20px}
+/* ── RESPONSIVE ── */
+
+/* Tablet: 768px */
+@media(max-width:900px){
+  nav{padding:0 28px}
   .nav-links{display:none}
-  #hero{padding:72px 24px 48px}
-  .hero-inner{grid-template-columns:1fr;gap:32px}
-  .hero-right{align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:20px}
-  .hstat-num,.hstat-label{text-align:left}
-  .act-hero,.proof-grid,.mkt-nums,.chanel-grid,.space-card.span2,.team-grid,.act-grid-bottom,.dlv-grid,.prog-grid,.space-grid,.eco-nodes,.proof-strip{grid-template-columns:1fr}
-  .team-card.full{grid-column:span 1}
-  .eng-row{flex-direction:column}
-  .eng-arr{display:none}
+  .nav-logo{font-size:10px}
+
+  /* Hero */
+  #hero{height:auto;min-height:100svh;grid-template-rows:auto 1fr auto}
+  .hero-top{padding:16px 28px}
+  .hero-mid{padding:0 28px}
+  .hero-hl{font-size:clamp(72px,14vw,140px)}
+  .hero-bottom{padding:24px 28px 40px;gap:32px;grid-template-columns:1fr 1fr}
+  .hero-right{flex-direction:row;flex-wrap:wrap;align-items:flex-start;gap:16px;justify-content:flex-end}
+  .hstat-num{font-size:24px;text-align:right}
+  .hstat-label{text-align:right;font-size:9px}
+
+  /* Sections */
+  section{padding:64px 28px}
+  #activations,#proof,#ecosystem,#nextsteps{padding:64px 28px}
+
+  /* Grids → 2 col */
+  .act-grid-bottom,.prog-grid,.dlv-grid,.proof-strip,.mkt-nums{grid-template-columns:1fr 1fr}
+  .act-hero{grid-template-columns:1fr;gap:28px}
+  .proof-grid{grid-template-columns:1fr}
+  .chanel-grid{grid-template-columns:1fr 1fr}
+  .space-grid{grid-template-columns:1fr 1fr}
+  .space-card.span2{grid-column:span 2;grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .team-card.full{grid-column:span 2}
   .why-top,.why-bot{grid-template-columns:1fr 1fr}
-  footer{flex-direction:column;text-align:center}
+  .eco-nodes{flex-wrap:wrap;gap:8px}
+  .eco-arr{display:none}
+
+  /* Engine row */
+  .eng-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .eng-arr{display:none}
+
+  /* Footer */
+  footer{padding:28px;gap:8px}
 }
+
+/* Mobile: 480px */
+@media(max-width:540px){
+  nav{padding:0 20px;height:52px}
+  .nav-logo{font-size:9px;letter-spacing:0.14em}
+  .nav-cta{padding:7px 14px;font-size:9px}
+
+  /* Hero - stack vertically */
+  #hero{height:auto;min-height:100svh;grid-template-rows:auto auto auto}
+  .hero-top{padding:14px 20px;flex-direction:column;align-items:flex-start;gap:4px}
+  .hero-top .hero-eyebrow:last-child{display:none}
+  .hero-mid{padding:20px 20px 0}
+  .hero-hl{font-size:clamp(60px,18vw,100px);line-height:0.88}
+  .hero-bottom{grid-template-columns:1fr;gap:20px;padding:20px 20px 36px;border-top:0.5px solid var(--border)}
+  .hero-right{flex-direction:row;flex-wrap:wrap;align-items:flex-start;justify-content:flex-start;gap:16px}
+  .hstat-num{font-size:22px;text-align:left}
+  .hstat-label{text-align:left}
+  .hero-sub{font-size:13px;max-width:100%}
+  .hero-btns{flex-direction:column;gap:10px}
+  .btn-rust,.btn-out{text-align:center;padding:12px 24px}
+
+  /* Sections */
+  section{padding:48px 20px}
+  #activations,#proof,#ecosystem,#nextsteps{padding:48px 20px}
+  .st{font-size:clamp(24px,7vw,36px)}
+  .si{font-size:14px;margin-bottom:32px}
+  .sl{font-size:9px}
+
+  /* All grids → 1 col */
+  .act-grid-bottom,.prog-grid,.dlv-grid,.proof-strip,.mkt-nums,
+  .chanel-grid,.space-grid,.team-grid,.proof-grid,.act-hero{grid-template-columns:1fr}
+  .space-card.span2{grid-column:span 1;grid-template-columns:1fr}
+  .team-card.full{grid-column:span 1}
+  .why-top,.why-bot{grid-template-columns:1fr 1fr}
+  .why-top-item,.why-bot-item{padding:16px 14px}
+  .why-num{font-size:20px}
+  .why-ttl{font-size:10px}
+
+  /* Engine */
+  .eng-row{display:flex;flex-direction:column;gap:8px}
+  .eng-arr{display:none}
+
+  /* Market table */
+  .mkt-table thead{display:none}
+  .mkt-table td{display:block;padding:4px 0;font-size:12px}
+  .mkt-table td:not(:first-child){text-align:left}
+  .mkt-table td.fc::before{content:'→ ';color:var(--rust)}
+  .mkt-table tr{display:block;padding:12px 0;border-bottom:0.5px solid rgba(184,76,39,0.08)}
+
+  /* Partnership models */
+  .ptner-grid{grid-template-columns:1fr}
+
+  /* Eco nodes */
+  .eco-nodes{flex-direction:column;align-items:center}
+  .eco-arr{display:none}
+
+  /* Team */
+  .team-card{flex-direction:column}
+  .team-av{margin-bottom:4px}
+
+  /* Next steps */
+  .ns-item{gap:12px}
+  .ns-circ{width:28px;height:28px;font-size:10px;flex-shrink:0}
+
+  /* Proof */
+  .proof-card{padding:18px}
+  .proof-stat{font-size:36px}
+
+  /* Footer */
+  footer{flex-direction:column;text-align:center;padding:24px 20px;gap:8px}
+
+  /* Spec row — hide on very small screens */
+  .spec-row{margin-top:32px}
+  .snl{font-size:9px}
+}
+/* MOBILE MENU */
+.mob-menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.mob-menu-btn span{display:block;width:22px;height:1.5px;background:var(--text);transition:all 0.2s}
+.mob-menu{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:var(--cream);z-index:99;flex-direction:column;padding:32px 28px;gap:0;overflow-y:auto}
+.mob-menu a{font-size:14px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:18px 0;border-bottom:0.5px solid var(--border);font-weight:400;display:block}
+.mob-menu a:hover{color:var(--rust)}
+.mob-menu .mob-cta{background:var(--rust);color:white;text-align:center;padding:16px;border-radius:2px;margin-top:24px;border:none}
+.mob-menu.open{display:flex}
+@media(max-width:900px){.mob-menu-btn{display:flex}}
 </style>
 </head>
 <body>
@@ -272,8 +382,23 @@ footer{background:var(--text);color:rgba(255,255,255,0.35);padding:32px 80px;dis
     <li><a href="#team">Team</a></li>
     <li><a href="#market">The Market</a></li>
   </ul>
-  <a href="#nextsteps" class="nav-cta">Get in touch</a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="#nextsteps" class="nav-cta">Get in touch</a>
+    <button class="mob-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+<!-- Mobile menu -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#activations" onclick="closeMenu()">Activations</a>
+  <a href="#engine" onclick="closeMenu()">The Engine</a>
+  <a href="#programming" onclick="closeMenu()">Programming</a>
+  <a href="#partnership" onclick="closeMenu()">Partnership</a>
+  <a href="#team" onclick="closeMenu()">Team</a>
+  <a href="#market" onclick="closeMenu()">The Market</a>
+  <a href="#nextsteps" onclick="closeMenu()" class="mob-cta">Get in touch</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -669,6 +794,14 @@ footer{background:var(--text);color:rgba(255,255,255,0.35);padding:32px 80px;dis
 </footer>
 
 <script>
+// Mobile menu
+function toggleMenu(){
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobMenu').classList.remove('open');
+}
+
 // Hero elements visible immediately on load with stagger
 const heroEls = document.querySelectorAll('#hero .fa');
 heroEls.forEach((el, i) => {
@@ -688,6 +821,8 @@ window.addEventListener('scroll', () => {
   let cur = '';
   secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
   links.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+  // Close menu on scroll
+  closeMenu();
 });
 </script>
 </body>
