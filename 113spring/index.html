@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>113 Spring × 113S.vc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#F7F3ED;
+  --cream2:#EFE9DF;
+  --cream3:#E8DFD2;
+  --rust:#B84C27;
+  --rust-dk:#8A3218;
+  --rust-lt:#C96A47;
+  --rust-pale:#F2E4DB;
+  --text:#1C1410;
+  --mid:#6B5044;
+  --faint:#B89880;
+  --border:rgba(184,76,39,0.12);
+  --card:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-weight:300;background:var(--cream);color:var(--text);font-size:15px;line-height:1.65;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,243,237,0.96);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:56px;border-bottom:0.5px solid var(--border)}
+.nav-logo{font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.22em;color:var(--text);text-transform:uppercase}
+.nav-logo span{color:var(--rust);margin:0 5px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;font-weight:400}
+.nav-links a:hover,.nav-links a.active{color:var(--rust)}
+.nav-cta{background:var(--rust);color:white;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;padding:9px 22px;border:none;cursor:pointer;border-radius:2px;text-decoration:none;font-family:'Outfit',sans-serif;font-weight:400;transition:background 0.2s}
+.nav-cta:hover{background:var(--rust-dk)}
+
+/* HERO */
+#hero{height:100vh;display:grid;grid-template-rows:auto 1fr auto;padding:0;position:relative;overflow:hidden;background:var(--cream2)}
+.hero-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:72px 72px;pointer-events:none;opacity:0.35}
+.hero-glow{position:absolute;bottom:0;right:0;width:600px;height:600px;background:radial-gradient(ellipse at bottom right,rgba(184,76,39,0.09) 0%,transparent 65%);pointer-events:none}
+.hero-top{padding:20px 80px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.hero-eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);font-weight:400}
+.hero-mid{display:flex;align-items:center;padding:0 80px;position:relative;z-index:1}
+.hero-hl{font-family:'Playfair Display',serif;font-size:clamp(100px,16vw,220px);font-weight:400;color:var(--text);line-height:0.86;letter-spacing:-0.02em}
+.hero-hl em{font-style:italic;color:var(--rust)}
+.hero-bottom{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:end;padding:32px 80px 56px;position:relative;z-index:1;border-top:0.5px solid var(--border)}
+.hero-rule{width:48px;height:1px;background:var(--rust);margin-bottom:20px}
+.hero-sub{font-size:15px;color:var(--mid);max-width:480px;line-height:1.75;margin-bottom:28px;font-weight:300}
+.hero-btns{display:flex;gap:14px}
+.btn-rust{background:var(--rust);color:white;padding:13px 34px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;border-radius:2px;text-decoration:none;transition:background 0.2s;display:inline-block;font-family:'Outfit',sans-serif;font-weight:400}
+.btn-rust:hover{background:var(--rust-dk)}
+.btn-out{border:0.5px solid var(--rust);color:var(--rust);padding:13px 34px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;border-radius:2px;text-decoration:none;transition:all 0.2s;display:inline-block;font-family:'Outfit',sans-serif;font-weight:400}
+.btn-out:hover{background:var(--rust);color:white}
+.hero-right{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;gap:20px;padding-bottom:4px}
+.hstat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:var(--rust);line-height:1;text-align:right}
+.hstat-label{font-size:10px;color:var(--faint);letter-spacing:0.07em;text-align:right;margin-top:2px;font-weight:300}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:end;flex:1}
+
+/* SECTIONS */
+section{padding:92px 80px}
+.sl{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);margin-bottom:14px;display:flex;align-items:center;gap:10px;font-weight:400}
+.sl::before{content:'';width:6px;height:6px;background:var(--rust);flex-shrink:0;border-radius:50%}
+.st{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,46px);font-weight:400;color:var(--text);line-height:1.1;margin-bottom:18px}
+.st em{font-style:italic;color:var(--rust)}
+.si{font-size:15px;color:var(--mid);max-width:640px;margin-bottom:48px;line-height:1.8;font-weight:300}
+
+/* CARDS */
+.card{background:var(--card);border:0.5px solid var(--border);border-radius:4px;padding:26px}
+.pale-card{background:var(--rust-pale);border-radius:4px;padding:26px}
+.rust-card{background:var(--rust);border-radius:4px;padding:26px;color:white}
+.card-title{font-size:12px;font-weight:500;color:var(--text);margin-bottom:7px;letter-spacing:0.04em}
+.card-body{font-size:12px;color:var(--mid);line-height:1.7;font-weight:300}
+.rust-card .card-title{color:white}
+.rust-card .card-body{color:rgba(255,255,255,0.75)}
+
+/* ACTIVATIONS */
+#activations{background:var(--cream);padding:92px 80px}
+.act-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start;margin-bottom:36px}
+.act-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.act-tile{border-radius:6px;padding:20px;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.act-tile.t-red{background:linear-gradient(135deg,var(--rust-dk) 0%,var(--rust) 60%,#E8956A 100%);grid-column:span 2;min-height:180px}
+.act-tile.t-warm{background:var(--cream2);border:0.5px solid var(--border)}
+.act-tile.t-pale{background:var(--rust-pale);border:0.5px solid rgba(184,76,39,0.1)}
+.act-tile-title{font-size:13px;font-weight:500;color:white;margin-bottom:2px;letter-spacing:0.02em}
+.act-tile.t-warm .act-tile-title,.act-tile.t-pale .act-tile-title{color:var(--text)}
+.act-tile-sub{font-size:10px;color:rgba(255,255,255,0.8);letter-spacing:0.04em;font-weight:300}
+.act-tile.t-warm .act-tile-sub,.act-tile.t-pale .act-tile-sub{color:var(--mid)}
+.bio-num{font-family:'Playfair Display',serif;font-size:40px;font-weight:400;color:var(--rust);line-height:1;margin-bottom:2px}
+.bio-label{font-size:9px;color:var(--faint);margin-bottom:8px;letter-spacing:0.06em;text-transform:uppercase;font-weight:400}
+.bio-bars{display:flex;gap:3px;align-items:flex-end;height:16px}
+.bbar{width:4px;border-radius:1px;background:var(--rust)}
+.act-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
+.atag{background:var(--rust-pale);border-radius:2px;padding:5px 12px;font-size:11px;color:var(--rust);font-weight:400;letter-spacing:0.04em}
+.act-grid-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+/* ENGINE */
+#engine{background:var(--cream2)}
+.eng-row{display:flex;gap:6px;align-items:stretch;margin-bottom:28px}
+.eng-step{flex:1;background:var(--card);border:0.5px solid var(--border);border-radius:4px;padding:22px 18px}
+.eng-num{width:28px;height:28px;border-radius:50%;background:var(--rust);color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;margin-bottom:12px;flex-shrink:0}
+.eng-arr{color:var(--rust);font-size:18px;align-self:center;flex-shrink:0}
+.eng-t{font-size:11px;font-weight:500;color:var(--rust);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.06em}
+.eng-b{font-size:11px;color:var(--mid);line-height:1.6;font-weight:300}
+.dlv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+.dlv-stat{background:var(--rust-pale);border-radius:4px;padding:22px 18px}
+.dlv-num{font-family:'Playfair Display',serif;font-size:40px;font-weight:400;color:var(--rust);line-height:1;margin-bottom:5px}
+.dlv-lbl{font-size:11px;color:var(--mid);font-weight:300}
+
+/* PROGRAMMING */
+#programming{background:var(--cream)}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.prog-card{background:var(--card);border:0.5px solid var(--border);border-radius:4px;padding:22px}
+.prog-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--faint);margin-bottom:10px}
+.prog-t{font-size:11px;font-weight:500;color:var(--text);margin-bottom:7px;letter-spacing:0.06em;text-transform:uppercase}
+.prog-b{font-size:12px;color:var(--mid);line-height:1.7;font-weight:300}
+
+/* SPACE */
+#space{background:var(--cream2)}
+.space-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.space-card{background:var(--card);border:0.5px solid var(--border);border-radius:4px;padding:26px}
+.space-card.span2{grid-column:span 2;display:grid;grid-template-columns:1.1fr 1fr;gap:28px}
+.space-t{font-size:13px;font-weight:500;color:var(--text);margin-bottom:8px;letter-spacing:0.02em}
+.space-b{font-size:12px;color:var(--mid);line-height:1.7;font-weight:300}
+.space-badge{display:inline-block;background:var(--rust-pale);color:var(--rust);font-size:10px;padding:3px 9px;border-radius:2px;margin-bottom:10px;letter-spacing:0.06em;font-weight:400}
+
+/* PARTNERSHIP */
+#partnership{background:var(--cream)}
+.chanel-hero{background:var(--rust-pale);border-radius:6px;padding:36px;margin-bottom:28px}
+.chanel-eyebrow{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);margin-bottom:14px;font-weight:500}
+.chanel-title{font-family:'Playfair Display',serif;font-size:clamp(22px,2.8vw,34px);font-weight:400;font-style:italic;color:var(--text);line-height:1.3;margin-bottom:20px}
+.chanel-intro{font-size:14px;color:var(--mid);max-width:680px;line-height:1.8;margin-bottom:28px;font-weight:300}
+.chanel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ch-item{background:var(--card);border-radius:4px;padding:20px}
+.ch-lbl{font-size:10px;font-weight:500;color:var(--rust);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:7px}
+.ch-val{font-size:12px;color:var(--mid);line-height:1.7;font-weight:300}
+.engine-callout{background:var(--rust);border-radius:4px;padding:20px 24px;color:white;font-size:13px;line-height:1.7;margin-top:20px;font-weight:300}
+.engine-callout strong{font-weight:500}
+
+/* TEAM */
+#team{background:var(--cream2)}
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.team-card{background:var(--card);border:0.5px solid var(--border);border-radius:4px;padding:24px;display:flex;gap:16px}
+.team-card.full{grid-column:span 2}
+.team-av{width:58px;height:58px;border-radius:50%;background:var(--rust-pale);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:16px;font-weight:500;color:var(--rust);flex-shrink:0;overflow:hidden}
+.team-av.gp{background:var(--rust);color:white}
+.team-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.team-av{cursor:pointer;text-decoration:none}
+.li-link{display:inline-block;margin-top:10px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);text-decoration:none;font-weight:500;border-bottom:0.5px solid var(--rust);padding-bottom:1px}
+.li-link:hover{opacity:0.7}
+.team-role{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);margin-bottom:3px;font-weight:500}
+.team-name{font-size:15px;font-weight:500;color:var(--text);margin-bottom:6px}
+.team-bio{font-size:12px;color:var(--mid);line-height:1.7;font-weight:300}
+.team-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.ttag{background:var(--cream);border:0.5px solid var(--border);font-size:10px;color:var(--rust);padding:3px 9px;border-radius:2px;font-weight:400}
+
+/* ECOSYSTEM */
+#ecosystem{background:var(--rust-pale);padding:72px 80px;text-align:center}
+.eco-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,38px);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:18px}
+.eco-title em{font-style:italic;color:var(--rust)}
+.eco-body{font-size:14px;color:var(--mid);max-width:680px;margin:0 auto 36px;line-height:1.8;font-weight:300}
+.eco-nodes{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;align-items:center}
+.eco-node{background:var(--card);border:0.5px solid var(--border);border-radius:4px;padding:14px 18px;text-align:center}
+.eco-nname{font-size:12px;font-weight:500;color:var(--text);margin-bottom:2px}
+.eco-nsub{font-size:10px;color:var(--mid);font-weight:300}
+.eco-arr{color:var(--rust);font-size:16px}
+
+/* MARKET */
+#market{background:var(--cream)}
+.mkt-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.mkt-big{border-radius:4px;padding:28px 24px}
+.mkt-big.r1{background:var(--rust)}
+.mkt-big.r2{background:var(--rust-dk)}
+.mkt-big.r3{background:#C05A32}
+.mkt-big .num{font-family:'Playfair Display',serif;font-size:50px;font-weight:400;color:white;line-height:1;margin-bottom:6px}
+.mkt-big .cap{font-size:12px;color:rgba(255,255,255,0.72);line-height:1.5;font-weight:300}
+.mkt-table{width:100%;border-collapse:collapse;margin-bottom:24px}
+.mkt-table th{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);border-bottom:0.5px solid var(--border);padding:11px 0;text-align:left;font-weight:500}
+.mkt-table th:not(:first-child){text-align:right}
+.mkt-table td{padding:15px 0;border-bottom:0.5px solid rgba(184,76,39,0.06);font-size:13px;color:var(--mid);font-weight:300}
+.mkt-table td:not(:first-child){text-align:right}
+.mkt-table td.fc{font-weight:500;color:var(--rust)}
+.mkt-callout{background:var(--rust-pale);border-radius:4px;padding:16px 22px;color:var(--rust);font-size:12px;letter-spacing:0.05em;text-align:center;text-transform:uppercase;line-height:1.7;font-weight:400}
+
+/* PROOF */
+#proof{background:var(--cream2);padding:92px 80px}
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.proof-card{background:var(--card);border:0.5px solid var(--border);border-radius:4px;padding:26px}
+.proof-ey{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--rust);margin-bottom:14px;font-weight:500}
+.proof-stat{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;color:var(--rust);line-height:1;margin-bottom:6px}
+.proof-desc{font-size:12px;color:var(--mid);line-height:1.7;font-weight:300}
+.proof-sub{display:flex;flex-direction:column;gap:10px}
+.proof-mini{background:var(--rust-pale);border-radius:4px;padding:14px 16px}
+.proof-mini-num{font-size:18px;font-weight:500;color:var(--rust);margin-bottom:2px}
+.proof-mini-desc{font-size:11px;color:var(--mid);line-height:1.6;font-weight:300}
+.proof-quote{background:var(--rust);border-radius:4px;padding:22px;color:white}
+.proof-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ps-item{background:var(--card);border:0.5px solid var(--border);border-radius:4px;padding:18px;text-align:center}
+.ps-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--rust);line-height:1;margin-bottom:4px}
+.ps-lbl{font-size:10px;color:var(--mid);font-weight:300}
+
+/* WHY NOW */
+#why{background:var(--cream)}
+.why-top{background:var(--text);display:grid;grid-template-columns:repeat(4,1fr);border-radius:4px 4px 0 0;overflow:hidden}
+.why-top-item{padding:26px 22px;border-right:0.5px solid rgba(255,255,255,0.06)}
+.why-top-item:last-child{border-right:none}
+.why-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:rgba(255,255,255,0.2);margin-bottom:7px}
+.why-ttl{font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:white;font-weight:500;line-height:1.4}
+.why-bot{background:var(--card);border:0.5px solid var(--border);border-top:none;display:grid;grid-template-columns:repeat(4,1fr);border-radius:0 0 4px 4px;overflow:hidden}
+.why-bot-item{padding:22px;border-right:0.5px solid var(--border);font-size:12px;color:var(--mid);line-height:1.7;font-weight:300}
+.why-bot-item:last-child{border-right:none;background:var(--rust-pale)}
+.spec-row{display:flex;align-items:center;margin-top:52px;gap:0}
+.spec-line{flex:1;height:0.5px;background:var(--border)}
+.spec-node{width:30px;height:30px;border-radius:50%;border:0.5px solid var(--rust);background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.spec-node.on{background:var(--rust)}
+.snl{position:absolute;top:40px;font-size:11px;color:var(--mid);white-space:nowrap;transform:translateX(-50%);left:50%;font-weight:300}
+.snl.on{color:var(--rust);font-weight:500}
+
+/* NEXT STEPS */
+#nextsteps{background:var(--rust-pale);padding:92px 80px}
+.ns-list{max-width:580px;margin-bottom:44px}
+.ns-item{display:flex;gap:16px;margin-bottom:20px}
+.ns-circ{width:32px;height:32px;border-radius:50%;background:var(--rust);color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:3px}
+.ns-t{font-size:15px;font-weight:500;color:var(--text);margin-bottom:4px}
+.ns-b{font-size:13px;color:var(--mid);line-height:1.65;font-weight:300}
+.contact-box{background:var(--card);border:0.5px solid var(--border);border-radius:4px;padding:28px;display:inline-block}
+.contact-label{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);margin-bottom:10px;font-weight:500}
+.contact-email{font-family:'Outfit',sans-serif;font-size:15px;font-weight:300;color:var(--text);text-decoration:none;display:block;letter-spacing:0.02em}
+.contact-email:hover{color:var(--rust)}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(255,255,255,0.35);padding:32px 80px;display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:0.08em;flex-wrap:wrap;gap:12px;font-weight:300}
+.foot-logo{font-family:'Outfit',sans-serif;font-size:11px;color:white;font-weight:500;letter-spacing:0.22em;text-transform:uppercase}
+
+/* SHARED HIGHLIGHT BAR */
+.hbar{background:var(--rust);border-radius:4px;padding:16px 22px;color:white;font-size:13px;line-height:1.6;margin-top:20px;font-weight:300}
+.hbar strong{font-weight:500}
+
+/* ANIMATION */
+.fa{opacity:0;transition:opacity 0.6s ease,transform 0.6s ease;transform:translateY(16px)}
+.fa.vis{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  section,#activations,#proof,#ecosystem,#nextsteps{padding:60px 24px}
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  #hero{padding:72px 24px 48px}
+  .hero-inner{grid-template-columns:1fr;gap:32px}
+  .hero-right{align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:20px}
+  .hstat-num,.hstat-label{text-align:left}
+  .act-hero,.proof-grid,.mkt-nums,.chanel-grid,.space-card.span2,.team-grid,.act-grid-bottom,.dlv-grid,.prog-grid,.space-grid,.eco-nodes,.proof-strip{grid-template-columns:1fr}
+  .team-card.full{grid-column:span 1}
+  .eng-row{flex-direction:column}
+  .eng-arr{display:none}
+  .why-top,.why-bot{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">113 Spring <span>×</span> 113S.vc</div>
+  <ul class="nav-links">
+    <li><a href="#activations">Activations</a></li>
+    <li><a href="#engine">The Engine</a></li>
+    <li><a href="#programming">Programming</a></li>
+    <li><a href="#partnership">Partnership</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#market">The Market</a></li>
+  </ul>
+  <a href="#nextsteps" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-top">
+    <div class="hero-eyebrow">SoHo, New York · June 2026 · Strictly Private &amp; Confidential</div>
+    <div class="hero-eyebrow" style="color:var(--rust)">113 Spring × 113S.vc</div>
+  </div>
+  <div class="hero-mid">
+    <h1 class="hero-hl fa">113<br><em>Spring</em></h1>
+  </div>
+  <div class="hero-bottom">
+    <div>
+      <p class="hero-sub fa">A proposal for 113S.vc to operate both floors as a living lab, launchpad and incubator for the wellness brands of tomorrow.</p>
+      <div class="hero-btns fa">
+        <a href="#activations" class="btn-rust">See the opportunity</a>
+        <a href="#nextsteps" class="btn-out">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-right fa">
+      <div><div class="hstat-num">$9.8T</div><div class="hstat-label">Wellness economy by 2029</div></div>
+      <div><div class="hstat-num">$1T</div><div class="hstat-label">Women's health opportunity</div></div>
+      <div><div class="hstat-num">250+</div><div class="hstat-label">Brands reviewed annually</div></div>
+      <div><div class="hstat-num">3,000</div><div class="hstat-label">Sq ft · Snøhetta · SoHo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVATIONS -->
+<section id="activations">
+  <div class="sl fa">Activations</div>
+  <h2 class="st fa">The world's leading wellness &amp;<br><em>longevity brands launch here</em></h2>
+  <p class="si fa">113 Spring is the destination for cutting-edge brands to test, launch and showcase in the heart of SoHo. From global product reveals to immersive brand experiences — science, serenity and storytelling in one address.</p>
+
+  <div class="act-hero fa">
+    <div>
+      <p style="font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:24px;font-weight:300">A Snøhetta-designed flagship in landmarked SoHo — 3,000 sq ft of modular, ever-changing space built around the brands of tomorrow. Curated, selected, on thesis. Not coworking for anyone — a residency brands are chosen into.</p>
+      <div class="act-tags">
+        <div class="atag">Latest technology</div>
+        <div class="atag">Wellness innovation</div>
+        <div class="atag">Longevity</div>
+        <div class="atag">Health-span</div>
+        <div class="atag">Life-span</div>
+        <div class="atag">Recovery tech</div>
+        <div class="atag">Biometrics</div>
+      </div>
+    </div>
+    <div class="act-mosaic">
+      <div class="act-tile t-red">
+        <div class="act-tile-title">Red-light therapy &amp; recovery pods</div>
+        <div class="act-tile-sub">Resident brand exclusives · performance activation</div>
+      </div>
+      <div class="act-tile t-warm">
+        <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);width:50px;height:50px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><div style="width:26px;height:26px;border-radius:50%;background:var(--rust-pale);display:flex;align-items:center;justify-content:center"><div style="width:2px;height:14px;background:var(--faint);border-radius:1px"></div></div></div>
+        <div class="act-tile-title">Sleep intelligence</div>
+        <div class="act-tile-sub">HRV · Bioage · Recovery</div>
+      </div>
+      <div class="act-tile t-pale">
+        <div class="bio-num">87</div>
+        <div class="bio-label">Sleep Score · live biometrics</div>
+        <div class="bio-bars">
+          <div class="bbar" style="height:55%;opacity:0.45"></div>
+          <div class="bbar" style="height:75%;opacity:0.6"></div>
+          <div class="bbar" style="height:100%"></div>
+          <div class="bbar" style="height:65%;opacity:0.5"></div>
+          <div class="bbar" style="height:85%;opacity:0.7"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="act-grid-bottom fa">
+    <div class="card">
+      <div class="card-title">Resident brands</div>
+      <div class="card-body">Portfolio companies in residence. A New York base, community and the anchor identity of the floor. Ideally our portfolio or those close to joining it.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">On-track brands</div>
+      <div class="card-body">Companies close to portfolio, in a live trial. Working in the space is effectively a diligence period — the most authentic form of due diligence.</div>
+    </div>
+    <div class="pale-card">
+      <div class="card-title">Anchor &amp; guest brands</div>
+      <div class="card-body">Established names that draw footfall and credibility. Hosted as immersive experiences. Opening season anchored by Chanel.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGINE -->
+<section id="engine">
+  <div class="sl fa">The engine</div>
+  <h2 class="st fa">A hands-on incubator that<br><em>engineers serendipity</em></h2>
+  <p class="si fa">We review over 250 brands a year. The best are curated into 113 Spring, tested and challenged, and the winners are funded to accelerate.</p>
+
+  <div class="eng-row fa">
+    <div class="eng-step"><div class="eng-num">1</div><div class="eng-t">Review</div><div class="eng-b">250+ brands a year against the House's criteria and our investment thesis.</div></div>
+    <div class="eng-arr">›</div>
+    <div class="eng-step"><div class="eng-num">2</div><div class="eng-t">Curate &amp; activate</div><div class="eng-b">A select few brought into 113 Spring to launch in front of New York.</div></div>
+    <div class="eng-arr">›</div>
+    <div class="eng-step"><div class="eng-num">3</div><div class="eng-t">Test &amp; challenge</div><div class="eng-b">Hands-on incubation — up close and rigorous. The space is the diligence.</div></div>
+    <div class="eng-arr">›</div>
+    <div class="eng-step"><div class="eng-num">4</div><div class="eng-t">Fund the winners</div><div class="eng-b">113S.vc backs the winners to accelerate and scale them.</div></div>
+    <div class="eng-arr">›</div>
+    <div class="eng-step"><div class="eng-num">5</div><div class="eng-t">Graduate</div><div class="eng-b">Acquisition-ready, surfaced for the House's pipeline.</div></div>
+  </div>
+
+  <div class="dlv-grid fa">
+    <div class="dlv-stat"><div class="dlv-num">250+</div><div class="dlv-lbl">brands reviewed every year</div></div>
+    <div class="dlv-stat"><div class="dlv-num">20–30</div><div class="dlv-lbl">curated into the space to activate</div></div>
+    <div class="dlv-stat"><div class="dlv-num">4–6</div><div class="dlv-lbl">winners funded by 113S.vc annually</div></div>
+    <div class="dlv-stat"><div class="dlv-num">12–16</div><div class="dlv-lbl">events per year: salons, launches, activations</div></div>
+    <div class="dlv-stat"><div class="dlv-num">6–8</div><div class="dlv-lbl">showcase brands rotated quarterly</div></div>
+    <div class="dlv-stat"><div class="dlv-num">4–6</div><div class="dlv-lbl">acquisition-ready brands for the House</div></div>
+  </div>
+</section>
+
+<!-- PROGRAMMING -->
+<section id="programming">
+  <div class="sl fa">Programming</div>
+  <h2 class="st fa"><em>Experience-led.</em> Not treatment-led.</h2>
+  <p class="si fa">Six programming pillars — each generating revenue, each reinforcing the flywheel. Through our UNTIL ownership we bring exclusive access to thousands of practitioners no other New York operator can match.</p>
+
+  <div class="prog-grid fa">
+    <div class="prog-card"><div class="prog-num">01</div><div class="prog-t">Launch &amp; showcase</div><div class="prog-b">Brand launches, product previews and pop-ups. The place wellness launches in New York. Activation fees from DTC brands accessing SoHo's most curated stage.</div></div>
+    <div class="prog-card"><div class="prog-num">02</div><div class="prog-t">Podcast studio</div><div class="prog-b">Partnership with Steven Bartlett and leading wellness voices. JV for our NYC flagship studio. Editorial content syndicated through our network to millions.</div></div>
+    <div class="prog-card"><div class="prog-num">03</div><div class="prog-t">Corporate &amp; C-level</div><div class="prog-b">Executive breakouts, leadership offsites and team experiences by subscription. C-suite programming with Vance — elite performance coach, formerly Remedy Place — embedded in the space.</div></div>
+    <div class="prog-card"><div class="prog-num">04</div><div class="prog-t">Convene</div><div class="prog-b">Founder and athlete salons, investor dinners, panels and demo days. Programming for teens, tweens and disadvantaged communities — no competitor runs this.</div></div>
+    <div class="prog-card"><div class="prog-num">05</div><div class="prog-t">Educate &amp; access</div><div class="prog-b">GetFrich youth community, masterclasses, teen and tween cycle learning, women-in-business mentorship. Equity and accessibility built in from day one.</div></div>
+    <div class="prog-card"><div class="prog-num">06</div><div class="prog-t">Test &amp; scout</div><div class="prog-b">Consumer focus groups, sampling and live data. Through UNTIL: exclusive access to thousands of practitioners — physiotherapists, diagnostics specialists, performance coaches.</div></div>
+  </div>
+
+  <div class="hbar fa"><strong>Unfair advantage:</strong> Through our ownership of UNTIL, we have access to thousands of practitioners that no competitor in New York can replicate. We bring them to 113 Spring.</div>
+</section>
+
+<!-- SPACE -->
+<section id="space">
+  <div class="sl fa">The space</div>
+  <h2 class="st fa">Both floors, <em>designed to flex</em></h2>
+  <p class="si fa">White oak, ivory scrim and soothing colour across 3,000 sq ft of landmarked SoHo, on Snøhetta's modular, ever-changing design.</p>
+
+  <div class="space-grid fa">
+    <div class="space-card"><div class="space-t">Curated coworking residency</div><div class="space-b">Both floors as a working residency for wellness brands, with rooms and displays designed around their products. Not coworking for anyone — a residency brands are chosen into.</div></div>
+    <div class="space-card"><div class="space-t">The flexible room</div><div class="space-b">Walls retract for full floor use or close for private C-level sessions, athlete salons and investor dinners. Every configuration is possible.</div></div>
+    <div class="space-card"><div class="space-t">Launchpad &amp; Bloom Café</div><div class="space-b">Ground-floor showcase and café where wellness brands launch in New York and consumer response is captured live. Seasonal menus reviewed by experts.</div></div>
+    <div class="space-card"><div class="space-t">Podcast &amp; content studio</div><div class="space-b">In-house studio for resident brand editorial and podcast recording with A-list talent. Steven Bartlett partnership. JV potential for a permanent NYC flagship studio.</div></div>
+    <div class="space-card span2">
+      <div>
+        <div class="space-badge">New</div>
+        <div class="space-t">Executive training experiences</div>
+        <div class="space-b" style="margin-top:8px">A hub for the latest life-sized performance technology — curated with a coach. 113 Spring partners with Vance, one of New York's most sought-after executive performance coaches (formerly Remedy Place), to deliver programming at the intersection of physical optimisation, longevity science and mental performance. C-level members train with the same methodology used by elite athletes. Available by subscription to corporate members and by referral for individual access.</div>
+      </div>
+      <div style="background:var(--rust-pale);border-radius:4px;padding:22px">
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);margin-bottom:14px;font-weight:500">What this unlocks</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:var(--card);border-radius:3px;padding:11px 14px;font-size:12px;color:var(--mid);font-weight:300">Latest life-sized recovery &amp; performance technology on the floor</div>
+          <div style="background:var(--card);border-radius:3px;padding:11px 14px;font-size:12px;color:var(--mid);font-weight:300">Vance — formerly Remedy Place — coaching C-suite members individually</div>
+          <div style="background:var(--card);border-radius:3px;padding:11px 14px;font-size:12px;color:var(--mid);font-weight:300">Group executive performance sessions by subscription tier</div>
+          <div style="background:var(--card);border-radius:3px;padding:11px 14px;font-size:12px;color:var(--mid);font-weight:300">Biomarker &amp; biometric tracking integrated into leadership offsite programmes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIP -->
+<section id="partnership">
+  <div class="sl fa">Opening anchor proposal</div>
+  <h2 class="st fa">Chanel × 113 Spring —<br><em>catalysing the engine</em></h2>
+
+  <div class="chanel-hero fa">
+    <div class="chanel-eyebrow">Chanel × 113 Spring · Opening Season</div>
+    <div class="chanel-title">A $1M capex investment on fitout and design — delivering a high-growth commercial engine with no further investment required.</div>
+    <div class="chanel-intro">Chanel's $1M is deployed as capex on the fitout and design of 113 Spring's two floors, catalysing an operating commercial engine that generates high-growth revenue from day one of launch. No ongoing capital requirement from either party beyond the initial fitout. 113S.vc operates, programmes and commercialises the space — Chanel receives founding anchor rights, a 50:50 revenue share and mission alignment on accessible health, female founders and community impact.</div>
+    <div class="chanel-grid">
+      <div class="ch-item"><div class="ch-lbl">Investment structure</div><div class="ch-val">$1M via Chanel Foundation into our DAF as capex on fitout and design — supporting female founders, accessible health innovation and disadvantaged communities including teens and tweens.</div></div>
+      <div class="ch-item"><div class="ch-lbl">Revenue share</div><div class="ch-val">50:50 revenue share across all programming, membership and events. Four revenue lines: residency, corporate, DTC launches and anchor sponsors. Transparent quarterly reporting.</div></div>
+      <div class="ch-item"><div class="ch-lbl">What Chanel receives</div><div class="ch-val">Founding anchor naming rights for the season. Immersive room sponsorship. First access to portfolio brand pipeline. Editorial and podcast content. Mission alignment on women's health and accessibility.</div></div>
+    </div>
+  </div>
+
+  <div class="engine-callout fa"><strong>An operating commercial engine catalysed by Chanel's capex on fitout</strong> — delivering high-growth revenue with no further investment required from either party. We operate. We programme. We fill the space. Chanel catalyses.</div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="sl fa">The team</div>
+  <h2 class="st fa">We have <em>built this before</em></h2>
+  <p class="si fa">113S.vc brings together operators, investors and community builders with a proven record in wellness, coworking and capital allocation. We do not just advise — we build.</p>
+
+  <div class="team-grid">
+    <div class="team-card fa">
+      <a href="https://www.linkedin.com/in/rummanadada/" target="_blank" class="team-av gp" title="LinkedIn">RD</a>
+      <div>
+        <div class="team-role">General Partner</div>
+        <div class="team-name"><a href="https://www.linkedin.com/in/rummanadada/" target="_blank" style="color:inherit;text-decoration:none">Rummana Dada</a></div>
+        <div class="team-bio">Founder of Humanity Capital, rebranding as 113S Ventures — building the largest dedicated human performance VC globally, with a commitment to deploy $100M into women's health over the next three years. Investor across human performance, preventative health and consumer wellness. Owner of a DAF vehicle to facilitate philanthropic capital into early-stage ventures, de-risking the path from innovation to scale. Creator of Giannis Antetokounmpo's first fund with BuildYourLegacy.</div>
+        <div class="team-tags"><span class="ttag">113S Ventures</span><span class="ttag">Humanity Capital</span><span class="ttag">Women's health</span><span class="ttag">Human performance</span><span class="ttag">DAF</span></div>
+        <a href="https://www.linkedin.com/in/rummanadada/" target="_blank" class="li-link">LinkedIn</a>
+      </div>
+    </div>
+    <div class="team-card fa">
+      <a href="https://www.linkedin.com/in/vishamin/" target="_blank" class="team-av" title="LinkedIn">VA</a>
+      <div>
+        <div class="team-role">Venture Partner</div>
+        <div class="team-name"><a href="https://www.linkedin.com/in/vishamin/" target="_blank" style="color:inherit;text-decoration:none">Vish Amin</a></div>
+        <div class="team-bio">Founder of UNTIL — London's premium wellness workspace and the proof-of-concept behind 113 Spring's operating model. Through UNTIL, we bring thousands of exclusive practitioners to 113 Spring that no competitor can access.</div>
+        <div class="team-tags"><span class="ttag">UNTIL London</span><span class="ttag">Wellness workspace</span><span class="ttag">Operations</span></div>
+        <a href="https://www.linkedin.com/in/vishamin/" target="_blank" class="li-link">LinkedIn</a>
+      </div>
+    </div>
+    <div class="team-card fa">
+      <a href="https://www.linkedin.com/in/johanneswilbrenninck/" target="_blank" class="team-av" title="LinkedIn">JW</a>
+      <div>
+        <div class="team-role">Venture Partner 🇫🇷</div>
+        <div class="team-name"><a href="https://www.linkedin.com/in/johanneswilbrenninck/" target="_blank" style="color:inherit;text-decoration:none">Johannes Wilbrenninck</a></div>
+        <div class="team-bio">Senior brand and marketing leader with deep consumer wellness brand-building credentials. The creative intelligence behind how our portfolio brands show up in the world.</div>
+        <div class="team-tags"><span class="ttag">Ogilvy</span><span class="ttag">WPP</span><span class="ttag">Unilever</span><span class="ttag">Brand strategy</span></div>
+        <a href="https://www.linkedin.com/in/johanneswilbrenninck/" target="_blank" class="li-link">LinkedIn</a>
+      </div>
+    </div>
+    <div class="team-card fa">
+      <a href="https://www.linkedin.com/in/mauricio-serna/" target="_blank" class="team-av" title="LinkedIn">MS</a>
+      <div>
+        <div class="team-role">Venture Partner · Wellness &amp; Sustainability 🇺🇸</div>
+        <div class="team-name"><a href="https://www.linkedin.com/in/mauricio-serna/" target="_blank" style="color:inherit;text-decoration:none">Mauricio Serna</a></div>
+        <div class="team-bio">Head of Wellness and Sustainability at Starwood Capital Group. Deep institutional real estate and hospitality capital background. Bridges luxury property and investable health infrastructure.</div>
+        <div class="team-tags"><span class="ttag">Starwood Capital</span><span class="ttag">Goldman Sachs</span><span class="ttag">Wellness</span><span class="ttag">Hospitality</span></div>
+        <a href="https://www.linkedin.com/in/mauricio-serna/" target="_blank" class="li-link">LinkedIn</a>
+      </div>
+    </div>
+    <div class="team-card full fa">
+      <a href="https://www.linkedin.com/in/saadidrees/" target="_blank" class="team-av" title="LinkedIn">SD</a>
+      <div>
+        <div class="team-role">Venture Partner · Coworking &amp; Global Expansion 🇸🇦</div>
+        <div class="team-name"><a href="https://www.linkedin.com/in/saadidrees/" target="_blank" style="color:inherit;text-decoration:none">Saadi Drees</a></div>
+        <div class="team-bio">Founder of Daftar — coworking infrastructure across Saudi Arabia and Pakistan, scaled into Asia's most relevant flexible workspace network, with a confidential exit to IWG (transaction live). We do not just know coworking — our partner sold his company to the largest operator on earth. This is the operating DNA behind our commercial model for 113 Spring.</div>
+        <div class="team-tags"><span class="ttag">Daftar</span><span class="ttag">IWG exit</span><span class="ttag">Saudi Arabia</span><span class="ttag">Pakistan</span><span class="ttag">Flexible workspace</span></div>
+        <a href="https://www.linkedin.com/in/saadidrees/" target="_blank" class="li-link">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section id="ecosystem" style="background:var(--rust-pale);padding:72px 80px;text-align:center">
+  <div class="sl fa" style="justify-content:center">The ecosystem</div>
+  <h2 class="eco-title fa">Humanity Capital is becoming<br><em>the 113S.vc ecosystem</em></h2>
+  <p class="eco-body fa">113S.vc is the unified platform. Humanity Capital — rebranding as 113S Ventures — is our dedicated human performance and women's health fund, with a commitment to deploy $100M into women's health over the next three years. A DAF vehicle sits alongside to facilitate philanthropic capital, de-risking early-stage innovation. 113 Spring is the physical hub. The fund is the financial engine. Together, they are a flywheel.</p>
+  <div class="eco-nodes fa">
+    <div class="eco-node"><div class="eco-nname">113 Spring</div><div class="eco-nsub">Physical launchpad · SoHo</div></div>
+    <div class="eco-arr">→</div>
+    <div class="eco-node"><div class="eco-nname">113S.vc</div><div class="eco-nsub">Investment platform</div></div>
+    <div class="eco-arr">→</div>
+    <div class="eco-node" style="border-color:var(--rust)"><div class="eco-nname" style="color:var(--rust)">Humanity Capital</div><div class="eco-nsub">Rebranding as 113S Ventures · $100M women's health</div></div>
+    <div class="eco-arr">→</div>
+    <div class="eco-node"><div class="eco-nname">UNTIL</div><div class="eco-nsub">Wellness workspace · London</div></div>
+    <div class="eco-arr">→</div>
+    <div class="eco-node"><div class="eco-nname">Wealthy Women</div><div class="eco-nsub">Community · Global</div></div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market">
+  <div class="sl fa">The market</div>
+  <h2 class="st fa">The fastest-growing<br><em>category in the world</em></h2>
+  <p class="si fa">Humanity Capital — rebranding as 113S Ventures — invests at the intersection of consumer wellness, women's health intelligence and preventive health, with a $100M deployment commitment to women's health over three years.</p>
+
+  <div class="mkt-nums fa">
+    <div class="mkt-big r1"><div class="num">$9.8T</div><div class="cap">Global wellness economy forecast 2029 · CAGR 7.6% · Global Wellness Institute</div></div>
+    <div class="mkt-big r2"><div class="num">$1T</div><div class="cap">Women's health opportunity · McKinsey / WEF · 16.4% CAGR to 2030</div></div>
+    <div class="mkt-big r3"><div class="num">$585B</div><div class="cap">Preventive healthcare tech forecast 2030 · 11.8% CAGR</div></div>
+  </div>
+
+  <table class="mkt-table fa">
+    <thead><tr><th>Category</th><th>Now</th><th>Forecast</th><th>CAGR</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr><td>Global wellness economy</td><td>$6.8T</td><td class="fc">$9.8T</td><td>7.6%</td><td>2024 → 2029</td></tr>
+      <tr><td>Functional foods</td><td>$329.7B</td><td class="fc">$586.1B</td><td>8.6%</td><td>2023 → 2030</td></tr>
+      <tr><td>Preventive healthcare tech</td><td>$268.7B</td><td class="fc">$585.6B</td><td>11.8%</td><td>2023 → 2030</td></tr>
+      <tr><td>Wearable medical devices</td><td>$42.7B</td><td class="fc">$168.3B</td><td>25.5%</td><td>2024 → 2030</td></tr>
+      <tr><td>Women's health / FemTech</td><td>$39.3B</td><td class="fc">$97.3B</td><td>16.4%</td><td>2024 → 2030</td></tr>
+    </tbody>
+  </table>
+  <div class="mkt-callout fa">Within this intersection, we back companies across diagnostics, food-as-medicine, wellness infrastructure, personal health intelligence and performance-enabling platforms.</div>
+</section>
+
+<!-- PROOF -->
+<section id="proof">
+  <div class="sl fa">Market validation</div>
+  <h2 class="st fa">The proof is <em>already here</em></h2>
+  <p class="si fa">The longevity and premium wellness market is live, oversubscribed and repricing fast. The incumbents have validated the demand. 113 Spring captures it at the launch layer.</p>
+
+  <div class="proof-grid fa">
+    <div class="proof-card">
+      <div class="proof-ey">Equinox · Optimize · $40K/year · launched 2024</div>
+      <div class="proof-stat">1,000+</div>
+      <div class="proof-desc" style="margin-bottom:18px">Person waitlist as of 2026. Chairman Harvey Spevak: demand is <em style="font-style:italic;color:var(--rust)">"insatiable."</em> 2025 a record year; 2026 expected bigger.</div>
+      <div class="proof-sub">
+        <div class="proof-mini"><div class="proof-mini-num">200,000+</div><div class="proof-mini-desc">Waitlist for Function Health (Equinox's biomarker partner) at $499/year — proving mass consumer demand, not just luxury</div></div>
+        <div class="proof-mini"><div class="proof-mini-num">27%</div><div class="proof-mini-desc">Revenue increase + record member engagement 2023. Pipeline of 27 new locations globally.</div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="proof-card" style="flex:1">
+        <div class="proof-ey">Equinox · EQX ARC — women's longevity</div>
+        <div style="font-size:15px;font-weight:500;color:var(--text);margin-bottom:10px">Waitlisted before a single member onboarded</div>
+        <div class="proof-desc">Women's health programme built around diagnostics, wearables and coaching across the stages of a woman's life. Launched with its own waitlist. This is the market 113S.vc was built to serve.</div>
+      </div>
+      <div class="proof-quote">
+        <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:21px;font-weight:400;color:white;line-height:1.4;margin-bottom:10px">"Health is the new luxury."</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.7);font-weight:300">Harvey Spevak, Executive Chairman, Equinox · February 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proof-strip fa">
+    <div class="ps-item"><div class="ps-num">$40K</div><div class="ps-lbl">Equinox Optimize · per year · waitlisted</div></div>
+    <div class="ps-item"><div class="ps-num">$25K</div><div class="ps-lbl">CalmLAB Abu Dhabi · invite-only membership</div></div>
+    <div class="ps-item"><div class="ps-num">16.4%</div><div class="ps-lbl">FemTech CAGR to 2030 — fastest in health</div></div>
+    <div class="ps-item"><div class="ps-num">25.5%</div><div class="ps-lbl">Wearable medical devices CAGR</div></div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section id="why">
+  <div class="sl fa">Why now</div>
+  <h2 class="st fa">From advocacy to<br><em>investable infrastructure</em></h2>
+  <p class="si fa">Four structural tailwinds are converging. The window to back category-defining companies is now.</p>
+
+  <div class="fa">
+    <div class="why-top">
+      <div class="why-top-item"><div class="why-num">01.</div><div class="why-ttl">Healthcare is moving upstream</div></div>
+      <div class="why-top-item"><div class="why-num">02.</div><div class="why-ttl">The consumer is ready</div></div>
+      <div class="why-top-item"><div class="why-num">03.</div><div class="why-ttl">AI makes the gap addressable</div></div>
+      <div class="why-top-item"><div class="why-num">04.</div><div class="why-ttl">The sector is being repriced</div></div>
+    </div>
+    <div class="why-bot">
+      <div class="why-bot-item">Sick-care is shifting toward earlier detection, prevention, longevity and personal health intelligence.</div>
+      <div class="why-bot-item">Wellness, wearables and self-testing normalise daily health data, recovery and performance tracking.</div>
+      <div class="why-bot-item">AI copilots, imaging and longitudinal profiles can make under-measured female biology actionable.</div>
+      <div class="why-bot-item">High scalability and expedited exits. Health is translating into consumer F&amp;B, sports and hospitality experiences.</div>
+    </div>
+  </div>
+
+  <div class="spec-row fa">
+    <div class="spec-node"><span class="snl">Sick-care</span></div>
+    <div class="spec-line"></div>
+    <div class="spec-node"><span class="snl">Prevention</span></div>
+    <div class="spec-line"></div>
+    <div class="spec-node"><span class="snl">Performance</span></div>
+    <div class="spec-line"></div>
+    <div class="spec-node on"><span class="snl on">Personal intelligence</span></div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section id="nextsteps">
+  <div class="sl fa">Next steps</div>
+  <h2 class="st fa">Ready to activate<br><em>immediately</em></h2>
+  <p class="si fa" style="margin-bottom:36px">Three steps to bring 113 Spring to life.</p>
+
+  <div class="ns-list fa">
+    <div class="ns-item">
+      <div class="ns-circ">1</div>
+      <div><div class="ns-t">Agree space utilisation plan</div><div class="ns-b">Confirm floor-by-floor activation, brand residency structure, programming calendar and the KPIs we deliver against.</div></div>
+    </div>
+    <div class="ns-item">
+      <div class="ns-circ">2</div>
+      <div><div class="ns-t">Agree commercial agreement</div><div class="ns-b">Confirm partnership structure, discretion framework, revenue share terms and fitout capex deployment in writing.</div></div>
+    </div>
+    <div class="ns-item">
+      <div class="ns-circ">3</div>
+      <div><div class="ns-t">Kick-off</div><div class="ns-b">Brands arrive. Programming begins. Membership opens. New York notices.</div></div>
+    </div>
+  </div>
+
+  <div class="fa" style="margin-bottom:44px">
+    <div class="contact-label">Get in touch</div>
+    <a href="mailto:rd@humanity-capital.com" class="contact-email">rd@humanity-capital.com</a>
+  </div>
+
+  <div style="margin-top:52px;padding-top:40px;border-top:0.5px solid var(--border)" class="fa">
+    <div style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:500;color:var(--text);margin-bottom:4px;letter-spacing:0.18em;text-transform:uppercase">113 Spring · 113S.vc</div>
+    <div style="font-size:12px;color:var(--mid);font-weight:300">Strictly Private &amp; Confidential · Prepared by 113S.vc · June 2026</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">113 Spring</div>
+  <div>Strictly Private &amp; Confidential · 113 Spring × 113S.vc · June 2026</div>
+  <div>This document contains no reference to the House by name.</div>
+</footer>
+
+<script>
+// Hero elements visible immediately on load with stagger
+const heroEls = document.querySelectorAll('#hero .fa');
+heroEls.forEach((el, i) => {
+  setTimeout(() => el.classList.add('vis'), 80 + i * 120);
+});
+
+// All other .fa elements reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fa:not(#hero .fa)').forEach(el => obs.observe(el));
+
+// Nav active state
+window.addEventListener('scroll', () => {
+  const secs = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  links.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+});
+</script>
+</body>
+</html>
