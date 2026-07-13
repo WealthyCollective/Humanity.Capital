@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/dubaimedia/(.*)", "destination": "/dubaimedia/index.html" }
+  ]
+}
