@@ -1,5 +1,10 @@
 {
   "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "query", "key": "__clerk_handshake" }],
+      "destination": "/DLA/index.html"
+    },
     { "source": "/dubaimedia/(.*)", "destination": "/dubaimedia/index.html" }
   ]
 }
