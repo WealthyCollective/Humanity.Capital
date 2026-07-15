@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <rect width="240" height="60" rx="4" fill="none"/>
+  <!-- Teal square mark -->
+  <rect x="0" y="10" width="40" height="40" rx="6" fill="#009e93"/>
+  <text x="20" y="36" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="22" font-weight="700" fill="white" text-anchor="middle">D</text>
+  <!-- Wordmark -->
+  <text x="52" y="30" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="13" font-weight="700" fill="#0d1f1e" letter-spacing="0.5">Dubai Longevity</text>
+  <text x="52" y="46" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="11" font-weight="400" fill="#2d5c58" letter-spacing="0.3">Authority Gateway</text>
+</svg>
